@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,23 @@ namespace UniversitySchedule.Controllers
                 using (var dbContext = new UniversityScheduleContext())
                 {
                     departments = dbContext.Departments.ToList();
+                }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+            return departments;
+        }
+
+        public List<Department> GetAllDepartmentForAlgorithm()
+        {
+            List<Department> departments = new List<Department>();
+            try
+            {
+                using (var dbContext = new UniversityScheduleContext())
+                {
+                    departments = dbContext.Departments
+                                                    .Include(d => d.Courses)
+                                                    .ThenInclude(c => c.Instructors)
+                                                    .ToList();
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }

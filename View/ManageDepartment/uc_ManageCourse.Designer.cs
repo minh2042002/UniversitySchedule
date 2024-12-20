@@ -231,13 +231,13 @@
             // 
             cmsCourse.Items.AddRange(new ToolStripItem[] { editCourse, deleteCourse });
             cmsCourse.Name = "cmsCalendar";
-            cmsCourse.Size = new Size(181, 70);
+            cmsCourse.Size = new Size(179, 48);
             // 
             // editCourse
             // 
             editCourse.Image = Properties.Resources.edit_24_red;
             editCourse.Name = "editCourse";
-            editCourse.Size = new Size(180, 22);
+            editCourse.Size = new Size(178, 22);
             editCourse.Text = "Chỉnh sửa môn học";
             editCourse.Click += editCourse_Click;
             // 
@@ -245,7 +245,7 @@
             // 
             deleteCourse.Image = Properties.Resources.remove_24_red;
             deleteCourse.Name = "deleteCourse";
-            deleteCourse.Size = new Size(180, 22);
+            deleteCourse.Size = new Size(178, 22);
             deleteCourse.Text = "Xóa môn học";
             deleteCourse.Click += deleteCourse_Click;
             // 

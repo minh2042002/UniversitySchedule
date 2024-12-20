@@ -125,10 +125,25 @@ namespace UniversitySchedule.View.ManageDepartment
 
         private void moveDepartment_Click(object sender, EventArgs e)
         {
-            currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
-            frm_MoveDepartment frm_MoveDepartment = new frm_MoveDepartment();
-            frm_MoveDepartment.ShowDialog();
-            LoadInstructorByDepartmentSelected();
+            try
+            {
+                currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
+                frm_MoveDepartment frm_MoveDepartment = new frm_MoveDepartment();
+                frm_MoveDepartment.ShowDialog();
+                LoadInstructorByDepartmentSelected();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void manageCourse_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
+                frm_ChooseCourse frm_ChooseCourse = new frm_ChooseCourse();
+                frm_ChooseCourse.ShowDialog();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
     }
 }

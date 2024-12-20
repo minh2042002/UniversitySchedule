@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,21 @@ namespace UniversitySchedule.Controllers
             return _instance;
         }
 
+        public List<Course> GetAllCourseForAlgorithm()
+        {
+            List<Course> courses = new List<Course>();
+            try
+            {
+                using (var dbContext = new UniversityScheduleContext())
+                {
+                    courses = dbContext.Courses.Include(c => c.Instructors).ToList();
+                    return courses;
+                }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+            return courses;
+        }
+
         public List<Course> GetAllCourse()
         {
             List<Course> courses = new List<Course>();
@@ -45,10 +61,26 @@ namespace UniversitySchedule.Controllers
             {
                 using (var dbContext = new UniversityScheduleContext())
                 {
-                    // Lọc Course theo DepartmentId
                     courses = dbContext.Courses
                                        .Include(c => c.Department)
                                        .Where(c => c.DepartmentId == department.Id)
+                                       .ToList();
+                    return courses;
+                }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+            return courses;
+        }
+
+        public List<Course> GetCoursesByInstructor(Instructor instructor)
+        {
+            List<Course> courses = new List<Course>();
+            try
+            {
+                using (var dbContext = new UniversityScheduleContext())
+                {
+                    courses = dbContext.Courses
+                                       .Where(c => c.Instructors.Any(i => i.Id == instructor.Id))
                                        .ToList();
                     return courses;
                 }

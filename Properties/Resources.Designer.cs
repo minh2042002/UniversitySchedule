@@ -133,6 +133,16 @@ namespace UniversitySchedule.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap checked_checkbox_24_red {
+            get {
+                object obj = ResourceManager.GetObject("checked-checkbox-24-red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap city_background {
             get {
                 object obj = ResourceManager.GetObject("city-background", resourceCulture);
@@ -313,6 +323,16 @@ namespace UniversitySchedule.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap select_all_24_red {
+            get {
+                object obj = ResourceManager.GetObject("select-all-24-red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap settings_16 {
             get {
                 object obj = ResourceManager.GetObject("settings-16", resourceCulture);
@@ -366,6 +386,26 @@ namespace UniversitySchedule.Properties {
         internal static System.Drawing.Bitmap teacher_24_red {
             get {
                 object obj = ResourceManager.GetObject("teacher-24-red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap un_check_all_24_red {
+            get {
+                object obj = ResourceManager.GetObject("un-check-all-24-red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap un_checked_checkbox_24_red {
+            get {
+                object obj = ResourceManager.GetObject("un-checked-checkbox-24-red", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

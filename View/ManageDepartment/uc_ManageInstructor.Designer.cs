@@ -46,6 +46,9 @@
             email = new DataGridViewTextBoxColumn();
             dob = new DataGridViewTextBoxColumn();
             department = new DataGridViewTextBoxColumn();
+            cmsInstructor = new ContextMenuStrip(components);
+            moveDepartment = new ToolStripMenuItem();
+            manageCourse = new ToolStripMenuItem();
             panel3 = new Panel();
             txtFindByName = new Sunny.UI.UITextBox();
             btnSearch = new Sunny.UI.UISymbolButton();
@@ -53,17 +56,14 @@
             pnCombobox = new Sunny.UI.UIPanel();
             cmbDepartment = new PresentationControls.CheckBoxComboBox();
             btnReload = new Sunny.UI.UISymbolButton();
-            cmsInstructor = new ContextMenuStrip(components);
-            moveDepartment = new ToolStripMenuItem();
-            thêmMônGiảngDạyToolStripMenuItem = new ToolStripMenuItem();
             pnBackground.SuspendLayout();
             uiGroupBox1.SuspendLayout();
             panel2.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInstructor).BeginInit();
+            cmsInstructor.SuspendLayout();
             panel3.SuspendLayout();
             pnCombobox.SuspendLayout();
-            cmsInstructor.SuspendLayout();
             SuspendLayout();
             // 
             // pnBackground
@@ -237,6 +237,28 @@
             department.Name = "department";
             department.Width = 200;
             // 
+            // cmsInstructor
+            // 
+            cmsInstructor.Items.AddRange(new ToolStripItem[] { moveDepartment, manageCourse });
+            cmsInstructor.Name = "cmsCalendar";
+            cmsInstructor.Size = new Size(213, 48);
+            // 
+            // moveDepartment
+            // 
+            moveDepartment.Image = Properties.Resources.edit_24_red;
+            moveDepartment.Name = "moveDepartment";
+            moveDepartment.Size = new Size(212, 22);
+            moveDepartment.Text = "Chuyển bộ môn";
+            moveDepartment.Click += moveDepartment_Click;
+            // 
+            // manageCourse
+            // 
+            manageCourse.Image = Properties.Resources.add_24_red;
+            manageCourse.Name = "manageCourse";
+            manageCourse.Size = new Size(212, 22);
+            manageCourse.Text = "Danh sách môn giảng dạy";
+            manageCourse.Click += manageCourse_Click;
+            // 
             // panel3
             // 
             panel3.AutoScroll = true;
@@ -396,27 +418,6 @@
             btnReload.TipsFont = new Font("Microsoft Sans Serif", 9F);
             btnReload.Click += btnReload_Click;
             // 
-            // cmsInstructor
-            // 
-            cmsInstructor.Items.AddRange(new ToolStripItem[] { moveDepartment, thêmMônGiảngDạyToolStripMenuItem });
-            cmsInstructor.Name = "cmsCalendar";
-            cmsInstructor.Size = new Size(189, 48);
-            // 
-            // moveDepartment
-            // 
-            moveDepartment.Image = Properties.Resources.edit_24_red;
-            moveDepartment.Name = "moveDepartment";
-            moveDepartment.Size = new Size(188, 22);
-            moveDepartment.Text = "Chuyển bộ môn";
-            moveDepartment.Click += moveDepartment_Click;
-            // 
-            // thêmMônGiảngDạyToolStripMenuItem
-            // 
-            thêmMônGiảngDạyToolStripMenuItem.Image = Properties.Resources.add_24_red;
-            thêmMônGiảngDạyToolStripMenuItem.Name = "thêmMônGiảngDạyToolStripMenuItem";
-            thêmMônGiảngDạyToolStripMenuItem.Size = new Size(188, 22);
-            thêmMônGiảngDạyToolStripMenuItem.Text = "Thêm môn giảng dạy";
-            // 
             // uc_ManageInstructor
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -431,9 +432,9 @@
             panel2.ResumeLayout(false);
             panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvInstructor).EndInit();
+            cmsInstructor.ResumeLayout(false);
             panel3.ResumeLayout(false);
             pnCombobox.ResumeLayout(false);
-            cmsInstructor.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -459,6 +460,6 @@
         private DataGridViewTextBoxColumn email;
         private DataGridViewTextBoxColumn dob;
         private DataGridViewTextBoxColumn department;
-        private ToolStripMenuItem thêmMônGiảngDạyToolStripMenuItem;
+        private ToolStripMenuItem manageCourse;
     }
 }

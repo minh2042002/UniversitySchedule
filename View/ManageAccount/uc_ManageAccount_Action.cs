@@ -23,63 +23,6 @@ namespace UniversitySchedule.View.ManageAccount
 
         public static User currentUser;
 
-        private void FillUserControlToPanel(string userControl)
-        {
-            //try
-            //{
-            //    this.pnMain.Controls.Clear();
-            //    switch (userControl)
-            //    {
-            //        case "user":
-            //            if (this.uc_ManageAccount == null)
-            //            {
-            //                this.uc_ManageAccount = new uc_ManageAccount();
-            //                this.pnMain.Controls.Add(uc_ManageAccount);
-            //                this.uc_ManageAccount.Dock = DockStyle.Fill;
-            //                this.uc_ManageAccount.Location = new Point(0, 0);
-            //                this.uc_ManageAccount.Size = new Size(pnMain.Width, pnMain.Height);
-            //                this.uc_ManageAccount.TabIndex = 0;
-            //            }
-            //            else
-            //            {
-            //                this.pnMain.Controls.Add(uc_ManageAccount);
-            //            }
-            //            break;
-            //        case "instructor":
-            //            if (this.uc_ManageInstructor == null)
-            //            {
-            //                this.uc_ManageInstructor = new uc_ManageInstructor();
-            //                this.pnMain.Controls.Add(uc_ManageInstructor);
-            //                this.uc_ManageInstructor.Dock = DockStyle.Fill;
-            //                this.uc_ManageInstructor.Location = new Point(0, 0);
-            //                this.uc_ManageInstructor.Size = new Size(pnMain.Width, pnMain.Height);
-            //                this.uc_ManageInstructor.TabIndex = 0;
-            //            }
-            //            else
-            //            {
-            //                this.pnMain.Controls.Add(uc_ManageInstructor);
-            //            }
-            //            break;
-            //        case "student":
-            //            if (this.uc_ManageStudent == null)
-            //            {
-            //                this.uc_ManageStudent = new uc_ManageStudent();
-            //                this.pnMain.Controls.Add(uc_ManageStudent);
-            //                this.uc_ManageStudent.Dock = DockStyle.Fill;
-            //                this.uc_ManageStudent.Location = new Point(0, 0);
-            //                this.uc_ManageStudent.Size = new Size(pnMain.Width, pnMain.Height);
-            //                this.uc_ManageStudent.TabIndex = 0;
-            //            }
-            //            else
-            //            {
-            //                this.pnMain.Controls.Add(uc_ManageStudent);
-            //            }
-            //            break;
-            //    }
-            //}
-            //catch (Exception ex) { Log4Net.LogException(ex, ""); }
-        }
-
         private void HighlightButtonClicked(string button)
         {
             try
