@@ -49,8 +49,12 @@ namespace UniversitySchedule.View.ManageDepartment
                 row.Cells.Add(cell5);
 
                 DataGridViewTextBoxCell cell6 = new DataGridViewTextBoxCell();
-                cell6.Value = course.Department?.Name;
+                cell6.Value = course.Instructors?.Count;
                 row.Cells.Add(cell6);
+
+                DataGridViewTextBoxCell cell7 = new DataGridViewTextBoxCell();
+                cell7.Value = course.Department?.Name;
+                row.Cells.Add(cell7);
 
                 row.Tag = course;
 

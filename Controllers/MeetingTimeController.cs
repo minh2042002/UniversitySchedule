@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
 
@@ -30,12 +32,11 @@ namespace UniversitySchedule.Controllers
             {
                 using (var dbContext = new UniversityScheduleContext())
                 {
-                    meetingTimes = dbContext.MeetingTimes.ToList();
+                    meetingTimes = dbContext.MeetingTimes.AsNoTracking().ToList();
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
             return meetingTimes;
         }
-
     }
 }

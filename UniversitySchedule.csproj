@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Resources\logo_hust.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\logo_hust.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="log4net" Version="3.0.3" />

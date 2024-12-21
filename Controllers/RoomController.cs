@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace UniversitySchedule.Controllers
             {
                 using (var dbContext = new UniversityScheduleContext())
                 {
-                    rooms = dbContext.Rooms.ToList();
+                    rooms = dbContext.Rooms.AsNoTracking().ToList();
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
@@ -79,11 +80,16 @@ namespace UniversitySchedule.Controllers
                 {
                     try
                     {
-                        if (!dbContext.Rooms.Any(r => r.Id == room.Id))
+                        Room updateRoom = dbContext.Rooms.FirstOrDefault(r => r.Id == room.Id);
+                        if (updateRoom == null)
                         {
                             return 0;
                         }
-                        dbContext.Rooms.Update(room);
+
+                        updateRoom.Name = room.Name;
+                        updateRoom.Capacity = room.Capacity;
+
+                        dbContext.Rooms.Update(updateRoom);
                         dbContext.SaveChanges();
                         transaction.Commit();
                         return 1;
@@ -112,11 +118,13 @@ namespace UniversitySchedule.Controllers
                 {
                     try
                     {
-                        if (!dbContext.Rooms.Any(r => r.Id == r.Id))
+                        Room deleteRoom = dbContext.Rooms.FirstOrDefault(r => r.Id == room.Id);
+                        if (deleteRoom == null)
                         {
                             return 0;
                         }
-                        dbContext.Rooms.Remove(room);
+
+                        dbContext.Rooms.Remove(deleteRoom);
                         dbContext.SaveChanges();
                         transaction.Commit();
                         return 1;

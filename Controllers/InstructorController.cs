@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic.Devices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Sunny.UI;
+using UniversitySchedule.Dto;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
 
@@ -24,19 +20,24 @@ namespace UniversitySchedule.Controllers
             return _instance;
         }
 
-        public List<Instructor> GetAllInstructorForAlgorithm()
+        public List<InstructorDto> GetAllInstructorForAlgorithm()
         {
-            List<Instructor> instructors = new List<Instructor>();
+            List<InstructorDto> instructorDtos = new List<InstructorDto>();
             try
             {
                 using (var dbContext = new UniversityScheduleContext())
                 {
-                    instructors = dbContext.Instructors.ToList();
-                    return instructors;
+                    List<Instructor> instructors = dbContext.Instructors
+                                                    .Include(i => i.User)
+                                                    .ThenInclude(u => u.Information)
+                                                    .AsNoTracking()
+                                                    .ToList();
+                    instructorDtos = instructors.Select(InstructorDto.FromEntity).ToList();
+                    return instructorDtos;
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
-            return instructors;
+            return instructorDtos;
         }
 
         public List<Instructor> GetAllInstructorDetail()
@@ -50,6 +51,7 @@ namespace UniversitySchedule.Controllers
                                                     .Include(i => i.User)
                                                     .ThenInclude(u => u.Information)
                                                     .Include(i => i.Department)
+                                                    .AsNoTracking()
                                                     .ToList();
                     return instructors;
                 }
@@ -70,6 +72,7 @@ namespace UniversitySchedule.Controllers
                                                     .ThenInclude(u => u.Information)
                                                     .Include(i => i.Department)
                                                     .Where(i => i.DepartmentId == department.Id)
+                                                    .AsNoTracking()
                                                     .ToList();
                     return instructors;
                 }
@@ -88,21 +91,25 @@ namespace UniversitySchedule.Controllers
                     try
                     {
                         var updateInstructor = dbContext.Instructors
-                            .Include(i => i.Courses) // Bao gồm danh sách Courses
-                            .FirstOrDefault(i => i.Id == instructor.Id);
+                                                        .Include(i => i.Courses)
+                                                        .FirstOrDefault(i => i.Id == instructor.Id);
 
                         if (updateInstructor == null)
                         {
                             return 0;
                         }
 
-                        // Truy vấn các thực thể Course từ DbContext hiện tại
                         var courseIds = courses.Select(c => c.Id).ToList();
                         var dbCourses = dbContext.Courses.Where(c => courseIds.Contains(c.Id)).ToList();
 
-                        // Gán danh sách Courses đã truy vấn
-                        updateInstructor.Courses = dbCourses;
+                        updateInstructor.Courses.Clear();
 
+                        foreach (var course in dbCourses)
+                        {
+                            updateInstructor.Courses.Add(course);
+                        }
+
+                        dbContext.Instructors.Update(updateInstructor);
                         dbContext.SaveChanges();
                         transaction.Commit();
                         return 1;
@@ -121,7 +128,6 @@ namespace UniversitySchedule.Controllers
                 return -1;
             }
         }
-
 
         public int UpdateDepartment(Instructor instructor, Department department)
         {

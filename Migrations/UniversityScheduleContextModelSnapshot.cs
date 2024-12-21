@@ -210,6 +210,10 @@ namespace UniversitySchedule.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("id");
 
+                    b.Property<int>("Credit")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("credit");
+
                     b.Property<int>("Day")
                         .HasColumnType("INTEGER")
                         .HasColumnName("day");
@@ -227,6 +231,408 @@ namespace UniversitySchedule.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MeetingTime", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 11,
+                            Credit = 2,
+                            Day = 1,
+                            EndTime = "08:15",
+                            StartTime = "06:45"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Credit = 2,
+                            Day = 1,
+                            EndTime = "10:05",
+                            StartTime = "08:25"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Credit = 2,
+                            Day = 1,
+                            EndTime = "11:45",
+                            StartTime = "10:15"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Credit = 2,
+                            Day = 1,
+                            EndTime = "14:00",
+                            StartTime = "12:30"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Credit = 2,
+                            Day = 1,
+                            EndTime = "15:50",
+                            StartTime = "14:10"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Credit = 2,
+                            Day = 1,
+                            EndTime = "17:30",
+                            StartTime = "16:00"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Credit = 3,
+                            Day = 1,
+                            EndTime = "09:10",
+                            StartTime = "06:45"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Credit = 3,
+                            Day = 1,
+                            EndTime = "11:45",
+                            StartTime = "09:20"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Credit = 3,
+                            Day = 1,
+                            EndTime = "14:55",
+                            StartTime = "12:30"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Credit = 3,
+                            Day = 1,
+                            EndTime = "17:30",
+                            StartTime = "15:05"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Credit = 2,
+                            Day = 2,
+                            EndTime = "08:15",
+                            StartTime = "06:45"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Credit = 2,
+                            Day = 2,
+                            EndTime = "10:05",
+                            StartTime = "08:25"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Credit = 2,
+                            Day = 2,
+                            EndTime = "11:45",
+                            StartTime = "10:15"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Credit = 2,
+                            Day = 2,
+                            EndTime = "14:00",
+                            StartTime = "12:30"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Credit = 2,
+                            Day = 2,
+                            EndTime = "15:50",
+                            StartTime = "14:10"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Credit = 2,
+                            Day = 2,
+                            EndTime = "17:30",
+                            StartTime = "16:00"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Credit = 3,
+                            Day = 2,
+                            EndTime = "09:10",
+                            StartTime = "06:45"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Credit = 3,
+                            Day = 2,
+                            EndTime = "11:45",
+                            StartTime = "09:20"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Credit = 3,
+                            Day = 2,
+                            EndTime = "14:55",
+                            StartTime = "12:30"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Credit = 3,
+                            Day = 2,
+                            EndTime = "17:30",
+                            StartTime = "15:05"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Credit = 2,
+                            Day = 3,
+                            EndTime = "08:15",
+                            StartTime = "06:45"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Credit = 2,
+                            Day = 3,
+                            EndTime = "10:05",
+                            StartTime = "08:25"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Credit = 2,
+                            Day = 3,
+                            EndTime = "11:45",
+                            StartTime = "10:15"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Credit = 2,
+                            Day = 3,
+                            EndTime = "14:00",
+                            StartTime = "12:30"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Credit = 2,
+                            Day = 3,
+                            EndTime = "15:50",
+                            StartTime = "14:10"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Credit = 2,
+                            Day = 3,
+                            EndTime = "17:30",
+                            StartTime = "16:00"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Credit = 3,
+                            Day = 3,
+                            EndTime = "09:10",
+                            StartTime = "06:45"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Credit = 3,
+                            Day = 3,
+                            EndTime = "11:45",
+                            StartTime = "09:20"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Credit = 3,
+                            Day = 3,
+                            EndTime = "14:55",
+                            StartTime = "12:30"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Credit = 3,
+                            Day = 3,
+                            EndTime = "17:30",
+                            StartTime = "15:05"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Credit = 2,
+                            Day = 4,
+                            EndTime = "08:15",
+                            StartTime = "06:45"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Credit = 2,
+                            Day = 4,
+                            EndTime = "10:05",
+                            StartTime = "08:25"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Credit = 2,
+                            Day = 4,
+                            EndTime = "11:45",
+                            StartTime = "10:15"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Credit = 2,
+                            Day = 4,
+                            EndTime = "14:00",
+                            StartTime = "12:30"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Credit = 2,
+                            Day = 4,
+                            EndTime = "15:50",
+                            StartTime = "14:10"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Credit = 2,
+                            Day = 4,
+                            EndTime = "17:30",
+                            StartTime = "16:00"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Credit = 3,
+                            Day = 4,
+                            EndTime = "09:10",
+                            StartTime = "06:45"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Credit = 3,
+                            Day = 4,
+                            EndTime = "11:45",
+                            StartTime = "09:20"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Credit = 3,
+                            Day = 4,
+                            EndTime = "14:55",
+                            StartTime = "12:30"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Credit = 3,
+                            Day = 4,
+                            EndTime = "17:30",
+                            StartTime = "15:05"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Credit = 2,
+                            Day = 5,
+                            EndTime = "08:15",
+                            StartTime = "06:45"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Credit = 2,
+                            Day = 5,
+                            EndTime = "10:05",
+                            StartTime = "08:25"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Credit = 2,
+                            Day = 5,
+                            EndTime = "11:45",
+                            StartTime = "10:15"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Credit = 2,
+                            Day = 5,
+                            EndTime = "14:00",
+                            StartTime = "12:30"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Credit = 2,
+                            Day = 5,
+                            EndTime = "15:50",
+                            StartTime = "14:10"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Credit = 2,
+                            Day = 5,
+                            EndTime = "17:30",
+                            StartTime = "16:00"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Credit = 3,
+                            Day = 5,
+                            EndTime = "09:10",
+                            StartTime = "06:45"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            Credit = 3,
+                            Day = 5,
+                            EndTime = "11:45",
+                            StartTime = "09:20"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            Credit = 3,
+                            Day = 5,
+                            EndTime = "14:55",
+                            StartTime = "12:30"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            Credit = 3,
+                            Day = 5,
+                            EndTime = "17:30",
+                            StartTime = "15:05"
+                        });
                 });
 
             modelBuilder.Entity("UniversitySchedule.Models.Room", b =>
@@ -260,11 +666,6 @@ namespace UniversitySchedule.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER")
                         .HasColumnName("active");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("name");
 
                     b.HasKey("Id");
 

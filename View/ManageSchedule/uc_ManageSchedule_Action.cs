@@ -32,7 +32,7 @@ namespace UniversitySchedule.View.ManageSchedule
         private List<(DataGridViewCell StartCell, DataGridViewCell EndCell)> eventRanges = new List<(DataGridViewCell, DataGridViewCell)>();
         List<string> timeSlots = new List<string>
         {
-            "6:45", "8:15", "8:25", "9:10", "9:20", "10:05", "10:15", "11:45", "12:30", "14:00", "14:10", "14:55", "15:05", "15:50", "16:00", "17:30"
+            "06:45", "08:15", "08:25", "09:10", "09:20", "10:05", "10:15", "11:45", "12:30", "14:00", "14:10", "14:55", "15:05", "15:50", "16:00", "17:30"
         };
 
         private void InitDgvCalendar()
@@ -119,8 +119,10 @@ namespace UniversitySchedule.View.ManageSchedule
                     foreach (Class cl in schedule.Classes)
                     {
                         int day = ((int)cl.MeetingTime.Day);
-                        int indexStartTime = timeSlots.IndexOf(cl.MeetingTime.StartTime.ToString());
-                        int indexEndTime = timeSlots.IndexOf(cl.MeetingTime.EndTime.ToString());
+                        string startTime = cl.MeetingTime.StartTime.ToString("HH:mm");
+                        string endTime = cl.MeetingTime.EndTime.ToString("HH:mm");
+                        int indexStartTime = timeSlots.IndexOf(startTime);
+                        int indexEndTime = timeSlots.IndexOf(endTime);
 
                         AddEventRange(dgvCalendar.Rows[indexStartTime].Cells[day], dgvCalendar.Rows[indexEndTime].Cells[day], Color.FromArgb(250, 82, 82));
                     }

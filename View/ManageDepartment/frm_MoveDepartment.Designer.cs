@@ -104,6 +104,7 @@
             Controls.Add(cmbDepartment);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frm_MoveDepartment";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += frm_MoveDepartment_Load;
             ResumeLayout(false);
         }

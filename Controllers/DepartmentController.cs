@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UniversitySchedule.Dto;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
 
@@ -30,28 +26,32 @@ namespace UniversitySchedule.Controllers
             {
                 using (var dbContext = new UniversityScheduleContext())
                 {
-                    departments = dbContext.Departments.ToList();
+                    departments = dbContext.Departments.AsNoTracking().ToList();
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
             return departments;
         }
 
-        public List<Department> GetAllDepartmentForAlgorithm()
+        public List<DepartmentDto> GetAllDepartmentForAlgorithm()
         {
-            List<Department> departments = new List<Department>();
+            List<DepartmentDto> departmentDtos = new List<DepartmentDto>();
             try
             {
                 using (var dbContext = new UniversityScheduleContext())
                 {
-                    departments = dbContext.Departments
+                    List<Department> departments = dbContext.Departments
                                                     .Include(d => d.Courses)
                                                     .ThenInclude(c => c.Instructors)
+                                                    .ThenInclude(i => i.User)
+                                                    .ThenInclude(u => u.Information)
+                                                    .AsNoTracking()
                                                     .ToList();
+                    departmentDtos = departments.Select(DepartmentDto.FromEntity).ToList();
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
-            return departments;
+            return departmentDtos;
         }
 
         public Department GetDepartmentByName(string name)
@@ -61,7 +61,7 @@ namespace UniversitySchedule.Controllers
             {
                 using (var dbContext = new UniversityScheduleContext())
                 {
-                    department = dbContext.Departments.FirstOrDefault(d => d.Name == name);
+                    department = dbContext.Departments.AsNoTracking().FirstOrDefault(d => d.Name == name);
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
@@ -110,11 +110,15 @@ namespace UniversitySchedule.Controllers
                 {
                     try
                     {
-                        if (!dbContext.Departments.Any(d => d.Id == department.Id))
+                        Department updateDepartment = dbContext.Departments.FirstOrDefault(d => d.Id == department.Id);
+                        if (updateDepartment == null)
                         {
                             return 0;
                         }
-                        dbContext.Departments.Update(department);
+
+                        updateDepartment.Name = department.Name;
+                        
+                        dbContext.Departments.Update(updateDepartment);
                         dbContext.SaveChanges();
                         transaction.Commit();
                         return 1;
@@ -143,11 +147,13 @@ namespace UniversitySchedule.Controllers
                 {
                     try
                     {
-                        if (!dbContext.Departments.Any(d => d.Id == department.Id))
+                        Department deleteDepartment = dbContext.Departments.FirstOrDefault(d => d.Id == department.Id);
+                        if (deleteDepartment == null)
                         {
                             return 0;
                         }
-                        dbContext.Departments.Remove(department);
+
+                        dbContext.Departments.Remove(deleteDepartment);
                         dbContext.SaveChanges();
                         transaction.Commit();
                         return 1;

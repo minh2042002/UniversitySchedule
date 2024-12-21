@@ -47,22 +47,22 @@
             max_student = new DataGridViewTextBoxColumn();
             number_class = new DataGridViewTextBoxColumn();
             department = new DataGridViewTextBoxColumn();
-            panel1 = new Panel();
-            panel3 = new Panel();
-            btnSave = new Sunny.UI.UIButton();
             cmsCourse = new ContextMenuStrip(components);
             select = new ToolStripMenuItem();
             unselect = new ToolStripMenuItem();
             selectAll = new ToolStripMenuItem();
             unselectAll = new ToolStripMenuItem();
             getAllCourse = new ToolStripMenuItem();
+            panel1 = new Panel();
+            panel3 = new Panel();
+            btnSave = new Sunny.UI.UIButton();
             pnBackground.SuspendLayout();
             uiGroupBox1.SuspendLayout();
             panel2.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCourse).BeginInit();
-            panel3.SuspendLayout();
             cmsCourse.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // pnBackground
@@ -244,52 +244,6 @@
             department.Name = "department";
             department.Width = 200;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(250, 82, 82);
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(5, 398);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1171, 5);
-            panel1.TabIndex = 5;
-            // 
-            // panel3
-            // 
-            panel3.AutoScroll = true;
-            panel3.Controls.Add(btnSave);
-            panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(5, 403);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1171, 53);
-            panel3.TabIndex = 4;
-            // 
-            // btnSave
-            // 
-            btnSave.FillColor = Color.FromArgb(250, 82, 82);
-            btnSave.FillColor2 = Color.FromArgb(250, 82, 82);
-            btnSave.FillDisableColor = Color.White;
-            btnSave.FillHoverColor = Color.White;
-            btnSave.FillPressColor = Color.White;
-            btnSave.FillSelectedColor = Color.White;
-            btnSave.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.ForeHoverColor = Color.Black;
-            btnSave.ForePressColor = Color.Black;
-            btnSave.ForeSelectedColor = Color.Black;
-            btnSave.Location = new Point(539, 10);
-            btnSave.MinimumSize = new Size(1, 1);
-            btnSave.Name = "btnSave";
-            btnSave.Radius = 10;
-            btnSave.RectColor = Color.FromArgb(250, 82, 82);
-            btnSave.RectDisableColor = Color.FromArgb(250, 82, 82);
-            btnSave.RectHoverColor = Color.FromArgb(250, 82, 82);
-            btnSave.RectPressColor = Color.FromArgb(250, 82, 82);
-            btnSave.RectSelectedColor = Color.FromArgb(250, 82, 82);
-            btnSave.Size = new Size(92, 33);
-            btnSave.TabIndex = 321;
-            btnSave.Text = "Lưu";
-            btnSave.TipsFont = new Font("Microsoft Sans Serif", 9F);
-            btnSave.Click += btnSave_Click;
-            // 
             // cmsCourse
             // 
             cmsCourse.Items.AddRange(new ToolStripItem[] { select, unselect, selectAll, unselectAll, getAllCourse });
@@ -336,6 +290,52 @@
             getAllCourse.Text = "Lấy toàn bộ môn học trong bộ môn";
             getAllCourse.Click += getAllCourse_Click;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(250, 82, 82);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(5, 398);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1171, 5);
+            panel1.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            panel3.AutoScroll = true;
+            panel3.Controls.Add(btnSave);
+            panel3.Dock = DockStyle.Bottom;
+            panel3.Location = new Point(5, 403);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1171, 53);
+            panel3.TabIndex = 4;
+            // 
+            // btnSave
+            // 
+            btnSave.FillColor = Color.FromArgb(250, 82, 82);
+            btnSave.FillColor2 = Color.FromArgb(250, 82, 82);
+            btnSave.FillDisableColor = Color.White;
+            btnSave.FillHoverColor = Color.White;
+            btnSave.FillPressColor = Color.White;
+            btnSave.FillSelectedColor = Color.White;
+            btnSave.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.ForeHoverColor = Color.Black;
+            btnSave.ForePressColor = Color.Black;
+            btnSave.ForeSelectedColor = Color.Black;
+            btnSave.Location = new Point(539, 10);
+            btnSave.MinimumSize = new Size(1, 1);
+            btnSave.Name = "btnSave";
+            btnSave.Radius = 10;
+            btnSave.RectColor = Color.FromArgb(250, 82, 82);
+            btnSave.RectDisableColor = Color.FromArgb(250, 82, 82);
+            btnSave.RectHoverColor = Color.FromArgb(250, 82, 82);
+            btnSave.RectPressColor = Color.FromArgb(250, 82, 82);
+            btnSave.RectSelectedColor = Color.FromArgb(250, 82, 82);
+            btnSave.Size = new Size(92, 33);
+            btnSave.TabIndex = 321;
+            btnSave.Text = "Lưu";
+            btnSave.TipsFont = new Font("Microsoft Sans Serif", 9F);
+            btnSave.Click += btnSave_Click;
+            // 
             // frm_ChooseCourse
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -345,14 +345,15 @@
             Controls.Add(pnBackground);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frm_ChooseCourse";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += frm_ChooseCourse_Load;
             pnBackground.ResumeLayout(false);
             uiGroupBox1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvCourse).EndInit();
-            panel3.ResumeLayout(false);
             cmsCourse.ResumeLayout(false);
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 

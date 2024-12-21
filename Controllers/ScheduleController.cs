@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using UniversitySchedule.Dto;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
 
@@ -32,10 +33,10 @@ namespace UniversitySchedule.Controllers
             {
                 using (var dbContext = new UniversityScheduleContext())
                 {
-                    schedules = dbContext.Schedules.ToList();
+                    schedules = dbContext.Schedules.AsNoTracking().ToList();
                 }
             }
-            catch (Exception ex) { Log4Net.LogException(ex, "Error occurred while saving active schedule."); }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
             return schedules;
         }
 
@@ -46,18 +47,18 @@ namespace UniversitySchedule.Controllers
             {
                 using (var dbContext = new UniversityScheduleContext())
                 {
-                    Schedule scheduleActive = dbContext.Schedules.FirstOrDefault(s => s.IsActive);
+                    Schedule scheduleActive = dbContext.Schedules.AsNoTracking().FirstOrDefault(s => s.IsActive);
                     if (scheduleActive != null)
                     {
-                        schedule = GetScheduleDetailByName(scheduleActive.Name);
+                        schedule = GetScheduleDetailById(scheduleActive.Id);
                     }
                 }
             }
-            catch (Exception ex) { Log4Net.LogException(ex, "Error occurred while saving active schedule."); }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
             return schedule;
         }
 
-        public Schedule GetScheduleDetailByName(string name)
+        public Schedule GetScheduleDetailById(int scheduleId)
         {
             Schedule? schedule = null;
             try
@@ -65,75 +66,60 @@ namespace UniversitySchedule.Controllers
                 using (var dbContext = new UniversityScheduleContext())
                 {
                     schedule = dbContext.Schedules
+                                                .AsNoTracking()
                                                 .Include(s => s.Classes).ThenInclude(c => c.Course)
                                                 .Include(s => s.Classes).ThenInclude(c => c.Instructor)
                                                 .Include(s => s.Classes).ThenInclude(c => c.Room)
                                                 .Include(s => s.Classes).ThenInclude(c => c.MeetingTime)
                                                 .Include(s => s.Classes).ThenInclude(c => c.Department)
-                                                .FirstOrDefault(s => s.Name == name);
+                                                .FirstOrDefault(s => s.Id == scheduleId);
                 }
             }
-            catch (Exception ex) { Log4Net.LogException(ex, "Error occurred while saving active schedule."); }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
             return schedule;
         }
 
-        public bool SaveScheduleActive(Schedule schedule)
+        public bool InsertSchedule(ScheduleDto scheduleDto, bool isActive)
         {
             try
             {
-                if (!schedule.IsActive)
-                {
-                    return false;
-                }
-
                 using (var dbContext = new UniversityScheduleContext())
                 using (var transaction = dbContext.Database.BeginTransaction())
                 {
                     try
                     {
-                        // Chỉ cần kiểm tra xem có schedule nào đã active hay không
-                        if (dbContext.Schedules.Any(s => s.IsActive))
+                        if (isActive)
                         {
-                            dbContext.Schedules.RemoveRange(dbContext.Schedules.Where(s => s.IsActive));
+                            if (dbContext.Schedules.Any(s => s.IsActive))
+                            {
+                                dbContext.Schedules.RemoveRange(dbContext.Schedules.Where(s => s.IsActive));
+                            }
                         }
 
-                        dbContext.Schedules.Add(schedule);
+                        Schedule newSchedule = new Schedule();
+                        newSchedule.IsActive = isActive;
+                        dbContext.Schedules.Add(newSchedule);
+                        dbContext.SaveChanges();
+
+                        foreach (ClassDto classDto in scheduleDto.Classes)
+                        {
+                            Class newClass = new Class();
+                            newClass.CourseId = classDto.Course.Id;
+                            newClass.InstructorId = classDto.Instructor.Id;
+                            newClass.RoomId = classDto.Room.Id;
+                            newClass.MeetingTimeId = classDto.MeetingTime.Id;
+                            newClass.DepartmentId = classDto.Department.Id;
+                            newClass.ScheduleId = newSchedule.Id;
+                            dbContext.Classes.Add(newClass);
+                        }
+
                         dbContext.SaveChanges();
                         transaction.Commit();
                         return true;
                     }
                     catch (Exception ex)
                     {
-                        Log4Net.LogException(ex, "Error during schedule activation and saving.");
-                        transaction.Rollback();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Log4Net.LogException(ex, "Error occurred while saving active schedule.");
-            }
-
-            return false;
-        }
-
-        public bool InsertSchedule(Schedule schedule)
-        {
-            try
-            {
-                using (var dbContext = new UniversityScheduleContext())
-                using (var transaction = dbContext.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        dbContext.Schedules.Add(schedule);
-                        dbContext.SaveChanges();
-                        transaction.Commit();
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Log4Net.LogException(ex, "Error occurred while saving active schedule.");
+                        Log4Net.LogException(ex, "");
 
                         transaction.Rollback();
                     }
@@ -141,11 +127,11 @@ namespace UniversitySchedule.Controllers
             }
             catch (Exception ex)
             {
-                Log4Net.LogException(ex, "Error occurred while saving active schedule.");
+                Log4Net.LogException(ex, "");
             }
             return false;
         }
-       
+
         public bool DeleteSchedule(Schedule schedule)
         {
             try

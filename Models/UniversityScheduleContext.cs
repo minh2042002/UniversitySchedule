@@ -145,6 +145,7 @@ public partial class UniversityScheduleContext : DbContext
             entity.ToTable("MeetingTime");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Credit).HasColumnName("credit");
             entity.Property(e => e.Day)
                     .HasColumnName("day")
                     .HasConversion<int>();
@@ -176,7 +177,6 @@ public partial class UniversityScheduleContext : DbContext
             entity.ToTable("Schedule");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Name).HasColumnName("name");
             entity.Property(e => e.IsActive).HasColumnName("active");
         });
 
@@ -193,6 +193,31 @@ public partial class UniversityScheduleContext : DbContext
                     .HasConversion<int>();
             entity.Property(e => e.Username).HasColumnName("username");
         });
+
+        modelBuilder.Entity<MeetingTime>().HasData(
+            Enumerable.Range(1, 5) 
+                .SelectMany(i =>
+                {
+                    var day = (DayOfWeek)i;
+                    return new List<MeetingTime>
+                    {
+                        // Credit = 2
+                        new MeetingTime { Id = i * 10 + 1, Credit = 2, Day = day, StartTime = TimeOnly.Parse("06:45"), EndTime = TimeOnly.Parse("08:15") },
+                        new MeetingTime { Id = i * 10 + 2, Credit = 2, Day = day, StartTime = TimeOnly.Parse("08:25"), EndTime = TimeOnly.Parse("10:05") },
+                        new MeetingTime { Id = i * 10 + 3, Credit = 2, Day = day, StartTime = TimeOnly.Parse("10:15"), EndTime = TimeOnly.Parse("11:45") },
+                        new MeetingTime { Id = i * 10 + 4, Credit = 2, Day = day, StartTime = TimeOnly.Parse("12:30"), EndTime = TimeOnly.Parse("14:00") },
+                        new MeetingTime { Id = i * 10 + 5, Credit = 2, Day = day, StartTime = TimeOnly.Parse("14:10"), EndTime = TimeOnly.Parse("15:50") },
+                        new MeetingTime { Id = i * 10 + 6, Credit = 2, Day = day, StartTime = TimeOnly.Parse("16:00"), EndTime = TimeOnly.Parse("17:30") },
+        
+                        // Credit = 3
+                        new MeetingTime { Id = i * 10 + 7, Credit = 3, Day = day, StartTime = TimeOnly.Parse("06:45"), EndTime = TimeOnly.Parse("09:10") },
+                        new MeetingTime { Id = i * 10 + 8, Credit = 3, Day = day, StartTime = TimeOnly.Parse("09:20"), EndTime = TimeOnly.Parse("11:45") },
+                        new MeetingTime { Id = i * 10 + 9, Credit = 3, Day = day, StartTime = TimeOnly.Parse("12:30"), EndTime = TimeOnly.Parse("14:55") },
+                        new MeetingTime { Id = i * 10 + 10, Credit = 3, Day = day, StartTime = TimeOnly.Parse("15:05"), EndTime = TimeOnly.Parse("17:30") }
+                    };
+                }).ToArray()
+        );
+
 
         OnModelCreatingPartial(modelBuilder);
     }

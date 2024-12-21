@@ -12,4 +12,15 @@ public partial class Room
     public int Capacity { get; set; }
 
     public virtual ICollection<Class> Classes { get; set; } = new List<Class>();
+
+    public override bool Equals(object? obj)
+    {
+        return obj is Room room &&
+               Name == room.Name;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name} ({Capacity})";
+    }
 }

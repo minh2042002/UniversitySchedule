@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             pnBackground = new Panel();
             pnMain = new Panel();
             uiGroupBox1 = new Sunny.UI.UIGroupBox();
@@ -143,64 +143,67 @@
             // 
             dgvSchedule.AllowUserToAddRows = false;
             dgvSchedule.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9.75F);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(28, 28, 28);
-            dataGridViewCellStyle6.Padding = new Padding(2, 10, 2, 10);
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvSchedule.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(28, 28, 28);
+            dataGridViewCellStyle1.Padding = new Padding(2, 10, 2, 10);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvSchedule.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvSchedule.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dgvSchedule.BackgroundColor = Color.White;
             dgvSchedule.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.Padding = new Padding(2, 5, 2, 5);
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new Padding(2, 5, 2, 5);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvSchedule.ColumnHeadersHeight = 40;
             dgvSchedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvSchedule.Columns.AddRange(new DataGridViewColumn[] { stt, department, course, day, meeting_time, room, instructor, max_student });
             dgvSchedule.ContextMenuStrip = cmsSchedule;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.White;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle8.ForeColor = Color.FromArgb(48, 48, 48);
-            dataGridViewCellStyle8.Padding = new Padding(2, 10, 2, 10);
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgvSchedule.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(48, 48, 48);
+            dataGridViewCellStyle3.Padding = new Padding(2, 10, 2, 10);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvSchedule.DefaultCellStyle = dataGridViewCellStyle3;
             dgvSchedule.Dock = DockStyle.Fill;
             dgvSchedule.ImeMode = ImeMode.NoControl;
             dgvSchedule.Location = new Point(5, 5);
             dgvSchedule.MultiSelect = false;
             dgvSchedule.Name = "dgvSchedule";
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.White;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.Padding = new Padding(2, 5, 2, 5);
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dgvSchedule.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dgvSchedule.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.Padding = new Padding(2, 5, 2, 5);
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvSchedule.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvSchedule.RowHeadersVisible = false;
             dgvSchedule.RowHeadersWidth = 45;
             dgvSchedule.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle10.BackColor = Color.White;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9.75F);
-            dataGridViewCellStyle10.ForeColor = Color.FromArgb(28, 28, 28);
-            dataGridViewCellStyle10.Padding = new Padding(2, 10, 2, 10);
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = Color.White;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
-            dgvSchedule.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(28, 28, 28);
+            dataGridViewCellStyle5.Padding = new Padding(2, 10, 2, 10);
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvSchedule.RowsDefaultCellStyle = dataGridViewCellStyle5;
             dgvSchedule.RowTemplate.DefaultCellStyle.BackColor = Color.White;
             dgvSchedule.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 8.25F);
             dgvSchedule.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
@@ -219,6 +222,7 @@
             stt.HeaderText = "STT";
             stt.MinimumWidth = 50;
             stt.Name = "stt";
+            stt.ReadOnly = true;
             stt.Width = 50;
             // 
             // department
@@ -227,23 +231,24 @@
             department.HeaderText = "Bộ môn";
             department.MinimumWidth = 200;
             department.Name = "department";
+            department.ReadOnly = true;
             department.Width = 200;
             // 
             // course
             // 
-            course.FillWeight = 200F;
+            course.FillWeight = 300F;
             course.HeaderText = "Môn học";
-            course.MinimumWidth = 200;
+            course.MinimumWidth = 300;
             course.Name = "course";
-            course.Width = 200;
+            course.ReadOnly = true;
+            course.Width = 300;
             // 
             // day
             // 
-            day.FillWeight = 70F;
             day.HeaderText = "Thứ";
-            day.MinimumWidth = 70;
+            day.MinimumWidth = 100;
             day.Name = "day";
-            day.Width = 70;
+            day.ReadOnly = true;
             // 
             // meeting_time
             // 
@@ -251,6 +256,7 @@
             meeting_time.HeaderText = "Kíp học";
             meeting_time.MinimumWidth = 200;
             meeting_time.Name = "meeting_time";
+            meeting_time.ReadOnly = true;
             meeting_time.Width = 200;
             // 
             // room
@@ -259,6 +265,7 @@
             room.HeaderText = "Phòng học";
             room.MinimumWidth = 150;
             room.Name = "room";
+            room.ReadOnly = true;
             room.Width = 150;
             // 
             // instructor
@@ -267,6 +274,7 @@
             instructor.HeaderText = "Giảng viên";
             instructor.MinimumWidth = 200;
             instructor.Name = "instructor";
+            instructor.ReadOnly = true;
             instructor.Width = 200;
             // 
             // max_student
@@ -275,13 +283,14 @@
             max_student.HeaderText = "Số lượng sinh viên";
             max_student.MinimumWidth = 200;
             max_student.Name = "max_student";
+            max_student.ReadOnly = true;
             max_student.Width = 200;
             // 
             // cmsSchedule
             // 
             cmsSchedule.Items.AddRange(new ToolStripItem[] { showConsole });
             cmsSchedule.Name = "cmsCalendar";
-            cmsSchedule.Size = new Size(242, 48);
+            cmsSchedule.Size = new Size(242, 26);
             // 
             // showConsole
             // 
@@ -314,6 +323,7 @@
             btnExportExcel.FillPressColor = Color.White;
             btnExportExcel.FillSelectedColor = Color.White;
             btnExportExcel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExportExcel.ForeDisableColor = Color.DarkGray;
             btnExportExcel.ForeHoverColor = Color.Black;
             btnExportExcel.ForePressColor = Color.Black;
             btnExportExcel.ForeSelectedColor = Color.Black;
@@ -341,6 +351,7 @@
             btnCreateSchedule.FillPressColor = Color.White;
             btnCreateSchedule.FillSelectedColor = Color.White;
             btnCreateSchedule.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCreateSchedule.ForeDisableColor = Color.DarkGray;
             btnCreateSchedule.ForeHoverColor = Color.Black;
             btnCreateSchedule.ForePressColor = Color.Black;
             btnCreateSchedule.ForeSelectedColor = Color.Black;
@@ -368,6 +379,7 @@
             btnSave.FillPressColor = Color.White;
             btnSave.FillSelectedColor = Color.White;
             btnSave.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.ForeDisableColor = Color.DarkGray;
             btnSave.ForeHoverColor = Color.Black;
             btnSave.ForePressColor = Color.Black;
             btnSave.ForeSelectedColor = Color.Black;
@@ -621,6 +633,9 @@
         private Sunny.UI.UISymbolButton btnTerms;
         private Sunny.UI.UISymbolButton uiSymbolButton6;
         private Button btnAccountInformation;
+        private Sunny.UI.UIButton btnCreateSchedule;
+        private Panel panel4;
+        private Sunny.UI.UIButton btnExportExcel;
         private DataGridViewTextBoxColumn stt;
         private DataGridViewTextBoxColumn department;
         private DataGridViewTextBoxColumn course;
@@ -629,8 +644,5 @@
         private DataGridViewTextBoxColumn room;
         private DataGridViewTextBoxColumn instructor;
         private DataGridViewTextBoxColumn max_student;
-        private Sunny.UI.UIButton btnCreateSchedule;
-        private Panel panel4;
-        private Sunny.UI.UIButton btnExportExcel;
     }
 }

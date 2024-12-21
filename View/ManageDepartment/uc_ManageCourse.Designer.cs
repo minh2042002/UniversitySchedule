@@ -44,6 +44,7 @@
             credit = new DataGridViewTextBoxColumn();
             max_student = new DataGridViewTextBoxColumn();
             number_class = new DataGridViewTextBoxColumn();
+            instructor = new DataGridViewTextBoxColumn();
             department = new DataGridViewTextBoxColumn();
             cmsCourse = new ContextMenuStrip(components);
             editCourse = new ToolStripMenuItem();
@@ -132,7 +133,7 @@
             dgvCourse.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvCourse.ColumnHeadersHeight = 40;
             dgvCourse.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvCourse.Columns.AddRange(new DataGridViewColumn[] { stt, name, credit, max_student, number_class, department });
+            dgvCourse.Columns.AddRange(new DataGridViewColumn[] { stt, name, credit, max_student, number_class, instructor, department });
             dgvCourse.ContextMenuStrip = cmsCourse;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -218,6 +219,14 @@
             number_class.MinimumWidth = 200;
             number_class.Name = "number_class";
             number_class.Width = 200;
+            // 
+            // instructor
+            // 
+            instructor.FillWeight = 250F;
+            instructor.HeaderText = "Số giảng viên đảm nhiệm";
+            instructor.MinimumWidth = 250;
+            instructor.Name = "instructor";
+            instructor.Width = 250;
             // 
             // department
             // 
@@ -461,5 +470,6 @@
         private ContextMenuStrip cmsCourse;
         private ToolStripMenuItem editCourse;
         private ToolStripMenuItem deleteCourse;
+        private DataGridViewTextBoxColumn instructor;
     }
 }
