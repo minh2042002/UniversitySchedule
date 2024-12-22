@@ -26,20 +26,6 @@ namespace UniversitySchedule.Controllers
             return _instance;
         }
 
-        public List<Schedule> GetAllSchedule()
-        {
-            List<Schedule> schedules = new List<Schedule>();
-            try
-            {
-                using (var dbContext = new UniversityScheduleContext())
-                {
-                    schedules = dbContext.Schedules.AsNoTracking().ToList();
-                }
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
-            return schedules;
-        }
-
         public Schedule GetScheduleActiveDetail()
         {
             Schedule? schedule = null;
@@ -58,7 +44,7 @@ namespace UniversitySchedule.Controllers
             return schedule;
         }
 
-        public Schedule GetScheduleDetailById(int scheduleId)
+        private Schedule GetScheduleDetailById(int scheduleId)
         {
             Schedule? schedule = null;
             try
@@ -68,7 +54,7 @@ namespace UniversitySchedule.Controllers
                     schedule = dbContext.Schedules
                                                 .AsNoTracking()
                                                 .Include(s => s.Classes).ThenInclude(c => c.Course)
-                                                .Include(s => s.Classes).ThenInclude(c => c.Instructor)
+                                                .Include(s => s.Classes).ThenInclude(c => c.Instructor).ThenInclude(i => i.User).ThenInclude(u => u.Information)
                                                 .Include(s => s.Classes).ThenInclude(c => c.Room)
                                                 .Include(s => s.Classes).ThenInclude(c => c.MeetingTime)
                                                 .Include(s => s.Classes).ThenInclude(c => c.Department)

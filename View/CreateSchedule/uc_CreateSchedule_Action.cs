@@ -120,6 +120,7 @@ namespace UniversitySchedule.View.CreateSchedule
         {
             try
             {
+                dgvSchedule.Rows.Clear();
                 btnCreateSchedule.Enabled = false;
                 await Task.Run(() =>
                 {
@@ -146,17 +147,7 @@ namespace UniversitySchedule.View.CreateSchedule
         {
             try
             {
-                bool addResult;
-                DialogResult result = MessageBox.Show("Bạn có public thời khóa biểu này không", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    addResult = ScheduleController.Instance().InsertSchedule(ScheduleDto, true);
-                }
-                else
-                {
-                    addResult = ScheduleController.Instance().InsertSchedule(ScheduleDto, false);
-                }
-
+                bool addResult = ScheduleController.Instance().InsertSchedule(ScheduleDto, true);
                 if (addResult)
                 {
                     MessageBox.Show("Lưu thời khóa biểu thành công.");
@@ -171,7 +162,18 @@ namespace UniversitySchedule.View.CreateSchedule
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (ScheduleDto != null && ScheduleDto.Classes.Count > 0)
+                {
+                    List<ClassDto> classes = ScheduleDto.Classes
+                                                        .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
+                                                        .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
+                                                        .ThenBy(x => x.MeetingTime.EndTime).ToList();
+                    Excel.ExportCoursesToExcelWithDialog(classes);
+                }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
 
         private void showConsole_Click(object sender, EventArgs e)

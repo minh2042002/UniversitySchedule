@@ -92,6 +92,7 @@ namespace UniversitySchedule.Controllers
                 using (var dbContext = new UniversityScheduleContext())
                 {
                     courses = dbContext.Courses
+                                       .Include(c => c.Department)
                                        .Where(c => c.Instructors.Any(i => i.Id == instructor.Id))
                                        .AsNoTracking()
                                        .ToList();

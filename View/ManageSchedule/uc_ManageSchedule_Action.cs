@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunny.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UniversitySchedule.Controllers;
+using UniversitySchedule.Dto;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
 
@@ -20,169 +22,97 @@ namespace UniversitySchedule.View.ManageSchedule
             InitializeComponent();
         }
 
-        private void uc_ManageSchedule_Action_Load(object sender, EventArgs e)
-        {
-            InitDgvCalendar();
-            HighlightButtonClicked("schedule");
-            LoadScheduleFromDatabase();
-        }
-
+        private Schedule currentSchedule;
         private Button currentButton;
         private List<Class> classes = new List<Class>();
-        private List<(DataGridViewCell StartCell, DataGridViewCell EndCell)> eventRanges = new List<(DataGridViewCell, DataGridViewCell)>();
-        List<string> timeSlots = new List<string>
+
+        private void uc_ManageSchedule_Action_Load(object sender, EventArgs e)
         {
-            "06:45", "08:15", "08:25", "09:10", "09:20", "10:05", "10:15", "11:45", "12:30", "14:00", "14:10", "14:55", "15:05", "15:50", "16:00", "17:30"
-        };
+            try
+            {
 
-        private void InitDgvCalendar()
-        {
-            if ((int)UserLogin.Role == 1)
-            {
-                dgvCalendar.ContextMenuStrip = cmsCalendar;
-            }
-            else
-            {
-                dgvCalendar.ContextMenuStrip = null;
-            }
-            dgvCalendar.DefaultCellStyle.SelectionBackColor = Color.Transparent;
-            dgvCalendar.DefaultCellStyle.SelectionForeColor = Color.Transparent;
-            dgvCalendar.CellClick += dgvCalendar_CellClick;
-
-            int columnWidth = (pnCalendar.Width - 10 - 50) / 7;
-            for (int i = 1; i < dgvCalendar.Columns.Count; i++)
-            {
-                dgvCalendar.Columns[i].Width = columnWidth;  // Cập nhật độ rộng cột
-            }
-
-            foreach (string time in timeSlots)
-            {
-                DataGridViewRow dataGridViewRow = new DataGridViewRow();
-                DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
-                cell.Value = time;
-                dataGridViewRow.Cells.Add(cell);
-                dataGridViewRow.Height = 45;
-                Invoke(new MethodInvoker(delegate ()
+                HighlightButtonClicked("schedule");
+                LoadScheduleFromDatabase();
+                if (Role.Instructor == UserLogin.Role)
                 {
-                    dgvCalendar.Rows.Add(dataGridViewRow);
-                }));
-            }
-
-            dgvCalendar.AllowUserToAddRows = false; // Tắt tính năng thêm hàng mới
-            dgvCalendar.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            // Tô màu sự kiện
-            HighlightEvents(dgvCalendar, timeSlots);
-        }
-
-        private void HighlightEvents(DataGridView dgvCalendar, List<string> timeSlots)
-        {
-            foreach (Class ev in classes)
-            {
-                // Xác định cột (ngày) dựa trên sự kiện
-                int columnIndex = dgvCalendar.Columns.Cast<DataGridViewColumn>()
-                                      .FirstOrDefault(c => c.HeaderText == ev.MeetingTime.Day.ToString())?.Index ?? -1;
-                if (columnIndex == -1) continue; // Nếu ngày không tồn tại, bỏ qua sự kiện này
-
-                // Xác định hàng bắt đầu và kết thúc dựa trên mốc thời gian
-                int startRowIndex = timeSlots.IndexOf(ev.MeetingTime.StartTime.ToString());
-                int endRowIndex = timeSlots.IndexOf(ev.MeetingTime.EndTime.ToString());
-                if (startRowIndex == -1 || endRowIndex == -1) continue; // Nếu không tìm thấy thời gian, bỏ qua sự kiện
-
-                // Tô màu các ô từ startRowIndex đến endRowIndex
-                for (int i = startRowIndex; i <= endRowIndex; i++)
+                    showAllCalendar.Visible = true;
+                    showTeach.Visible = true;
+                }
+                else
                 {
-                    dgvCalendar[columnIndex, i].Style.BackColor = GetRandomColor(); // Tô màu nền
-                    if (i == startRowIndex)
-                    {
-                        // Ghi nội dung sự kiện ở ô đầu tiên
-                        dgvCalendar[columnIndex, i].Value = ev.Course.Name;
-                    }
+                    showAllCalendar.Visible = false;
+                    showTeach.Visible = false;
                 }
             }
+            catch (Exception ex)
+            {
+            }
         }
 
-        private Color GetRandomColor()
+        private void FillToDgvSchedule(Class classDetail)
         {
-            Random rand = new Random();
-            return Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
+            try
+            {
+                DataGridViewRow row = new DataGridViewRow();
+
+                DataGridViewTextBoxCell cell1 = new DataGridViewTextBoxCell();
+                cell1.Value = (dgvSchedule.Rows.Count + 1).ToString();
+                row.Cells.Add(cell1);
+
+                DataGridViewTextBoxCell cell2 = new DataGridViewTextBoxCell();
+                cell2.Value = classDetail.Department.Name;
+                row.Cells.Add(cell2);
+
+                DataGridViewTextBoxCell cell3 = new DataGridViewTextBoxCell();
+                cell3.Value = $"{classDetail.Course.Name} ({classDetail.Course.Credit})";
+                row.Cells.Add(cell3);
+
+                DataGridViewTextBoxCell cell4 = new DataGridViewTextBoxCell();
+                cell4.Value = (int)classDetail.MeetingTime.Day + 1;
+                row.Cells.Add(cell4);
+
+                DataGridViewTextBoxCell cell5 = new DataGridViewTextBoxCell();
+                cell5.Value = classDetail.MeetingTime.ToString();
+                row.Cells.Add(cell5);
+
+                DataGridViewTextBoxCell cell6 = new DataGridViewTextBoxCell();
+                cell6.Value = classDetail.Room.ToString();
+                row.Cells.Add(cell6);
+
+                DataGridViewTextBoxCell cell7 = new DataGridViewTextBoxCell();
+                cell7.Value = classDetail.Instructor.User.Information.Name;
+                row.Cells.Add(cell7);
+
+                DataGridViewTextBoxCell cell8 = new DataGridViewTextBoxCell();
+                cell8.Value = classDetail.Course.MaxStudent;
+                row.Cells.Add(cell8);
+
+                row.Tag = classDetail;
+
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    dgvSchedule.Rows.Add(row);
+                }));
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
+
 
         private void LoadScheduleFromDatabase()
         {
             try
             {
-                Schedule schedule = ScheduleController.Instance().GetScheduleActiveDetail();
-                // Thêm sự kiện mẫu (Thứ 2, 6:45 -> 8:15)
-
-                if (schedule != null && schedule.Classes.Count() > 0)
-                {
-                    foreach (Class cl in schedule.Classes)
-                    {
-                        int day = ((int)cl.MeetingTime.Day);
-                        string startTime = cl.MeetingTime.StartTime.ToString("HH:mm");
-                        string endTime = cl.MeetingTime.EndTime.ToString("HH:mm");
-                        int indexStartTime = timeSlots.IndexOf(startTime);
-                        int indexEndTime = timeSlots.IndexOf(endTime);
-
-                        AddEventRange(dgvCalendar.Rows[indexStartTime].Cells[day], dgvCalendar.Rows[indexEndTime].Cells[day], Color.FromArgb(250, 82, 82));
-                    }
-                }
+                currentSchedule = ScheduleController.Instance().GetScheduleActiveDetail();
+                currentSchedule.Classes
+                                .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
+                                .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
+                                .ThenBy(x => x.MeetingTime.EndTime)      // Sắp xếp theo thời gian kết thúc
+                                .ToList()
+                                .ForEach(FillToDgvSchedule);
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
 
-        private void AddEventRange(DataGridViewCell startCell, DataGridViewCell endCell, Color color)
-        {
-            eventRanges.Add((startCell, endCell));
-            HighlightRange(startCell, endCell, color);
-        }
-
-        private void HighlightRange(DataGridViewCell startCell, DataGridViewCell endCell, Color color)
-        {
-            for (int row = startCell.RowIndex; row <= endCell.RowIndex; row++)
-            {
-                dgvCalendar.Rows[row].Cells[startCell.ColumnIndex].Style.BackColor = color;
-            }
-        }
-
-        private bool IsCellInRange(DataGridViewCell cell, DataGridViewCell startCell, DataGridViewCell endCell)
-        {
-            return cell.RowIndex >= startCell.RowIndex && cell.RowIndex <= endCell.RowIndex &&
-                   cell.ColumnIndex == startCell.ColumnIndex; // Phạm vi cùng cột
-        }
-
-        private void dgvCalendar_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
-            var clickedCell = dgvCalendar.Rows[e.RowIndex].Cells[e.ColumnIndex];
-
-            // Tìm sự kiện chứa ô được click
-            foreach (var (startCell, endCell) in eventRanges)
-            {
-                if (IsCellInRange(clickedCell, startCell, endCell))
-                {
-                    //ClearHighlight();
-                    //HighlightRange(startCell, endCell, Color.Yellow); // Làm nổi bật phạm vi sự kiện
-                    return;
-                }
-            }
-
-            // Nếu không thuộc sự kiện nào, bỏ màu nổi bật
-            //ClearHighlight();
-        }
-
-        private void pnCalendar_SizeChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                int columnWidth = (pnCalendar.Width - 10 - 50) / 7;
-                for (int i = 1; i < dgvCalendar.Columns.Count; i++)
-                {
-                    dgvCalendar.Columns[i].Width = columnWidth;  // Cập nhật độ rộng cột
-                }
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
-        }
 
         private void HighlightButtonClicked(string button)
         {
@@ -212,6 +142,53 @@ namespace UniversitySchedule.View.ManageSchedule
                 btnSchedule.ForeColor = Color.Black;
                 btnSchedule.Font = new Font(btnSchedule.Font, FontStyle.Regular);
                 btnSchedule.Image = Properties.Resources.calendar_24_black;
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvSchedule.Rows.Clear();
+                LoadScheduleFromDatabase();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void showAllCalendar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (currentSchedule != null && currentSchedule.Classes.Count > 0)
+                {
+                    dgvSchedule.Rows.Clear();
+                    currentSchedule.Classes
+                                   .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
+                                   .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
+                                   .ThenBy(x => x.MeetingTime.EndTime)      // Sắp xếp theo thời gian kết thúc
+                                   .ToList()
+                                   .ForEach(FillToDgvSchedule);
+                }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void showTeach_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (currentSchedule != null && currentSchedule.Classes.Count > 0)
+                {
+                    dgvSchedule.Rows.Clear();
+                    currentSchedule.Classes
+                                   .Where(c => c.Instructor.UserId == UserLogin.UserId)
+                                   .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
+                                   .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
+                                   .ThenBy(x => x.MeetingTime.EndTime)      // Sắp xếp theo thời gian kết thúc
+                                   .ToList()
+                                   .ForEach(FillToDgvSchedule);
+                }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
