@@ -37,13 +37,6 @@ namespace UniversitySchedule.View.ManageAccount
                         btnAddInstructor.Font = new Font(btnAddInstructor.Font, FontStyle.Bold);
                         btnAddInstructor.Image = Properties.Resources.teacher_24_red;
                         break;
-                    case "student":
-                        pnAddStudent.BackColor = Color.FromArgb(250, 82, 82);
-                        btnAddStudent.BackColor = Color.FromArgb(250, 232, 234);
-                        btnAddStudent.ForeColor = Color.FromArgb(250, 82, 82);
-                        btnAddStudent.Font = new Font(btnAddStudent.Font, FontStyle.Bold);
-                        btnAddStudent.Image = Properties.Resources.student_24_red;
-                        break;
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
@@ -58,12 +51,6 @@ namespace UniversitySchedule.View.ManageAccount
                 btnAddInstructor.ForeColor = Color.Black;
                 btnAddInstructor.Font = new Font(btnAddInstructor.Font, FontStyle.Regular);
                 btnAddInstructor.Image = Properties.Resources.teacher_24_black;
-
-                pnAddStudent.BackColor = Color.White;
-                btnAddStudent.BackColor = Color.White;
-                btnAddStudent.ForeColor = Color.Black;
-                btnAddStudent.Font = new Font(btnAddStudent.Font, FontStyle.Regular);
-                btnAddStudent.Image = Properties.Resources.student_24_black;
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
@@ -75,17 +62,7 @@ namespace UniversitySchedule.View.ManageAccount
                 HighlightButtonClicked("instructor");
                 frm_UserInformation frm_AddUser = new frm_UserInformation(Role.Instructor);
                 frm_AddUser.ShowDialog();
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
-        }
-
-        private void btnAddStudent_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                HighlightButtonClicked("student");
-                frm_UserInformation frm_AddUser = new frm_UserInformation(Role.Student);
-                frm_AddUser.ShowDialog();
+                InitIconButton();
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
@@ -101,28 +78,10 @@ namespace UniversitySchedule.View.ManageAccount
             {
                 List<User> users = new List<User>();
                 dgvUser.Rows.Clear();
-                if (cmbRole.Text.Contains("Tất cả"))
+                users = UserController.Instance().GetAllUserByRole(Role.Instructor);
+                if (users.Count > 0)
                 {
-                    users = UserController.Instance().GetAllUser();
                     users.ForEach(FillToDgvUser);
-                }
-                else
-                {
-                    for (int i = 0; i < cmbRole.Items.Count; i++)
-                    {
-                        if (cmbRole.CheckBoxItems[i].Checked)
-                        {
-                            if (cmbRole.CheckBoxItems[i].Text == "Giảng viên")
-                            {
-                                users = UserController.Instance().GetAllUserByRole(Role.Instructor);
-                            }
-                            else if (cmbRole.CheckBoxItems[i].Text == "Sinh viên")
-                            {
-                                users = UserController.Instance().GetAllUserByRole(Role.Student);
-                            }
-                            users.ForEach(FillToDgvUser);
-                        }
-                    }
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
@@ -159,7 +118,7 @@ namespace UniversitySchedule.View.ManageAccount
                 row.Cells.Add(cell6);
 
                 DataGridViewTextBoxCell cell7 = new DataGridViewTextBoxCell();
-                cell7.Value = user.Role == Role.Instructor ? "Giảng viên" : user.Role == Role.Student ? "Sinh viên" : "";
+                cell7.Value = "Giảng viên";
                 row.Cells.Add(cell7);
 
                 row.Tag = user;

@@ -47,30 +47,28 @@
             room = new DataGridViewTextBoxColumn();
             instructor = new DataGridViewTextBoxColumn();
             max_student = new DataGridViewTextBoxColumn();
+            cmsCalendar = new ContextMenuStrip(components);
+            refreshToolStripMenuItem = new ToolStripMenuItem();
+            showAllCalendar = new ToolStripMenuItem();
+            showTeach = new ToolStripMenuItem();
             pnButton = new Panel();
             pnHeaderButton = new Panel();
             pnBackButtonSchedule = new Panel();
             btnSchedule = new Button();
             pnSchedule = new Panel();
             pnBottomButton = new Panel();
-            uiSymbolButton5 = new Sunny.UI.UISymbolButton();
-            btnTerms = new Sunny.UI.UISymbolButton();
-            uiSymbolButton6 = new Sunny.UI.UISymbolButton();
+            btnLogout = new Sunny.UI.UIButton();
             btnAccountInformation = new Button();
-            cmsCalendar = new ContextMenuStrip(components);
-            refreshToolStripMenuItem = new ToolStripMenuItem();
-            showAllCalendar = new ToolStripMenuItem();
-            showTeach = new ToolStripMenuItem();
             pnBackground.SuspendLayout();
             pnMain.SuspendLayout();
             gbCalendar.SuspendLayout();
             pnCalendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSchedule).BeginInit();
+            cmsCalendar.SuspendLayout();
             pnButton.SuspendLayout();
             pnHeaderButton.SuspendLayout();
             pnBackButtonSchedule.SuspendLayout();
             pnBottomButton.SuspendLayout();
-            cmsCalendar.SuspendLayout();
             SuspendLayout();
             // 
             // pnBackground
@@ -269,6 +267,36 @@
             max_student.ReadOnly = true;
             max_student.Width = 200;
             // 
+            // cmsCalendar
+            // 
+            cmsCalendar.Items.AddRange(new ToolStripItem[] { refreshToolStripMenuItem, showAllCalendar, showTeach });
+            cmsCalendar.Name = "cmsCalendar";
+            cmsCalendar.Size = new Size(240, 70);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            refreshToolStripMenuItem.Image = Properties.Resources.refresh_24_red;
+            refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            refreshToolStripMenuItem.Size = new Size(239, 22);
+            refreshToolStripMenuItem.Text = "Refresh";
+            refreshToolStripMenuItem.Click += refreshToolStripMenuItem_Click;
+            // 
+            // showAllCalendar
+            // 
+            showAllCalendar.Image = Properties.Resources.calendar_24_red;
+            showAllCalendar.Name = "showAllCalendar";
+            showAllCalendar.Size = new Size(239, 22);
+            showAllCalendar.Text = "Hiển thị toàn bộ thời khóa biểu";
+            showAllCalendar.Click += showAllCalendar_Click;
+            // 
+            // showTeach
+            // 
+            showTeach.Image = Properties.Resources.lecture_hall_24_red;
+            showTeach.Name = "showTeach";
+            showTeach.Size = new Size(239, 22);
+            showTeach.Text = "Chỉ hiển thị lịch dạy";
+            showTeach.Click += showTeach_Click;
+            // 
             // pnButton
             // 
             pnButton.Controls.Add(pnHeaderButton);
@@ -330,9 +358,7 @@
             // 
             // pnBottomButton
             // 
-            pnBottomButton.Controls.Add(uiSymbolButton5);
-            pnBottomButton.Controls.Add(btnTerms);
-            pnBottomButton.Controls.Add(uiSymbolButton6);
+            pnBottomButton.Controls.Add(btnLogout);
             pnBottomButton.Controls.Add(btnAccountInformation);
             pnBottomButton.Dock = DockStyle.Bottom;
             pnBottomButton.Location = new Point(0, 488);
@@ -340,95 +366,32 @@
             pnBottomButton.Size = new Size(285, 103);
             pnBottomButton.TabIndex = 1;
             // 
-            // uiSymbolButton5
+            // btnLogout
             // 
-            uiSymbolButton5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            uiSymbolButton5.Cursor = Cursors.Hand;
-            uiSymbolButton5.FillColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.FillColor2 = SystemColors.Control;
-            uiSymbolButton5.FillColorGradientDirection = FlowDirection.LeftToRight;
-            uiSymbolButton5.FillHoverColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.FillPressColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.FillSelectedColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            uiSymbolButton5.Location = new Point(114, 75);
-            uiSymbolButton5.Margin = new Padding(2);
-            uiSymbolButton5.MinimumSize = new Size(1, 1);
-            uiSymbolButton5.Name = "uiSymbolButton5";
-            uiSymbolButton5.Radius = 10;
-            uiSymbolButton5.RectColor = Color.Transparent;
-            uiSymbolButton5.RectHoverColor = Color.Transparent;
-            uiSymbolButton5.RectPressColor = Color.Transparent;
-            uiSymbolButton5.RectSelectedColor = Color.Transparent;
-            uiSymbolButton5.Size = new Size(55, 22);
-            uiSymbolButton5.Style = Sunny.UI.UIStyle.Custom;
-            uiSymbolButton5.Symbol = 0;
-            uiSymbolButton5.SymbolColor = Color.Silver;
-            uiSymbolButton5.TabIndex = 292;
-            uiSymbolButton5.Text = "PRIVACY";
-            uiSymbolButton5.TipsColor = Color.RoyalBlue;
-            uiSymbolButton5.TipsFont = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            // 
-            // btnTerms
-            // 
-            btnTerms.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnTerms.Cursor = Cursors.Hand;
-            btnTerms.FillColor = Color.FromArgb(250, 82, 82);
-            btnTerms.FillColor2 = SystemColors.Control;
-            btnTerms.FillColorGradientDirection = FlowDirection.LeftToRight;
-            btnTerms.FillHoverColor = Color.FromArgb(250, 82, 82);
-            btnTerms.FillPressColor = Color.FromArgb(250, 82, 82);
-            btnTerms.FillSelectedColor = Color.FromArgb(250, 82, 82);
-            btnTerms.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            btnTerms.Location = new Point(173, 75);
-            btnTerms.Margin = new Padding(2);
-            btnTerms.MinimumSize = new Size(1, 1);
-            btnTerms.Name = "btnTerms";
-            btnTerms.Radius = 10;
-            btnTerms.RectColor = Color.Transparent;
-            btnTerms.RectHoverColor = Color.Transparent;
-            btnTerms.RectPressColor = Color.Transparent;
-            btnTerms.RectSelectedColor = Color.Transparent;
-            btnTerms.Size = new Size(59, 22);
-            btnTerms.Style = Sunny.UI.UIStyle.Custom;
-            btnTerms.Symbol = 0;
-            btnTerms.SymbolColor = Color.Silver;
-            btnTerms.TabIndex = 291;
-            btnTerms.Text = "TERMS";
-            btnTerms.TipsColor = Color.RoyalBlue;
-            btnTerms.TipsFont = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            // 
-            // uiSymbolButton6
-            // 
-            uiSymbolButton6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            uiSymbolButton6.Cursor = Cursors.Hand;
-            uiSymbolButton6.FillColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.FillColor2 = SystemColors.Control;
-            uiSymbolButton6.FillColorGradientDirection = FlowDirection.LeftToRight;
-            uiSymbolButton6.FillHoverColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.FillPressColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.FillSelectedColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            uiSymbolButton6.Location = new Point(53, 75);
-            uiSymbolButton6.Margin = new Padding(2);
-            uiSymbolButton6.MinimumSize = new Size(1, 1);
-            uiSymbolButton6.Name = "uiSymbolButton6";
-            uiSymbolButton6.Radius = 10;
-            uiSymbolButton6.RectColor = Color.Transparent;
-            uiSymbolButton6.RectHoverColor = Color.Transparent;
-            uiSymbolButton6.RectPressColor = Color.Transparent;
-            uiSymbolButton6.RectSelectedColor = Color.Transparent;
-            uiSymbolButton6.Size = new Size(57, 22);
-            uiSymbolButton6.Style = Sunny.UI.UIStyle.Custom;
-            uiSymbolButton6.Symbol = 0;
-            uiSymbolButton6.SymbolColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.SymbolHoverColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.SymbolPressColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.SymbolSelectedColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.TabIndex = 290;
-            uiSymbolButton6.Text = "STATUS";
-            uiSymbolButton6.TipsColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.TipsFont = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
+            btnLogout.FillColor = Color.FromArgb(250, 82, 82);
+            btnLogout.FillColor2 = Color.FromArgb(250, 82, 82);
+            btnLogout.FillDisableColor = Color.White;
+            btnLogout.FillHoverColor = Color.White;
+            btnLogout.FillPressColor = Color.White;
+            btnLogout.FillSelectedColor = Color.White;
+            btnLogout.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.ForeDisableColor = Color.DarkGray;
+            btnLogout.ForeHoverColor = Color.Black;
+            btnLogout.ForePressColor = Color.Black;
+            btnLogout.ForeSelectedColor = Color.Black;
+            btnLogout.Location = new Point(89, 54);
+            btnLogout.MinimumSize = new Size(1, 1);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Radius = 10;
+            btnLogout.RectColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectDisableColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectHoverColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectPressColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectSelectedColor = Color.FromArgb(250, 82, 82);
+            btnLogout.Size = new Size(106, 33);
+            btnLogout.TabIndex = 324;
+            btnLogout.Text = "Đăng xuất";
+            btnLogout.TipsFont = new Font("Microsoft Sans Serif", 9F);
             // 
             // btnAccountInformation
             // 
@@ -441,44 +404,14 @@
             btnAccountInformation.Image = Properties.Resources.settings_16;
             btnAccountInformation.ImageAlign = ContentAlignment.MiddleLeft;
             btnAccountInformation.ImeMode = ImeMode.NoControl;
-            btnAccountInformation.Location = new Point(55, 35);
+            btnAccountInformation.Location = new Point(59, 16);
             btnAccountInformation.Name = "btnAccountInformation";
             btnAccountInformation.Size = new Size(166, 24);
-            btnAccountInformation.TabIndex = 280;
+            btnAccountInformation.TabIndex = 323;
             btnAccountInformation.Text = "   Thông tin tài khoản";
             btnAccountInformation.TextAlign = ContentAlignment.MiddleLeft;
             btnAccountInformation.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAccountInformation.UseVisualStyleBackColor = true;
-            // 
-            // cmsCalendar
-            // 
-            cmsCalendar.Items.AddRange(new ToolStripItem[] { refreshToolStripMenuItem, showAllCalendar, showTeach });
-            cmsCalendar.Name = "cmsCalendar";
-            cmsCalendar.Size = new Size(240, 70);
-            // 
-            // refreshToolStripMenuItem
-            // 
-            refreshToolStripMenuItem.Image = Properties.Resources.refresh_24_red;
-            refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            refreshToolStripMenuItem.Size = new Size(239, 22);
-            refreshToolStripMenuItem.Text = "Refresh";
-            refreshToolStripMenuItem.Click += refreshToolStripMenuItem_Click;
-            // 
-            // showAllCalendar
-            // 
-            showAllCalendar.Image = Properties.Resources.calendar_24_red;
-            showAllCalendar.Name = "showAllCalendar";
-            showAllCalendar.Size = new Size(239, 22);
-            showAllCalendar.Text = "Hiển thị toàn bộ thời khóa biểu";
-            showAllCalendar.Click += showAllCalendar_Click;
-            // 
-            // showTeach
-            // 
-            showTeach.Image = Properties.Resources.lecture_hall_24_red;
-            showTeach.Name = "showTeach";
-            showTeach.Size = new Size(239, 22);
-            showTeach.Text = "Chỉ hiển thị lịch dạy";
-            showTeach.Click += showTeach_Click;
             // 
             // uc_ManageSchedule_Action
             // 
@@ -495,11 +428,11 @@
             gbCalendar.ResumeLayout(false);
             pnCalendar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvSchedule).EndInit();
+            cmsCalendar.ResumeLayout(false);
             pnButton.ResumeLayout(false);
             pnHeaderButton.ResumeLayout(false);
             pnBackButtonSchedule.ResumeLayout(false);
             pnBottomButton.ResumeLayout(false);
-            cmsCalendar.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -512,11 +445,7 @@
         private Button btnSchedule;
         private Panel pnSchedule;
         private Panel pnBottomButton;
-        private Button btnAccountInformation;
         private Panel pnCalendar;
-        private Sunny.UI.UISymbolButton uiSymbolButton5;
-        private Sunny.UI.UISymbolButton btnTerms;
-        private Sunny.UI.UISymbolButton uiSymbolButton6;
         private Panel pnMain;
         private Sunny.UI.UIGroupBox gbCalendar;
         private ContextMenuStrip cmsCalendar;
@@ -532,5 +461,7 @@
         private DataGridViewTextBoxColumn instructor;
         private DataGridViewTextBoxColumn max_student;
         private ToolStripMenuItem refreshToolStripMenuItem;
+        private Sunny.UI.UIButton btnLogout;
+        private Button btnAccountInformation;
     }
 }

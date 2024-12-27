@@ -30,11 +30,7 @@ namespace UniversitySchedule.View.ManageDepartment
         /// </summary>
         private void InitializeComponent()
         {
-            uiSymbolButton5 = new Sunny.UI.UISymbolButton();
-            btnTerms = new Sunny.UI.UISymbolButton();
-            btnAccountInformation = new Button();
             pnBottomButton = new Panel();
-            uiSymbolButton6 = new Sunny.UI.UISymbolButton();
             btnAddDepartment = new Button();
             pnAddDepartment = new Panel();
             pnBackButtonAddDepartment = new Panel();
@@ -58,6 +54,8 @@ namespace UniversitySchedule.View.ManageDepartment
             pnButton = new Panel();
             pnMain = new Panel();
             pnBackground = new Panel();
+            btnLogout = new Sunny.UI.UIButton();
+            btnAccountInformation = new Button();
             pnBottomButton.SuspendLayout();
             pnBackButtonAddDepartment.SuspendLayout();
             pnHeaderButton.SuspendLayout();
@@ -69,127 +67,15 @@ namespace UniversitySchedule.View.ManageDepartment
             pnBackground.SuspendLayout();
             SuspendLayout();
             // 
-            // uiSymbolButton5
-            // 
-            uiSymbolButton5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            uiSymbolButton5.Cursor = Cursors.Hand;
-            uiSymbolButton5.FillColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.FillColor2 = SystemColors.Control;
-            uiSymbolButton5.FillColorGradientDirection = FlowDirection.LeftToRight;
-            uiSymbolButton5.FillHoverColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.FillPressColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.FillSelectedColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            uiSymbolButton5.Location = new Point(114, 78);
-            uiSymbolButton5.Margin = new Padding(2);
-            uiSymbolButton5.MinimumSize = new Size(1, 1);
-            uiSymbolButton5.Name = "uiSymbolButton5";
-            uiSymbolButton5.Radius = 10;
-            uiSymbolButton5.RectColor = Color.Transparent;
-            uiSymbolButton5.RectHoverColor = Color.Transparent;
-            uiSymbolButton5.RectPressColor = Color.Transparent;
-            uiSymbolButton5.RectSelectedColor = Color.Transparent;
-            uiSymbolButton5.Size = new Size(55, 22);
-            uiSymbolButton5.Style = Sunny.UI.UIStyle.Custom;
-            uiSymbolButton5.Symbol = 0;
-            uiSymbolButton5.SymbolColor = Color.Silver;
-            uiSymbolButton5.TabIndex = 292;
-            uiSymbolButton5.Text = "PRIVACY";
-            uiSymbolButton5.TipsColor = Color.RoyalBlue;
-            uiSymbolButton5.TipsFont = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            // 
-            // btnTerms
-            // 
-            btnTerms.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnTerms.Cursor = Cursors.Hand;
-            btnTerms.FillColor = Color.FromArgb(250, 82, 82);
-            btnTerms.FillColor2 = SystemColors.Control;
-            btnTerms.FillColorGradientDirection = FlowDirection.LeftToRight;
-            btnTerms.FillHoverColor = Color.FromArgb(250, 82, 82);
-            btnTerms.FillPressColor = Color.FromArgb(250, 82, 82);
-            btnTerms.FillSelectedColor = Color.FromArgb(250, 82, 82);
-            btnTerms.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            btnTerms.Location = new Point(173, 78);
-            btnTerms.Margin = new Padding(2);
-            btnTerms.MinimumSize = new Size(1, 1);
-            btnTerms.Name = "btnTerms";
-            btnTerms.Radius = 10;
-            btnTerms.RectColor = Color.Transparent;
-            btnTerms.RectHoverColor = Color.Transparent;
-            btnTerms.RectPressColor = Color.Transparent;
-            btnTerms.RectSelectedColor = Color.Transparent;
-            btnTerms.Size = new Size(59, 22);
-            btnTerms.Style = Sunny.UI.UIStyle.Custom;
-            btnTerms.Symbol = 0;
-            btnTerms.SymbolColor = Color.Silver;
-            btnTerms.TabIndex = 291;
-            btnTerms.Text = "TERMS";
-            btnTerms.TipsColor = Color.RoyalBlue;
-            btnTerms.TipsFont = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            // 
-            // btnAccountInformation
-            // 
-            btnAccountInformation.BackgroundImageLayout = ImageLayout.None;
-            btnAccountInformation.Cursor = Cursors.Hand;
-            btnAccountInformation.FlatAppearance.BorderSize = 0;
-            btnAccountInformation.FlatStyle = FlatStyle.Flat;
-            btnAccountInformation.Font = new Font("Segoe UI", 9F);
-            btnAccountInformation.ForeColor = Color.FromArgb(28, 28, 28);
-            btnAccountInformation.Image = Resources.settings_16;
-            btnAccountInformation.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAccountInformation.ImeMode = ImeMode.NoControl;
-            btnAccountInformation.Location = new Point(55, 35);
-            btnAccountInformation.Name = "btnAccountInformation";
-            btnAccountInformation.Size = new Size(166, 24);
-            btnAccountInformation.TabIndex = 280;
-            btnAccountInformation.Text = "   Thông tin tài khoản";
-            btnAccountInformation.TextAlign = ContentAlignment.MiddleLeft;
-            btnAccountInformation.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAccountInformation.UseVisualStyleBackColor = true;
-            // 
             // pnBottomButton
             // 
-            pnBottomButton.Controls.Add(uiSymbolButton5);
-            pnBottomButton.Controls.Add(btnTerms);
-            pnBottomButton.Controls.Add(uiSymbolButton6);
+            pnBottomButton.Controls.Add(btnLogout);
             pnBottomButton.Controls.Add(btnAccountInformation);
             pnBottomButton.Dock = DockStyle.Bottom;
             pnBottomButton.Location = new Point(0, 488);
             pnBottomButton.Name = "pnBottomButton";
             pnBottomButton.Size = new Size(285, 103);
             pnBottomButton.TabIndex = 1;
-            // 
-            // uiSymbolButton6
-            // 
-            uiSymbolButton6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            uiSymbolButton6.Cursor = Cursors.Hand;
-            uiSymbolButton6.FillColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.FillColor2 = SystemColors.Control;
-            uiSymbolButton6.FillColorGradientDirection = FlowDirection.LeftToRight;
-            uiSymbolButton6.FillHoverColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.FillPressColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.FillSelectedColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            uiSymbolButton6.Location = new Point(53, 78);
-            uiSymbolButton6.Margin = new Padding(2);
-            uiSymbolButton6.MinimumSize = new Size(1, 1);
-            uiSymbolButton6.Name = "uiSymbolButton6";
-            uiSymbolButton6.Radius = 10;
-            uiSymbolButton6.RectColor = Color.Transparent;
-            uiSymbolButton6.RectHoverColor = Color.Transparent;
-            uiSymbolButton6.RectPressColor = Color.Transparent;
-            uiSymbolButton6.RectSelectedColor = Color.Transparent;
-            uiSymbolButton6.Size = new Size(57, 22);
-            uiSymbolButton6.Style = Sunny.UI.UIStyle.Custom;
-            uiSymbolButton6.Symbol = 0;
-            uiSymbolButton6.SymbolColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.SymbolHoverColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.SymbolPressColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.SymbolSelectedColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.TabIndex = 290;
-            uiSymbolButton6.Text = "STATUS";
-            uiSymbolButton6.TipsColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.TipsFont = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
             // 
             // btnAddDepartment
             // 
@@ -466,6 +352,53 @@ namespace UniversitySchedule.View.ManageDepartment
             pnBackground.Size = new Size(1364, 591);
             pnBackground.TabIndex = 1;
             // 
+            // btnLogout
+            // 
+            btnLogout.FillColor = Color.FromArgb(250, 82, 82);
+            btnLogout.FillColor2 = Color.FromArgb(250, 82, 82);
+            btnLogout.FillDisableColor = Color.White;
+            btnLogout.FillHoverColor = Color.White;
+            btnLogout.FillPressColor = Color.White;
+            btnLogout.FillSelectedColor = Color.White;
+            btnLogout.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.ForeDisableColor = Color.DarkGray;
+            btnLogout.ForeHoverColor = Color.Black;
+            btnLogout.ForePressColor = Color.Black;
+            btnLogout.ForeSelectedColor = Color.Black;
+            btnLogout.Location = new Point(89, 54);
+            btnLogout.MinimumSize = new Size(1, 1);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Radius = 10;
+            btnLogout.RectColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectDisableColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectHoverColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectPressColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectSelectedColor = Color.FromArgb(250, 82, 82);
+            btnLogout.Size = new Size(106, 33);
+            btnLogout.TabIndex = 324;
+            btnLogout.Text = "Đăng xuất";
+            btnLogout.TipsFont = new Font("Microsoft Sans Serif", 9F);
+            // 
+            // btnAccountInformation
+            // 
+            btnAccountInformation.BackgroundImageLayout = ImageLayout.None;
+            btnAccountInformation.Cursor = Cursors.Hand;
+            btnAccountInformation.FlatAppearance.BorderSize = 0;
+            btnAccountInformation.FlatStyle = FlatStyle.Flat;
+            btnAccountInformation.Font = new Font("Segoe UI", 9F);
+            btnAccountInformation.ForeColor = Color.FromArgb(28, 28, 28);
+            btnAccountInformation.Image = Resources.settings_16;
+            btnAccountInformation.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAccountInformation.ImeMode = ImeMode.NoControl;
+            btnAccountInformation.Location = new Point(59, 16);
+            btnAccountInformation.Name = "btnAccountInformation";
+            btnAccountInformation.Size = new Size(166, 24);
+            btnAccountInformation.TabIndex = 323;
+            btnAccountInformation.Text = "   Thông tin tài khoản";
+            btnAccountInformation.TextAlign = ContentAlignment.MiddleLeft;
+            btnAccountInformation.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAccountInformation.UseVisualStyleBackColor = true;
+            // 
             // uc_ManageDepartment_Action
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -488,12 +421,7 @@ namespace UniversitySchedule.View.ManageDepartment
         }
 
         #endregion
-
-        private Sunny.UI.UISymbolButton uiSymbolButton5;
-        private Sunny.UI.UISymbolButton btnTerms;
-        private Button btnAccountInformation;
         private Panel pnBottomButton;
-        private Sunny.UI.UISymbolButton uiSymbolButton6;
         private Button btnAddDepartment;
         private Panel pnAddDepartment;
         private Panel pnBackButtonAddDepartment;
@@ -517,5 +445,7 @@ namespace UniversitySchedule.View.ManageDepartment
         private Button btnManageCourse;
         private Panel pnManageCourse;
         private Panel panel4;
+        private Sunny.UI.UIButton btnLogout;
+        private Button btnAccountInformation;
     }
 }

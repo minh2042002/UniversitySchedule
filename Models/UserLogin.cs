@@ -16,8 +16,6 @@ namespace UniversitySchedule.Models
 
         public static DateOnly DayOfBirth { get; set; }
 
-        public static string? Avatar { get; set; }
-
         public static int UserId { get; set; }
 
         public static Role Role { get; set; }

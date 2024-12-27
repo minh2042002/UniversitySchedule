@@ -34,7 +34,6 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            PresentationControls.CheckBoxProperties checkBoxProperties1 = new PresentationControls.CheckBoxProperties();
             pnMain = new Panel();
             uiGroupBox1 = new Sunny.UI.UIGroupBox();
             panel2 = new Panel();
@@ -54,22 +53,14 @@
             txtFindByName = new Sunny.UI.UITextBox();
             btnSearch = new Sunny.UI.UISymbolButton();
             btnLoad = new Sunny.UI.UIButton();
-            pnCombobox = new Sunny.UI.UIPanel();
-            cmbRole = new PresentationControls.CheckBoxComboBox();
             pnBackground = new Panel();
             pnButton = new Panel();
             pnHeaderButton = new Panel();
-            pnBackButtonAddStudent = new Panel();
-            btnAddStudent = new Button();
-            pnAddStudent = new Panel();
-            panel4 = new Panel();
             pnBackButtonAddInstructor = new Panel();
             btnAddInstructor = new Button();
             pnAddInstructor = new Panel();
             pnBottomButton = new Panel();
-            uiSymbolButton5 = new Sunny.UI.UISymbolButton();
-            btnTerms = new Sunny.UI.UISymbolButton();
-            uiSymbolButton6 = new Sunny.UI.UISymbolButton();
+            btnLogout = new Sunny.UI.UIButton();
             btnAccountInformation = new Button();
             pnMain.SuspendLayout();
             uiGroupBox1.SuspendLayout();
@@ -78,11 +69,9 @@
             ((System.ComponentModel.ISupportInitialize)dgvUser).BeginInit();
             cmsAccount.SuspendLayout();
             panel3.SuspendLayout();
-            pnCombobox.SuspendLayout();
             pnBackground.SuspendLayout();
             pnButton.SuspendLayout();
             pnHeaderButton.SuspendLayout();
-            pnBackButtonAddStudent.SuspendLayout();
             pnBackButtonAddInstructor.SuspendLayout();
             pnBottomButton.SuspendLayout();
             SuspendLayout();
@@ -292,7 +281,6 @@
             panel3.Controls.Add(txtFindByName);
             panel3.Controls.Add(btnSearch);
             panel3.Controls.Add(btnLoad);
-            panel3.Controls.Add(pnCombobox);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
@@ -368,7 +356,7 @@
             btnLoad.ForeHoverColor = Color.Black;
             btnLoad.ForePressColor = Color.Black;
             btnLoad.ForeSelectedColor = Color.Black;
-            btnLoad.Location = new Point(281, 17);
+            btnLoad.Location = new Point(14, 17);
             btnLoad.MinimumSize = new Size(1, 1);
             btnLoad.Name = "btnLoad";
             btnLoad.Radius = 10;
@@ -382,39 +370,6 @@
             btnLoad.Text = "LOAD";
             btnLoad.TipsFont = new Font("Microsoft Sans Serif", 9F);
             btnLoad.Click += btnLoad_Click;
-            // 
-            // pnCombobox
-            // 
-            pnCombobox.Controls.Add(cmbRole);
-            pnCombobox.FillColor = Color.White;
-            pnCombobox.FillColor2 = Color.White;
-            pnCombobox.Font = new Font("Microsoft Sans Serif", 12F);
-            pnCombobox.Location = new Point(23, 17);
-            pnCombobox.Margin = new Padding(4, 5, 4, 5);
-            pnCombobox.MinimumSize = new Size(1, 1);
-            pnCombobox.Name = "pnCombobox";
-            pnCombobox.Padding = new Padding(3);
-            pnCombobox.Radius = 10;
-            pnCombobox.RectColor = SystemColors.ControlDark;
-            pnCombobox.Size = new Size(242, 33);
-            pnCombobox.Style = Sunny.UI.UIStyle.Custom;
-            pnCombobox.StyleCustomMode = true;
-            pnCombobox.TabIndex = 320;
-            pnCombobox.Text = null;
-            pnCombobox.TextAlignment = ContentAlignment.MiddleCenter;
-            // 
-            // cmbRole
-            // 
-            checkBoxProperties1.ForeColor = SystemColors.ControlText;
-            cmbRole.CheckBoxProperties = checkBoxProperties1;
-            cmbRole.DisplayMemberSingleItem = "";
-            cmbRole.Dock = DockStyle.Fill;
-            cmbRole.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            cmbRole.Items.AddRange(new object[] { "Tất cả", "Giảng viên", "Sinh viên" });
-            cmbRole.Location = new Point(3, 3);
-            cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(236, 28);
-            cmbRole.TabIndex = 0;
             // 
             // pnBackground
             // 
@@ -439,8 +394,6 @@
             // 
             // pnHeaderButton
             // 
-            pnHeaderButton.Controls.Add(pnBackButtonAddStudent);
-            pnHeaderButton.Controls.Add(panel4);
             pnHeaderButton.Controls.Add(pnBackButtonAddInstructor);
             pnHeaderButton.Dock = DockStyle.Fill;
             pnHeaderButton.Location = new Point(0, 0);
@@ -448,53 +401,6 @@
             pnHeaderButton.Padding = new Padding(0, 10, 0, 0);
             pnHeaderButton.Size = new Size(285, 488);
             pnHeaderButton.TabIndex = 1;
-            // 
-            // pnBackButtonAddStudent
-            // 
-            pnBackButtonAddStudent.Controls.Add(btnAddStudent);
-            pnBackButtonAddStudent.Controls.Add(pnAddStudent);
-            pnBackButtonAddStudent.Dock = DockStyle.Top;
-            pnBackButtonAddStudent.Location = new Point(0, 65);
-            pnBackButtonAddStudent.Name = "pnBackButtonAddStudent";
-            pnBackButtonAddStudent.Size = new Size(285, 40);
-            pnBackButtonAddStudent.TabIndex = 166;
-            // 
-            // btnAddStudent
-            // 
-            btnAddStudent.Cursor = Cursors.Hand;
-            btnAddStudent.Dock = DockStyle.Fill;
-            btnAddStudent.FlatAppearance.BorderSize = 0;
-            btnAddStudent.FlatStyle = FlatStyle.Flat;
-            btnAddStudent.Font = new Font("Segoe UI", 12F);
-            btnAddStudent.ForeColor = Color.FromArgb(28, 28, 28);
-            btnAddStudent.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAddStudent.ImeMode = ImeMode.NoControl;
-            btnAddStudent.Location = new Point(12, 0);
-            btnAddStudent.Name = "btnAddStudent";
-            btnAddStudent.Padding = new Padding(20, 0, 0, 0);
-            btnAddStudent.Size = new Size(273, 40);
-            btnAddStudent.TabIndex = 162;
-            btnAddStudent.Text = "    Thêm Sinh Viên";
-            btnAddStudent.TextAlign = ContentAlignment.MiddleLeft;
-            btnAddStudent.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAddStudent.UseVisualStyleBackColor = true;
-            btnAddStudent.Click += btnAddStudent_Click;
-            // 
-            // pnAddStudent
-            // 
-            pnAddStudent.Dock = DockStyle.Left;
-            pnAddStudent.Location = new Point(0, 0);
-            pnAddStudent.Name = "pnAddStudent";
-            pnAddStudent.Size = new Size(12, 40);
-            pnAddStudent.TabIndex = 160;
-            // 
-            // panel4
-            // 
-            panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 50);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(285, 15);
-            panel4.TabIndex = 167;
             // 
             // pnBackButtonAddInstructor
             // 
@@ -537,9 +443,7 @@
             // 
             // pnBottomButton
             // 
-            pnBottomButton.Controls.Add(uiSymbolButton5);
-            pnBottomButton.Controls.Add(btnTerms);
-            pnBottomButton.Controls.Add(uiSymbolButton6);
+            pnBottomButton.Controls.Add(btnLogout);
             pnBottomButton.Controls.Add(btnAccountInformation);
             pnBottomButton.Dock = DockStyle.Bottom;
             pnBottomButton.Location = new Point(0, 488);
@@ -547,95 +451,32 @@
             pnBottomButton.Size = new Size(285, 103);
             pnBottomButton.TabIndex = 1;
             // 
-            // uiSymbolButton5
+            // btnLogout
             // 
-            uiSymbolButton5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            uiSymbolButton5.Cursor = Cursors.Hand;
-            uiSymbolButton5.FillColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.FillColor2 = SystemColors.Control;
-            uiSymbolButton5.FillColorGradientDirection = FlowDirection.LeftToRight;
-            uiSymbolButton5.FillHoverColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.FillPressColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.FillSelectedColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton5.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            uiSymbolButton5.Location = new Point(114, 81);
-            uiSymbolButton5.Margin = new Padding(2);
-            uiSymbolButton5.MinimumSize = new Size(1, 1);
-            uiSymbolButton5.Name = "uiSymbolButton5";
-            uiSymbolButton5.Radius = 10;
-            uiSymbolButton5.RectColor = Color.Transparent;
-            uiSymbolButton5.RectHoverColor = Color.Transparent;
-            uiSymbolButton5.RectPressColor = Color.Transparent;
-            uiSymbolButton5.RectSelectedColor = Color.Transparent;
-            uiSymbolButton5.Size = new Size(55, 22);
-            uiSymbolButton5.Style = Sunny.UI.UIStyle.Custom;
-            uiSymbolButton5.Symbol = 0;
-            uiSymbolButton5.SymbolColor = Color.Silver;
-            uiSymbolButton5.TabIndex = 292;
-            uiSymbolButton5.Text = "PRIVACY";
-            uiSymbolButton5.TipsColor = Color.RoyalBlue;
-            uiSymbolButton5.TipsFont = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            // 
-            // btnTerms
-            // 
-            btnTerms.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnTerms.Cursor = Cursors.Hand;
-            btnTerms.FillColor = Color.FromArgb(250, 82, 82);
-            btnTerms.FillColor2 = SystemColors.Control;
-            btnTerms.FillColorGradientDirection = FlowDirection.LeftToRight;
-            btnTerms.FillHoverColor = Color.FromArgb(250, 82, 82);
-            btnTerms.FillPressColor = Color.FromArgb(250, 82, 82);
-            btnTerms.FillSelectedColor = Color.FromArgb(250, 82, 82);
-            btnTerms.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            btnTerms.Location = new Point(173, 81);
-            btnTerms.Margin = new Padding(2);
-            btnTerms.MinimumSize = new Size(1, 1);
-            btnTerms.Name = "btnTerms";
-            btnTerms.Radius = 10;
-            btnTerms.RectColor = Color.Transparent;
-            btnTerms.RectHoverColor = Color.Transparent;
-            btnTerms.RectPressColor = Color.Transparent;
-            btnTerms.RectSelectedColor = Color.Transparent;
-            btnTerms.Size = new Size(59, 22);
-            btnTerms.Style = Sunny.UI.UIStyle.Custom;
-            btnTerms.Symbol = 0;
-            btnTerms.SymbolColor = Color.Silver;
-            btnTerms.TabIndex = 291;
-            btnTerms.Text = "TERMS";
-            btnTerms.TipsColor = Color.RoyalBlue;
-            btnTerms.TipsFont = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            // 
-            // uiSymbolButton6
-            // 
-            uiSymbolButton6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            uiSymbolButton6.Cursor = Cursors.Hand;
-            uiSymbolButton6.FillColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.FillColor2 = SystemColors.Control;
-            uiSymbolButton6.FillColorGradientDirection = FlowDirection.LeftToRight;
-            uiSymbolButton6.FillHoverColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.FillPressColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.FillSelectedColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            uiSymbolButton6.Location = new Point(53, 81);
-            uiSymbolButton6.Margin = new Padding(2);
-            uiSymbolButton6.MinimumSize = new Size(1, 1);
-            uiSymbolButton6.Name = "uiSymbolButton6";
-            uiSymbolButton6.Radius = 10;
-            uiSymbolButton6.RectColor = Color.Transparent;
-            uiSymbolButton6.RectHoverColor = Color.Transparent;
-            uiSymbolButton6.RectPressColor = Color.Transparent;
-            uiSymbolButton6.RectSelectedColor = Color.Transparent;
-            uiSymbolButton6.Size = new Size(57, 22);
-            uiSymbolButton6.Style = Sunny.UI.UIStyle.Custom;
-            uiSymbolButton6.Symbol = 0;
-            uiSymbolButton6.SymbolColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.SymbolHoverColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.SymbolPressColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.SymbolSelectedColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.TabIndex = 290;
-            uiSymbolButton6.Text = "STATUS";
-            uiSymbolButton6.TipsColor = Color.FromArgb(250, 82, 82);
-            uiSymbolButton6.TipsFont = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
+            btnLogout.FillColor = Color.FromArgb(250, 82, 82);
+            btnLogout.FillColor2 = Color.FromArgb(250, 82, 82);
+            btnLogout.FillDisableColor = Color.White;
+            btnLogout.FillHoverColor = Color.White;
+            btnLogout.FillPressColor = Color.White;
+            btnLogout.FillSelectedColor = Color.White;
+            btnLogout.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.ForeDisableColor = Color.DarkGray;
+            btnLogout.ForeHoverColor = Color.Black;
+            btnLogout.ForePressColor = Color.Black;
+            btnLogout.ForeSelectedColor = Color.Black;
+            btnLogout.Location = new Point(89, 54);
+            btnLogout.MinimumSize = new Size(1, 1);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Radius = 10;
+            btnLogout.RectColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectDisableColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectHoverColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectPressColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectSelectedColor = Color.FromArgb(250, 82, 82);
+            btnLogout.Size = new Size(106, 33);
+            btnLogout.TabIndex = 324;
+            btnLogout.Text = "Đăng xuất";
+            btnLogout.TipsFont = new Font("Microsoft Sans Serif", 9F);
             // 
             // btnAccountInformation
             // 
@@ -648,10 +489,10 @@
             btnAccountInformation.Image = Properties.Resources.settings_16;
             btnAccountInformation.ImageAlign = ContentAlignment.MiddleLeft;
             btnAccountInformation.ImeMode = ImeMode.NoControl;
-            btnAccountInformation.Location = new Point(55, 35);
+            btnAccountInformation.Location = new Point(59, 16);
             btnAccountInformation.Name = "btnAccountInformation";
             btnAccountInformation.Size = new Size(166, 24);
-            btnAccountInformation.TabIndex = 280;
+            btnAccountInformation.TabIndex = 323;
             btnAccountInformation.Text = "   Thông tin tài khoản";
             btnAccountInformation.TextAlign = ContentAlignment.MiddleLeft;
             btnAccountInformation.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -673,11 +514,9 @@
             ((System.ComponentModel.ISupportInitialize)dgvUser).EndInit();
             cmsAccount.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            pnCombobox.ResumeLayout(false);
             pnBackground.ResumeLayout(false);
             pnButton.ResumeLayout(false);
             pnHeaderButton.ResumeLayout(false);
-            pnBackButtonAddStudent.ResumeLayout(false);
             pnBackButtonAddInstructor.ResumeLayout(false);
             pnBottomButton.ResumeLayout(false);
             ResumeLayout(false);
@@ -689,18 +528,10 @@
         private Panel pnBackground;
         private Panel pnButton;
         private Panel pnHeaderButton;
-        private Panel pnBackButtonAddStudent;
-        private Button btnAddStudent;
-        private Panel pnAddStudent;
         private Panel pnBackButtonAddInstructor;
         private Button btnAddInstructor;
         private Panel pnAddInstructor;
         private Panel pnBottomButton;
-        private Sunny.UI.UISymbolButton uiSymbolButton5;
-        private Sunny.UI.UISymbolButton btnTerms;
-        private Sunny.UI.UISymbolButton uiSymbolButton6;
-        private Button btnAccountInformation;
-        private Panel panel4;
         private ContextMenuStrip cmsAccount;
         private ToolStripMenuItem editInformation;
         private ToolStripMenuItem deleteUser;
@@ -719,7 +550,7 @@
         private Sunny.UI.UITextBox txtFindByName;
         private Sunny.UI.UISymbolButton btnSearch;
         private Sunny.UI.UIButton btnLoad;
-        private Sunny.UI.UIPanel pnCombobox;
-        private PresentationControls.CheckBoxComboBox cmbRole;
+        private Sunny.UI.UIButton btnLogout;
+        private Button btnAccountInformation;
     }
 }

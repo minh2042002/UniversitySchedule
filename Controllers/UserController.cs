@@ -55,6 +55,41 @@ namespace UniversitySchedule.Controllers
             return users;
         }
 
+        public (bool, string, User?) Login(string username, string password)
+        {
+            try
+            {
+                using (var dbContext = new UniversityScheduleContext())
+                {
+                    // Tìm người dùng theo tên đăng nhập
+                    var user = dbContext.Users
+                                        .Include(u => u.Information)
+                                        .FirstOrDefault(u => u.Username == username);
+
+                    // Kiểm tra nếu người dùng tồn tại
+                    if (user == null)
+                    {
+                        return (false, "Tài khoản không tồn tại!", null);
+                    }
+
+                    // Kiểm tra mật khẩu (nên hash mật khẩu và so sánh)
+                    if (user.Password != password)
+                    {
+                        return (false, "Mật khẩu không chính xác!", null);
+                    }
+
+                    // Đăng nhập thành công
+                    return (true, "", user);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log4Net.LogException(ex, "");
+                return (false, "Đã xảy ra lỗi, vui lòng thử lại!", null);
+            }
+        }
+
+
         public bool IsExists(string username)
         {
             try

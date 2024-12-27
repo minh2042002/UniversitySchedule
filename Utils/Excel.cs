@@ -35,7 +35,7 @@ namespace UniversitySchedule.Utils
                             worksheet.Cell(1, 8).Value = "Số lượng sinh viên";
 
                             // Format Header
-                            var headerRange = worksheet.Range("A1:F1");
+                            var headerRange = worksheet.Range("A1:H1");
                             headerRange.Style.Font.Bold = true;
                             headerRange.Style.Fill.BackgroundColor = XLColor.LightGray;
 

@@ -32,7 +32,7 @@
             pnMain = new Panel();
             pnLogin = new Panel();
             uiLabel2 = new Sunny.UI.UILabel();
-            uiCheckBox1 = new Sunny.UI.UICheckBox();
+            chkRemember = new Sunny.UI.UICheckBox();
             btnLogin = new Sunny.UI.UIButton();
             lblUsername = new Sunny.UI.UILabel();
             uiLabel1 = new Sunny.UI.UILabel();
@@ -66,7 +66,7 @@
             // pnLogin
             // 
             pnLogin.Controls.Add(uiLabel2);
-            pnLogin.Controls.Add(uiCheckBox1);
+            pnLogin.Controls.Add(chkRemember);
             pnLogin.Controls.Add(btnLogin);
             pnLogin.Controls.Add(lblUsername);
             pnLogin.Controls.Add(uiLabel1);
@@ -88,17 +88,17 @@
             uiLabel2.TabIndex = 10;
             uiLabel2.Text = "Class Schedule";
             // 
-            // uiCheckBox1
+            // chkRemember
             // 
-            uiCheckBox1.CheckBoxColor = Color.FromArgb(250, 82, 82);
-            uiCheckBox1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            uiCheckBox1.ForeColor = Color.FromArgb(48, 48, 48);
-            uiCheckBox1.Location = new Point(126, 271);
-            uiCheckBox1.MinimumSize = new Size(1, 1);
-            uiCheckBox1.Name = "uiCheckBox1";
-            uiCheckBox1.Size = new Size(240, 29);
-            uiCheckBox1.TabIndex = 9;
-            uiCheckBox1.Text = "Nhớ tôi";
+            chkRemember.CheckBoxColor = Color.FromArgb(250, 82, 82);
+            chkRemember.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            chkRemember.ForeColor = Color.FromArgb(48, 48, 48);
+            chkRemember.Location = new Point(126, 271);
+            chkRemember.MinimumSize = new Size(1, 1);
+            chkRemember.Name = "chkRemember";
+            chkRemember.Size = new Size(240, 29);
+            chkRemember.TabIndex = 9;
+            chkRemember.Text = "Nhớ tôi";
             // 
             // btnLogin
             // 
@@ -257,6 +257,7 @@
             Name = "frm_Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
+            Load += frm_Login_Load;
             pnMain.ResumeLayout(false);
             pnLogin.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -279,7 +280,7 @@
         private Panel pnLogin;
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UITextBox txtPassword;
-        private Sunny.UI.UICheckBox uiCheckBox1;
+        private Sunny.UI.UICheckBox chkRemember;
         private Sunny.UI.UIButton btnLogin;
         private Sunny.UI.UILabel uiLabel2;
     }
