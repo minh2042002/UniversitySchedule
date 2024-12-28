@@ -45,10 +45,12 @@
             phone = new DataGridViewTextBoxColumn();
             email = new DataGridViewTextBoxColumn();
             dob = new DataGridViewTextBoxColumn();
+            role = new DataGridViewTextBoxColumn();
             department = new DataGridViewTextBoxColumn();
             cmsInstructor = new ContextMenuStrip(components);
             moveDepartment = new ToolStripMenuItem();
             manageCourse = new ToolStripMenuItem();
+            setHead = new ToolStripMenuItem();
             panel3 = new Panel();
             txtFindByName = new Sunny.UI.UITextBox();
             btnSearch = new Sunny.UI.UISymbolButton();
@@ -142,7 +144,7 @@
             dgvInstructor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvInstructor.ColumnHeadersHeight = 40;
             dgvInstructor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvInstructor.Columns.AddRange(new DataGridViewColumn[] { stt, name, phone, email, dob, department });
+            dgvInstructor.Columns.AddRange(new DataGridViewColumn[] { stt, name, phone, email, dob, role, department });
             dgvInstructor.ContextMenuStrip = cmsInstructor;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -229,6 +231,14 @@
             dob.Name = "dob";
             dob.Width = 200;
             // 
+            // role
+            // 
+            role.FillWeight = 150F;
+            role.HeaderText = "Chức vụ";
+            role.MinimumWidth = 150;
+            role.Name = "role";
+            role.Width = 150;
+            // 
             // department
             // 
             department.FillWeight = 200F;
@@ -239,9 +249,9 @@
             // 
             // cmsInstructor
             // 
-            cmsInstructor.Items.AddRange(new ToolStripItem[] { moveDepartment, manageCourse });
+            cmsInstructor.Items.AddRange(new ToolStripItem[] { moveDepartment, manageCourse, setHead });
             cmsInstructor.Name = "cmsCalendar";
-            cmsInstructor.Size = new Size(213, 48);
+            cmsInstructor.Size = new Size(213, 70);
             // 
             // moveDepartment
             // 
@@ -258,6 +268,14 @@
             manageCourse.Size = new Size(212, 22);
             manageCourse.Text = "Danh sách môn giảng dạy";
             manageCourse.Click += manageCourse_Click;
+            // 
+            // setHead
+            // 
+            setHead.Image = Properties.Resources.leader_24_red;
+            setHead.Name = "setHead";
+            setHead.Size = new Size(212, 22);
+            setHead.Text = "Đặt làm trưởng bộ môn";
+            setHead.Click += setHead_Click;
             // 
             // panel3
             // 
@@ -301,7 +319,7 @@
             txtFindByName.StyleCustomMode = true;
             txtFindByName.TabIndex = 278;
             txtFindByName.TextAlignment = ContentAlignment.MiddleLeft;
-            txtFindByName.Watermark = "Nhập tên môn học ...";
+            txtFindByName.Watermark = "Nhập tên giảng viên ...";
             // 
             // btnSearch
             // 
@@ -454,12 +472,14 @@
         private PresentationControls.CheckBoxComboBox cmbDepartment;
         private Sunny.UI.UISymbolButton btnReload;
         private DataGridView dgvInstructor;
+        private ToolStripMenuItem manageCourse;
+        private ToolStripMenuItem setHead;
         private DataGridViewTextBoxColumn stt;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn phone;
         private DataGridViewTextBoxColumn email;
         private DataGridViewTextBoxColumn dob;
+        private DataGridViewTextBoxColumn role;
         private DataGridViewTextBoxColumn department;
-        private ToolStripMenuItem manageCourse;
     }
 }

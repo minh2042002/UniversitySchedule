@@ -38,31 +38,37 @@
             label1 = new Label();
             panel2 = new Panel();
             pnInformation = new Panel();
+            uiPanel1 = new Sunny.UI.UIPanel();
+            dpDayOfBirth = new DateTimePicker();
             uiLabel3 = new Sunny.UI.UILabel();
-            dpDayOfBirth = new Sunny.UI.UIDatePicker();
             uiLabel2 = new Sunny.UI.UILabel();
             txtEmail = new Sunny.UI.UITextBox();
             btnSave = new Sunny.UI.UIButton();
+            pnDepartment = new Panel();
+            uiLabel6 = new Sunny.UI.UILabel();
+            cmbDepartment = new Sunny.UI.UIComboBox();
             pnHide = new Panel();
             pnAccount = new Panel();
+            pnPassword = new Sunny.UI.UIPanel();
+            txtPassword = new Sunny.UI.UITextBox();
+            btnHidePassword = new Sunny.UI.UIImageButton();
             uiLabel4 = new Sunny.UI.UILabel();
             txtUsername = new Sunny.UI.UITextBox();
             uiLabel5 = new Sunny.UI.UILabel();
-            txtPassword = new Sunny.UI.UITextBox();
             panel1 = new Panel();
             panel6 = new Panel();
             pnBackground = new Panel();
-            pnDepartment = new Panel();
-            cmbDepartment = new Sunny.UI.UIComboBox();
-            uiLabel6 = new Sunny.UI.UILabel();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             panel2.SuspendLayout();
             pnInformation.SuspendLayout();
+            uiPanel1.SuspendLayout();
+            pnDepartment.SuspendLayout();
             pnAccount.SuspendLayout();
+            pnPassword.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnHidePassword).BeginInit();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
             pnBackground.SuspendLayout();
-            pnDepartment.SuspendLayout();
             SuspendLayout();
             // 
             // lblUsername
@@ -150,8 +156,8 @@
             // pnInformation
             // 
             pnInformation.BackColor = Color.White;
+            pnInformation.Controls.Add(uiPanel1);
             pnInformation.Controls.Add(uiLabel3);
-            pnInformation.Controls.Add(dpDayOfBirth);
             pnInformation.Controls.Add(uiLabel2);
             pnInformation.Controls.Add(txtEmail);
             pnInformation.Controls.Add(btnSave);
@@ -167,6 +173,37 @@
             pnInformation.Size = new Size(404, 312);
             pnInformation.TabIndex = 12;
             // 
+            // uiPanel1
+            // 
+            uiPanel1.Controls.Add(dpDayOfBirth);
+            uiPanel1.FillColor = Color.White;
+            uiPanel1.FillColor2 = Color.White;
+            uiPanel1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            uiPanel1.Location = new Point(149, 190);
+            uiPanel1.Margin = new Padding(4, 5, 4, 5);
+            uiPanel1.MinimumSize = new Size(1, 1);
+            uiPanel1.Name = "uiPanel1";
+            uiPanel1.Padding = new Padding(4);
+            uiPanel1.Radius = 10;
+            uiPanel1.RectColor = Color.FromArgb(250, 82, 82);
+            uiPanel1.Size = new Size(234, 35);
+            uiPanel1.TabIndex = 3;
+            uiPanel1.Text = null;
+            uiPanel1.TextAlignment = ContentAlignment.MiddleCenter;
+            // 
+            // dpDayOfBirth
+            // 
+            dpDayOfBirth.CalendarMonthBackground = Color.White;
+            dpDayOfBirth.CalendarTitleBackColor = Color.White;
+            dpDayOfBirth.CustomFormat = "  dd-MM-yyyy";
+            dpDayOfBirth.Dock = DockStyle.Fill;
+            dpDayOfBirth.Format = DateTimePickerFormat.Custom;
+            dpDayOfBirth.Location = new Point(4, 4);
+            dpDayOfBirth.Name = "dpDayOfBirth";
+            dpDayOfBirth.Size = new Size(226, 27);
+            dpDayOfBirth.TabIndex = 19;
+            dpDayOfBirth.Value = new DateTime(2024, 5, 2, 0, 0, 0, 0);
+            // 
             // uiLabel3
             // 
             uiLabel3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -176,27 +213,6 @@
             uiLabel3.Size = new Size(112, 23);
             uiLabel3.TabIndex = 18;
             uiLabel3.Text = "Ngày sinh";
-            // 
-            // dpDayOfBirth
-            // 
-            dpDayOfBirth.FillColor = Color.White;
-            dpDayOfBirth.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            dpDayOfBirth.Location = new Point(149, 193);
-            dpDayOfBirth.Margin = new Padding(4, 5, 4, 5);
-            dpDayOfBirth.MaxLength = 10;
-            dpDayOfBirth.MinimumSize = new Size(63, 0);
-            dpDayOfBirth.Name = "dpDayOfBirth";
-            dpDayOfBirth.Padding = new Padding(0, 0, 30, 2);
-            dpDayOfBirth.RectColor = Color.FromArgb(250, 82, 82);
-            dpDayOfBirth.Size = new Size(234, 35);
-            dpDayOfBirth.SymbolDropDown = 61555;
-            dpDayOfBirth.SymbolNormal = 61555;
-            dpDayOfBirth.SymbolSize = 24;
-            dpDayOfBirth.TabIndex = 17;
-            dpDayOfBirth.Text = "2024-12-19";
-            dpDayOfBirth.TextAlignment = ContentAlignment.MiddleLeft;
-            dpDayOfBirth.Value = new DateTime(2024, 12, 19, 12, 36, 59, 159);
-            dpDayOfBirth.Watermark = "";
             // 
             // uiLabel2
             // 
@@ -253,6 +269,48 @@
             btnSave.TipsFont = new Font("Microsoft Sans Serif", 9F);
             btnSave.Click += btnSave_Click;
             // 
+            // pnDepartment
+            // 
+            pnDepartment.Controls.Add(uiLabel6);
+            pnDepartment.Controls.Add(cmbDepartment);
+            pnDepartment.Dock = DockStyle.Top;
+            pnDepartment.Location = new Point(0, 127);
+            pnDepartment.Name = "pnDepartment";
+            pnDepartment.Size = new Size(404, 54);
+            pnDepartment.TabIndex = 15;
+            // 
+            // uiLabel6
+            // 
+            uiLabel6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            uiLabel6.ForeColor = Color.Black;
+            uiLabel6.Location = new Point(23, 16);
+            uiLabel6.Name = "uiLabel6";
+            uiLabel6.Size = new Size(89, 23);
+            uiLabel6.TabIndex = 328;
+            uiLabel6.Text = "Bộ môn";
+            // 
+            // cmbDepartment
+            // 
+            cmbDepartment.DataSource = null;
+            cmbDepartment.FillColor = Color.White;
+            cmbDepartment.Font = new Font("Segoe UI", 9.75F);
+            cmbDepartment.ItemHoverColor = Color.FromArgb(155, 200, 255);
+            cmbDepartment.ItemRectColor = Color.FromArgb(250, 82, 82);
+            cmbDepartment.ItemSelectBackColor = Color.FromArgb(250, 82, 82);
+            cmbDepartment.ItemSelectForeColor = Color.FromArgb(235, 243, 255);
+            cmbDepartment.Location = new Point(149, 10);
+            cmbDepartment.Margin = new Padding(4, 5, 4, 5);
+            cmbDepartment.MinimumSize = new Size(63, 0);
+            cmbDepartment.Name = "cmbDepartment";
+            cmbDepartment.Padding = new Padding(0, 0, 30, 2);
+            cmbDepartment.Radius = 10;
+            cmbDepartment.RectColor = Color.FromArgb(250, 82, 82);
+            cmbDepartment.Size = new Size(234, 35);
+            cmbDepartment.SymbolSize = 24;
+            cmbDepartment.TabIndex = 327;
+            cmbDepartment.TextAlignment = ContentAlignment.MiddleLeft;
+            cmbDepartment.Watermark = "";
+            // 
             // pnHide
             // 
             pnHide.BackColor = Color.FromArgb(250, 232, 234);
@@ -264,15 +322,68 @@
             // 
             // pnAccount
             // 
+            pnAccount.Controls.Add(pnPassword);
             pnAccount.Controls.Add(uiLabel4);
             pnAccount.Controls.Add(txtUsername);
             pnAccount.Controls.Add(uiLabel5);
-            pnAccount.Controls.Add(txtPassword);
             pnAccount.Dock = DockStyle.Top;
             pnAccount.Location = new Point(0, 0);
             pnAccount.Name = "pnAccount";
             pnAccount.Size = new Size(404, 122);
             pnAccount.TabIndex = 13;
+            // 
+            // pnPassword
+            // 
+            pnPassword.Controls.Add(txtPassword);
+            pnPassword.Controls.Add(btnHidePassword);
+            pnPassword.FillColor = Color.White;
+            pnPassword.FillColor2 = Color.White;
+            pnPassword.FillDisableColor = Color.White;
+            pnPassword.Font = new Font("Microsoft Sans Serif", 12F);
+            pnPassword.Location = new Point(149, 68);
+            pnPassword.Margin = new Padding(4, 5, 4, 5);
+            pnPassword.MinimumSize = new Size(1, 1);
+            pnPassword.Name = "pnPassword";
+            pnPassword.Padding = new Padding(2, 2, 5, 2);
+            pnPassword.Radius = 10;
+            pnPassword.RectColor = Color.FromArgb(250, 82, 82);
+            pnPassword.Size = new Size(234, 35);
+            pnPassword.TabIndex = 23;
+            pnPassword.Text = null;
+            pnPassword.TextAlignment = ContentAlignment.MiddleCenter;
+            // 
+            // txtPassword
+            // 
+            txtPassword.Dock = DockStyle.Fill;
+            txtPassword.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            txtPassword.Location = new Point(2, 2);
+            txtPassword.Margin = new Padding(4, 5, 4, 5);
+            txtPassword.MinimumSize = new Size(1, 16);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Padding = new Padding(15, 5, 5, 5);
+            txtPassword.PasswordChar = '*';
+            txtPassword.Radius = 10;
+            txtPassword.RectColor = Color.Transparent;
+            txtPassword.ScrollBarColor = Color.FromArgb(250, 82, 82);
+            txtPassword.ScrollBarStyleInherited = false;
+            txtPassword.ShowText = false;
+            txtPassword.Size = new Size(207, 31);
+            txtPassword.TabIndex = 6;
+            txtPassword.TextAlignment = ContentAlignment.MiddleLeft;
+            txtPassword.Watermark = "";
+            // 
+            // btnHidePassword
+            // 
+            btnHidePassword.BackgroundImageLayout = ImageLayout.Zoom;
+            btnHidePassword.Dock = DockStyle.Right;
+            btnHidePassword.Font = new Font("Microsoft Sans Serif", 12F);
+            btnHidePassword.Location = new Point(209, 2);
+            btnHidePassword.Name = "btnHidePassword";
+            btnHidePassword.Size = new Size(20, 31);
+            btnHidePassword.TabIndex = 11;
+            btnHidePassword.TabStop = false;
+            btnHidePassword.Text = null;
+            btnHidePassword.Click += btnHidePassword_Click;
             // 
             // uiLabel4
             // 
@@ -312,25 +423,6 @@
             uiLabel5.TabIndex = 22;
             uiLabel5.Text = "Password";
             // 
-            // txtPassword
-            // 
-            txtPassword.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            txtPassword.Location = new Point(149, 68);
-            txtPassword.Margin = new Padding(4, 5, 4, 5);
-            txtPassword.MinimumSize = new Size(1, 16);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Padding = new Padding(15, 5, 5, 5);
-            txtPassword.PasswordChar = '*';
-            txtPassword.Radius = 10;
-            txtPassword.RectColor = Color.FromArgb(250, 82, 82);
-            txtPassword.ScrollBarColor = Color.FromArgb(250, 82, 82);
-            txtPassword.ScrollBarStyleInherited = false;
-            txtPassword.ShowText = false;
-            txtPassword.Size = new Size(234, 35);
-            txtPassword.TabIndex = 21;
-            txtPassword.TextAlignment = ContentAlignment.MiddleLeft;
-            txtPassword.Watermark = "";
-            // 
             // panel1
             // 
             panel1.Controls.Add(panel2);
@@ -360,48 +452,6 @@
             pnBackground.Size = new Size(404, 535);
             pnBackground.TabIndex = 2;
             // 
-            // pnDepartment
-            // 
-            pnDepartment.Controls.Add(uiLabel6);
-            pnDepartment.Controls.Add(cmbDepartment);
-            pnDepartment.Dock = DockStyle.Top;
-            pnDepartment.Location = new Point(0, 127);
-            pnDepartment.Name = "pnDepartment";
-            pnDepartment.Size = new Size(404, 54);
-            pnDepartment.TabIndex = 15;
-            // 
-            // cmbDepartment
-            // 
-            cmbDepartment.DataSource = null;
-            cmbDepartment.FillColor = Color.White;
-            cmbDepartment.Font = new Font("Segoe UI", 9.75F);
-            cmbDepartment.ItemHoverColor = Color.FromArgb(155, 200, 255);
-            cmbDepartment.ItemRectColor = Color.FromArgb(250, 82, 82);
-            cmbDepartment.ItemSelectBackColor = Color.FromArgb(250, 82, 82);
-            cmbDepartment.ItemSelectForeColor = Color.FromArgb(235, 243, 255);
-            cmbDepartment.Location = new Point(149, 10);
-            cmbDepartment.Margin = new Padding(4, 5, 4, 5);
-            cmbDepartment.MinimumSize = new Size(63, 0);
-            cmbDepartment.Name = "cmbDepartment";
-            cmbDepartment.Padding = new Padding(0, 0, 30, 2);
-            cmbDepartment.Radius = 10;
-            cmbDepartment.RectColor = Color.FromArgb(250, 82, 82);
-            cmbDepartment.Size = new Size(234, 35);
-            cmbDepartment.SymbolSize = 24;
-            cmbDepartment.TabIndex = 327;
-            cmbDepartment.TextAlignment = ContentAlignment.MiddleLeft;
-            cmbDepartment.Watermark = "";
-            // 
-            // uiLabel6
-            // 
-            uiLabel6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            uiLabel6.ForeColor = Color.Black;
-            uiLabel6.Location = new Point(23, 16);
-            uiLabel6.Name = "uiLabel6";
-            uiLabel6.Size = new Size(89, 23);
-            uiLabel6.TabIndex = 328;
-            uiLabel6.Text = "Bộ môn";
-            // 
             // frm_UserInformation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -415,12 +465,15 @@
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             panel2.ResumeLayout(false);
             pnInformation.ResumeLayout(false);
+            uiPanel1.ResumeLayout(false);
+            pnDepartment.ResumeLayout(false);
             pnAccount.ResumeLayout(false);
+            pnPassword.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)btnHidePassword).EndInit();
             panel1.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             pnBackground.ResumeLayout(false);
-            pnDepartment.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -439,17 +492,20 @@
         private Panel panel6;
         private Panel pnBackground;
         private Sunny.UI.UILabel uiLabel3;
-        private Sunny.UI.UIDatePicker dpDayOfBirth;
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UITextBox txtEmail;
         private Sunny.UI.UILabel uiLabel4;
         private Sunny.UI.UILabel uiLabel5;
         private Sunny.UI.UITextBox txtUsername;
-        private Sunny.UI.UITextBox txtPassword;
         private Panel pnHide;
         private Panel pnAccount;
         private Panel pnDepartment;
         private Sunny.UI.UILabel uiLabel6;
         private Sunny.UI.UIComboBox cmbDepartment;
+        private Sunny.UI.UIPanel uiPanel1;
+        private DateTimePicker dpDayOfBirth;
+        private Sunny.UI.UIPanel pnPassword;
+        private Sunny.UI.UITextBox txtPassword;
+        private Sunny.UI.UIImageButton btnHidePassword;
     }
 }

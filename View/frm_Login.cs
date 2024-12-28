@@ -17,13 +17,15 @@ namespace UniversitySchedule.View
 {
     public partial class frm_Login : Form
     {
-        public frm_Login()
+        public frm_Login(bool isLogout = false)
         {
+            IsLogout = isLogout;
             InitializeComponent();
         }
 
         private SettingLogin settingLogin = new SettingLogin();
-
+        private bool IsLogout;
+        private bool HidePassword = true;
         private void btnCloseForm_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -58,11 +60,19 @@ namespace UniversitySchedule.View
         {
             try
             {
+                HidePassword = true;
+                btnHidePassword.BackgroundImage = Properties.Resources.eye_hide_24_red;
                 txtUsername.Text = settingLogin.GetValue("txtUsername");
                 txtPassword.Text = settingLogin.GetValue("txtPassword");
+                if (IsLogout)
+                {
+                    chkRemember.Checked = false;
+                    settingLogin.Update("chkRemember", chkRemember.Checked);
+                    settingLogin.Save();
+                }
                 chkRemember.Checked = settingLogin.GetValueBool("chkRemember");
 
-                if (chkRemember.Checked)
+                if (chkRemember.Checked && !IsLogout)
                 {
                     Thread thread = new Thread(new ThreadStart(CheckLogin));
                     thread.SetApartmentState(ApartmentState.STA);
@@ -89,16 +99,7 @@ namespace UniversitySchedule.View
 
                 if (isSuccess)
                 {
-                    UserLogin.UserId = user.Id;
-                    UserLogin.Role = user.Role;
-                    if (UserLogin.Role != Role.Admin)
-                    {
-                        UserLogin.Email = user.Information.Email;
-                        UserLogin.Phone = user.Information.Phone;
-                        UserLogin.Name = user.Information.Name;
-                        UserLogin.DayOfBirth = user.Information.DayOfBirth;
-                    }
-
+                    UserLogin.User = user;
                     Thread thread = new Thread(new ThreadStart(() =>
                     {
                         try
@@ -115,6 +116,25 @@ namespace UniversitySchedule.View
                 else
                 {
                     MessageBox.Show(message);
+                }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void btnHidePassword_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                HidePassword = !HidePassword;
+                if (HidePassword)
+                {
+                    txtPassword.PasswordChar = '*';
+                    btnHidePassword.BackgroundImage = Properties.Resources.eye_hide_24_red;
+                }
+                else
+                {
+                    txtPassword.PasswordChar = '\0';
+                    btnHidePassword.BackgroundImage = Properties.Resources.eye_show_24_red;
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }

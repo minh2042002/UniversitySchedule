@@ -31,6 +31,8 @@ namespace UniversitySchedule.View.ManageDepartment
         private void InitializeComponent()
         {
             pnBottomButton = new Panel();
+            btnLogout = new Sunny.UI.UIButton();
+            btnAccountInformation = new Button();
             btnAddDepartment = new Button();
             pnAddDepartment = new Panel();
             pnBackButtonAddDepartment = new Panel();
@@ -38,24 +40,22 @@ namespace UniversitySchedule.View.ManageDepartment
             pnBackButtonManageInstructor = new Panel();
             btnManageInstructor = new Button();
             pnManageInstructor = new Panel();
-            panel8 = new Panel();
+            pnBottomManageCourse = new Panel();
             pnBackButtonManageCourse = new Panel();
             btnManageCourse = new Button();
             pnManageCourse = new Panel();
-            panel4 = new Panel();
+            pnBottomAddRoom = new Panel();
             pnBackButtonAddRoom = new Panel();
             btnAddRoom = new Button();
             pnAddRoom = new Panel();
-            panel6 = new Panel();
+            pnBottomAddCourse = new Panel();
             pnBackButtonAddCourse = new Panel();
             btnAddCourse = new Button();
             pnAddCourse = new Panel();
-            panel1 = new Panel();
+            pnBottomAddDepartment = new Panel();
             pnButton = new Panel();
             pnMain = new Panel();
             pnBackground = new Panel();
-            btnLogout = new Sunny.UI.UIButton();
-            btnAccountInformation = new Button();
             pnBottomButton.SuspendLayout();
             pnBackButtonAddDepartment.SuspendLayout();
             pnHeaderButton.SuspendLayout();
@@ -76,6 +76,55 @@ namespace UniversitySchedule.View.ManageDepartment
             pnBottomButton.Name = "pnBottomButton";
             pnBottomButton.Size = new Size(285, 103);
             pnBottomButton.TabIndex = 1;
+            // 
+            // btnLogout
+            // 
+            btnLogout.FillColor = Color.FromArgb(250, 82, 82);
+            btnLogout.FillColor2 = Color.FromArgb(250, 82, 82);
+            btnLogout.FillDisableColor = Color.White;
+            btnLogout.FillHoverColor = Color.White;
+            btnLogout.FillPressColor = Color.White;
+            btnLogout.FillSelectedColor = Color.White;
+            btnLogout.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.ForeDisableColor = Color.DarkGray;
+            btnLogout.ForeHoverColor = Color.Black;
+            btnLogout.ForePressColor = Color.Black;
+            btnLogout.ForeSelectedColor = Color.Black;
+            btnLogout.Location = new Point(89, 54);
+            btnLogout.MinimumSize = new Size(1, 1);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Radius = 10;
+            btnLogout.RectColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectDisableColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectHoverColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectPressColor = Color.FromArgb(250, 82, 82);
+            btnLogout.RectSelectedColor = Color.FromArgb(250, 82, 82);
+            btnLogout.Size = new Size(106, 33);
+            btnLogout.TabIndex = 324;
+            btnLogout.Text = "Đăng xuất";
+            btnLogout.TipsFont = new Font("Microsoft Sans Serif", 9F);
+            btnLogout.Click += btnLogout_Click;
+            // 
+            // btnAccountInformation
+            // 
+            btnAccountInformation.BackgroundImageLayout = ImageLayout.None;
+            btnAccountInformation.Cursor = Cursors.Hand;
+            btnAccountInformation.FlatAppearance.BorderSize = 0;
+            btnAccountInformation.FlatStyle = FlatStyle.Flat;
+            btnAccountInformation.Font = new Font("Segoe UI", 9F);
+            btnAccountInformation.ForeColor = Color.FromArgb(28, 28, 28);
+            btnAccountInformation.Image = Resources.settings_16;
+            btnAccountInformation.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAccountInformation.ImeMode = ImeMode.NoControl;
+            btnAccountInformation.Location = new Point(59, 16);
+            btnAccountInformation.Name = "btnAccountInformation";
+            btnAccountInformation.Size = new Size(166, 24);
+            btnAccountInformation.TabIndex = 323;
+            btnAccountInformation.Text = "   Thông tin tài khoản";
+            btnAccountInformation.TextAlign = ContentAlignment.MiddleLeft;
+            btnAccountInformation.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAccountInformation.UseVisualStyleBackColor = true;
+            btnAccountInformation.Click += btnAccountInformation_Click;
             // 
             // btnAddDepartment
             // 
@@ -119,13 +168,13 @@ namespace UniversitySchedule.View.ManageDepartment
             // pnHeaderButton
             // 
             pnHeaderButton.Controls.Add(pnBackButtonManageInstructor);
-            pnHeaderButton.Controls.Add(panel8);
+            pnHeaderButton.Controls.Add(pnBottomManageCourse);
             pnHeaderButton.Controls.Add(pnBackButtonManageCourse);
-            pnHeaderButton.Controls.Add(panel4);
+            pnHeaderButton.Controls.Add(pnBottomAddRoom);
             pnHeaderButton.Controls.Add(pnBackButtonAddRoom);
-            pnHeaderButton.Controls.Add(panel6);
+            pnHeaderButton.Controls.Add(pnBottomAddCourse);
             pnHeaderButton.Controls.Add(pnBackButtonAddCourse);
-            pnHeaderButton.Controls.Add(panel1);
+            pnHeaderButton.Controls.Add(pnBottomAddDepartment);
             pnHeaderButton.Controls.Add(pnBackButtonAddDepartment);
             pnHeaderButton.Dock = DockStyle.Fill;
             pnHeaderButton.Location = new Point(0, 0);
@@ -173,13 +222,13 @@ namespace UniversitySchedule.View.ManageDepartment
             pnManageInstructor.Size = new Size(12, 40);
             pnManageInstructor.TabIndex = 160;
             // 
-            // panel8
+            // pnBottomManageCourse
             // 
-            panel8.Dock = DockStyle.Top;
-            panel8.Location = new Point(0, 215);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(285, 15);
-            panel8.TabIndex = 171;
+            pnBottomManageCourse.Dock = DockStyle.Top;
+            pnBottomManageCourse.Location = new Point(0, 215);
+            pnBottomManageCourse.Name = "pnBottomManageCourse";
+            pnBottomManageCourse.Size = new Size(285, 15);
+            pnBottomManageCourse.TabIndex = 171;
             // 
             // pnBackButtonManageCourse
             // 
@@ -220,13 +269,13 @@ namespace UniversitySchedule.View.ManageDepartment
             pnManageCourse.Size = new Size(12, 40);
             pnManageCourse.TabIndex = 160;
             // 
-            // panel4
+            // pnBottomAddRoom
             // 
-            panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 160);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(285, 15);
-            panel4.TabIndex = 169;
+            pnBottomAddRoom.Dock = DockStyle.Top;
+            pnBottomAddRoom.Location = new Point(0, 160);
+            pnBottomAddRoom.Name = "pnBottomAddRoom";
+            pnBottomAddRoom.Size = new Size(285, 15);
+            pnBottomAddRoom.TabIndex = 169;
             // 
             // pnBackButtonAddRoom
             // 
@@ -267,13 +316,13 @@ namespace UniversitySchedule.View.ManageDepartment
             pnAddRoom.Size = new Size(12, 40);
             pnAddRoom.TabIndex = 160;
             // 
-            // panel6
+            // pnBottomAddCourse
             // 
-            panel6.Dock = DockStyle.Top;
-            panel6.Location = new Point(0, 105);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(285, 15);
-            panel6.TabIndex = 167;
+            pnBottomAddCourse.Dock = DockStyle.Top;
+            pnBottomAddCourse.Location = new Point(0, 105);
+            pnBottomAddCourse.Name = "pnBottomAddCourse";
+            pnBottomAddCourse.Size = new Size(285, 15);
+            pnBottomAddCourse.TabIndex = 167;
             // 
             // pnBackButtonAddCourse
             // 
@@ -314,13 +363,13 @@ namespace UniversitySchedule.View.ManageDepartment
             pnAddCourse.Size = new Size(12, 40);
             pnAddCourse.TabIndex = 160;
             // 
-            // panel1
+            // pnBottomAddDepartment
             // 
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 50);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(285, 15);
-            panel1.TabIndex = 165;
+            pnBottomAddDepartment.Dock = DockStyle.Top;
+            pnBottomAddDepartment.Location = new Point(0, 50);
+            pnBottomAddDepartment.Name = "pnBottomAddDepartment";
+            pnBottomAddDepartment.Size = new Size(285, 15);
+            pnBottomAddDepartment.TabIndex = 165;
             // 
             // pnButton
             // 
@@ -351,53 +400,6 @@ namespace UniversitySchedule.View.ManageDepartment
             pnBackground.Name = "pnBackground";
             pnBackground.Size = new Size(1364, 591);
             pnBackground.TabIndex = 1;
-            // 
-            // btnLogout
-            // 
-            btnLogout.FillColor = Color.FromArgb(250, 82, 82);
-            btnLogout.FillColor2 = Color.FromArgb(250, 82, 82);
-            btnLogout.FillDisableColor = Color.White;
-            btnLogout.FillHoverColor = Color.White;
-            btnLogout.FillPressColor = Color.White;
-            btnLogout.FillSelectedColor = Color.White;
-            btnLogout.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLogout.ForeDisableColor = Color.DarkGray;
-            btnLogout.ForeHoverColor = Color.Black;
-            btnLogout.ForePressColor = Color.Black;
-            btnLogout.ForeSelectedColor = Color.Black;
-            btnLogout.Location = new Point(89, 54);
-            btnLogout.MinimumSize = new Size(1, 1);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Radius = 10;
-            btnLogout.RectColor = Color.FromArgb(250, 82, 82);
-            btnLogout.RectDisableColor = Color.FromArgb(250, 82, 82);
-            btnLogout.RectHoverColor = Color.FromArgb(250, 82, 82);
-            btnLogout.RectPressColor = Color.FromArgb(250, 82, 82);
-            btnLogout.RectSelectedColor = Color.FromArgb(250, 82, 82);
-            btnLogout.Size = new Size(106, 33);
-            btnLogout.TabIndex = 324;
-            btnLogout.Text = "Đăng xuất";
-            btnLogout.TipsFont = new Font("Microsoft Sans Serif", 9F);
-            // 
-            // btnAccountInformation
-            // 
-            btnAccountInformation.BackgroundImageLayout = ImageLayout.None;
-            btnAccountInformation.Cursor = Cursors.Hand;
-            btnAccountInformation.FlatAppearance.BorderSize = 0;
-            btnAccountInformation.FlatStyle = FlatStyle.Flat;
-            btnAccountInformation.Font = new Font("Segoe UI", 9F);
-            btnAccountInformation.ForeColor = Color.FromArgb(28, 28, 28);
-            btnAccountInformation.Image = Resources.settings_16;
-            btnAccountInformation.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAccountInformation.ImeMode = ImeMode.NoControl;
-            btnAccountInformation.Location = new Point(59, 16);
-            btnAccountInformation.Name = "btnAccountInformation";
-            btnAccountInformation.Size = new Size(166, 24);
-            btnAccountInformation.TabIndex = 323;
-            btnAccountInformation.Text = "   Thông tin tài khoản";
-            btnAccountInformation.TextAlign = ContentAlignment.MiddleLeft;
-            btnAccountInformation.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAccountInformation.UseVisualStyleBackColor = true;
             // 
             // uc_ManageDepartment_Action
             // 
@@ -432,19 +434,19 @@ namespace UniversitySchedule.View.ManageDepartment
         private Panel pnBackButtonAddCourse;
         private Button btnAddCourse;
         private Panel pnAddCourse;
-        private Panel panel1;
+        private Panel pnBottomAddDepartment;
         private Panel pnBackButtonAddRoom;
         private Button btnAddRoom;
         private Panel pnAddRoom;
-        private Panel panel6;
+        private Panel pnBottomAddCourse;
         private Panel pnBackButtonManageInstructor;
         private Button btnManageInstructor;
         private Panel pnManageInstructor;
-        private Panel panel8;
+        private Panel pnBottomManageCourse;
         private Panel pnBackButtonManageCourse;
         private Button btnManageCourse;
         private Panel pnManageCourse;
-        private Panel panel4;
+        private Panel pnBottomAddRoom;
         private Sunny.UI.UIButton btnLogout;
         private Button btnAccountInformation;
     }

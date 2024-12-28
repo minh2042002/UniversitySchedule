@@ -34,18 +34,7 @@ namespace UniversitySchedule.View
         {
             try
             {
-                if ((int)UserLogin.Role != 0)
-                {
-                    btnManageDepartment.Enabled = false;
-                    btnManageDepartment.Visible = false;
-
-                    btnManageAccount.Enabled = false;
-                    btnManageAccount.Visible = false;
-
-                    btnCreateSchedule.Enabled = false;
-                    btnCreateSchedule.Visible = false;
-                }
-                else
+                if (UserLogin.User.Role == Role.Admin)
                 {
                     btnManageDepartment.Enabled = true;
                     btnManageDepartment.Visible = true;
@@ -55,6 +44,28 @@ namespace UniversitySchedule.View
 
                     btnCreateSchedule.Enabled = true;
                     btnCreateSchedule.Visible = true;
+                }
+                else if (UserLogin.User.Role == Role.Head)
+                {
+                    btnManageDepartment.Enabled = true;
+                    btnManageDepartment.Visible = true;
+
+                    btnManageAccount.Enabled = false;
+                    btnManageAccount.Visible = false;
+
+                    btnCreateSchedule.Enabled = false;
+                    btnCreateSchedule.Visible = false;
+                }
+                else if (UserLogin.User.Role == Role.Instructor)
+                {
+                    btnManageDepartment.Enabled = false;
+                    btnManageDepartment.Visible = false;
+
+                    btnManageAccount.Enabled = false;
+                    btnManageAccount.Visible = false;
+
+                    btnCreateSchedule.Enabled = false;
+                    btnCreateSchedule.Visible = false;
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
@@ -73,7 +84,7 @@ namespace UniversitySchedule.View
                     uc_ManageSchedule_Action.TabIndex = 0;
                 }
 
-                if (uc_ManageDepartment_Action == null && (int)UserLogin.Role == 0)
+                if (uc_ManageDepartment_Action == null && (int)UserLogin.User.Role == 0)
                 {
                     uc_ManageDepartment_Action = new uc_ManageDepartment_Action();
                     uc_ManageDepartment_Action.Dock = DockStyle.Fill;
@@ -82,7 +93,7 @@ namespace UniversitySchedule.View
                     uc_ManageDepartment_Action.TabIndex = 0;
                 }
 
-                if (uc_ManageAccount_Action == null && (int)UserLogin.Role == 0)
+                if (uc_ManageAccount_Action == null && (int)UserLogin.User.Role == 0)
                 {
                     uc_ManageAccount_Action = new uc_ManageAccount_Action();
                     uc_ManageAccount_Action.Dock = DockStyle.Fill;
@@ -91,7 +102,7 @@ namespace UniversitySchedule.View
                     uc_ManageAccount_Action.TabIndex = 0;
                 }
 
-                if (uc_CreateSchedule_Action == null && (int)UserLogin.Role == 0)
+                if (uc_CreateSchedule_Action == null && (int)UserLogin.User.Role == 0)
                 {
                     uc_CreateSchedule_Action = new uc_CreateSchedule_Action();
                     uc_CreateSchedule_Action.Dock = DockStyle.Fill;

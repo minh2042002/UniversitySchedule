@@ -61,6 +61,7 @@ namespace UniversitySchedule.Migrations
                 {
                     id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    name = table.Column<string>(type: "TEXT", nullable: false),
                     active = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

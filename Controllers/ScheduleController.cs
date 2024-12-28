@@ -26,7 +26,32 @@ namespace UniversitySchedule.Controllers
             return _instance;
         }
 
-        public Schedule GetScheduleActiveDetail()
+        public List<Schedule> GetAllSchedule()
+        {
+            List<Schedule> schedules = new List<Schedule>();
+            try
+            {
+                using (var dbContext = new UniversityScheduleContext())
+                {
+                    List<Schedule> dbSchedules = dbContext.Schedules.AsNoTracking().ToList();
+                    if (dbSchedules.Count > 0)
+                    {
+                        dbSchedules.ForEach(s =>
+                        {
+                            Schedule scheduleDetail = GetScheduleDetailById(s.Id);
+                            if (scheduleDetail != null)
+                            {
+                                schedules.Add(scheduleDetail);
+                            }
+                        });
+                    }
+                }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+            return schedules;
+        }
+
+        public Schedule? GetScheduleActiveDetail()
         {
             Schedule? schedule = null;
             try

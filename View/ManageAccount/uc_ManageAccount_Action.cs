@@ -21,7 +21,7 @@ namespace UniversitySchedule.View.ManageAccount
             InitializeComponent();
         }
 
-        public static User currentUser;
+        private static User currentUser;
 
         private void HighlightButtonClicked(string button)
         {
@@ -136,7 +136,7 @@ namespace UniversitySchedule.View.ManageAccount
             try
             {
                 currentUser = dgvUser.CurrentRow.Tag as User;
-                frm_UserInformation frm_UserInformation = new frm_UserInformation();
+                frm_UserInformation frm_UserInformation = new frm_UserInformation(currentUser);
                 frm_UserInformation.ShowDialog();
                 LoadUserByRoleSelected();
             }
@@ -172,7 +172,32 @@ namespace UniversitySchedule.View.ManageAccount
 
         private void uc_ManageAccount_Action_Load(object sender, EventArgs e)
         {
-            InitIconButton();
+            try
+            {
+                InitIconButton();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UserLogin.User = null;
+                Thread thread = new Thread(new ThreadStart(() =>
+                {
+                    try
+                    {
+                        frm_Login frm_Login = new frm_Login(isLogout: true);
+                        frm_Login.ShowDialog();
+                    }
+                    catch (Exception ex) { Log4Net.LogException(ex, ""); }
+                }));
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+                Application.Exit();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
     }
 }

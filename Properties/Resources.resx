@@ -127,6 +127,9 @@
   <data name="checked-checkbox-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\checked-checkbox-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="un-check-all-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\un-check-all-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="book-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\book-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,8 +139,8 @@
   <data name="department-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\department-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lecture-hall-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lecture-hall-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="teacher-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\teacher-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="unit-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unit-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,17 +154,11 @@
   <data name="edit-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="city-background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\city-background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="note-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\note-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="leader-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\leader-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="select-all-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\select-all-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="teacher-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\teacher-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="book-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\book-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,11 +169,17 @@
   <data name="calendar-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendar-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="settings-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logo_hust" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_hust.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="un-checked-checkbox-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\un-checked-checkbox-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hust-background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hust-background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="leader-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\leader-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="schedule-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\schedule-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,11 +187,17 @@
   <data name="close-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="student-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\student-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="calendar-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendar-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lecture-hall-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lecture-hall-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="teacher-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\teacher-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lecture-hall-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lecture-hall-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo-soict-hust-1024x416" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo-soict-hust-1024x416.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,14 +205,14 @@
   <data name="remove-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\remove-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hust-background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hust-background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="note-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\note-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="user-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="unit-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\unit-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="un-checked-checkbox-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\un-checked-checkbox-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="refresh-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refresh-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,19 +229,22 @@
   <data name="department-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\department-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="teacher-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\teacher-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="city-background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\city-background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="user-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lecture-hall-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lecture-hall-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="unit-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\unit-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="settings-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="student-24-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\student-24-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="un-check-all-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\un-check-all-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="eye-hide-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye-hide-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eye-show-24-red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye-show-24-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

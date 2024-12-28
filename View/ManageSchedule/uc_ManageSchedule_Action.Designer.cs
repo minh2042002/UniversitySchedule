@@ -392,6 +392,7 @@
             btnLogout.TabIndex = 324;
             btnLogout.Text = "Đăng xuất";
             btnLogout.TipsFont = new Font("Microsoft Sans Serif", 9F);
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnAccountInformation
             // 
@@ -412,6 +413,7 @@
             btnAccountInformation.TextAlign = ContentAlignment.MiddleLeft;
             btnAccountInformation.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAccountInformation.UseVisualStyleBackColor = true;
+            btnAccountInformation.Click += btnAccountInformation_Click;
             // 
             // uc_ManageSchedule_Action
             // 

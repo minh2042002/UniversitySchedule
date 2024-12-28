@@ -2,14 +2,14 @@
 using UniversitySchedule.Controllers;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
-using static UniversitySchedule.View.ManageAccount.uc_ManageAccount_Action;
 namespace UniversitySchedule.View.ManageAccount
 {
     public partial class frm_UserInformation : Form
     {
-        public frm_UserInformation()
+        public frm_UserInformation(User user)
         {
             update_mode = true;
+            currentUser = user;
             InitializeComponent();
         }
 
@@ -20,15 +20,19 @@ namespace UniversitySchedule.View.ManageAccount
             InitializeComponent();
         }
 
+        private bool HidePassword = true;
         private bool update_mode = false;
         private Role role;
         private Information currentInformation;
+        private User currentUser;
         private List<Department> departments;
 
         private void frm_UserInformation_Load(object sender, EventArgs e)
         {
             try
             {
+                HidePassword = true;
+                btnHidePassword.BackgroundImage = Properties.Resources.eye_hide_24_red;
                 if (update_mode)
                 {
                     pnAccount.Visible = false;
@@ -182,6 +186,25 @@ namespace UniversitySchedule.View.ManageAccount
                     {
                         MessageBox.Show(message);
                     }
+                }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void btnHidePassword_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                HidePassword = !HidePassword;
+                if (HidePassword)
+                {
+                    txtPassword.PasswordChar = '*';
+                    btnHidePassword.BackgroundImage = Properties.Resources.eye_hide_24_red;
+                }
+                else
+                {
+                    txtPassword.PasswordChar = '\0';
+                    btnHidePassword.BackgroundImage = Properties.Resources.eye_show_24_red;
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }

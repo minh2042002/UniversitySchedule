@@ -55,14 +55,24 @@ namespace UniversitySchedule.View.ManageDepartment
         {
             try
             {
-                departments = DepartmentController.Instance().GetAllDepartment()?.ToList() ?? new List<Department>();
-                if (departments.Count() > 0)
+                if (UserLogin.User.Role == Role.Admin)
                 {
-                    cmbDepartment.Items.Clear();
-                    foreach (Department department in departments)
+                    departments = DepartmentController.Instance().GetAllDepartment()?.ToList() ?? new List<Department>();
+                    if (departments.Count() > 0)
                     {
-                        cmbDepartment.Items.Add(department.Name);
+                        cmbDepartment.Items.Clear();
+                        foreach (Department department in departments)
+                        {
+                            cmbDepartment.Items.Add(department.Name);
+                        }
                     }
+                }
+                else if (UserLogin.User.Role == Role.Head)
+                {
+                    Department department = DepartmentController.Instance().GetDepartmentByName(UserLogin.User.Instructor.Department.Name);
+                    cmbDepartment.Items.Clear();
+                    cmbDepartment.Items.Add(department.Name);
+                    cmbDepartment.SelectedIndex = 0;
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }

@@ -667,6 +667,11 @@ namespace UniversitySchedule.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("active");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("name");
+
                     b.HasKey("Id");
 
                     b.ToTable("Schedule", (string)null);

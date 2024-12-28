@@ -31,13 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Login));
             pnMain = new Panel();
             pnLogin = new Panel();
+            pnPassword = new Sunny.UI.UIPanel();
+            txtPassword = new Sunny.UI.UITextBox();
+            btnHidePassword = new Sunny.UI.UIImageButton();
             uiLabel2 = new Sunny.UI.UILabel();
             chkRemember = new Sunny.UI.UICheckBox();
             btnLogin = new Sunny.UI.UIButton();
             lblUsername = new Sunny.UI.UILabel();
             uiLabel1 = new Sunny.UI.UILabel();
             txtUsername = new Sunny.UI.UITextBox();
-            txtPassword = new Sunny.UI.UITextBox();
             panel2 = new Panel();
             btnHideForm = new Sunny.UI.UIImageButton();
             btnCloseForm = new Sunny.UI.UIImageButton();
@@ -45,6 +47,8 @@
             pnBackground = new Panel();
             pnMain.SuspendLayout();
             pnLogin.SuspendLayout();
+            pnPassword.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnHidePassword).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnHideForm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseForm).BeginInit();
@@ -65,18 +69,71 @@
             // 
             // pnLogin
             // 
+            pnLogin.Controls.Add(pnPassword);
             pnLogin.Controls.Add(uiLabel2);
             pnLogin.Controls.Add(chkRemember);
             pnLogin.Controls.Add(btnLogin);
             pnLogin.Controls.Add(lblUsername);
             pnLogin.Controls.Add(uiLabel1);
             pnLogin.Controls.Add(txtUsername);
-            pnLogin.Controls.Add(txtPassword);
             pnLogin.Dock = DockStyle.Fill;
             pnLogin.Location = new Point(334, 30);
             pnLogin.Name = "pnLogin";
             pnLogin.Size = new Size(403, 470);
             pnLogin.TabIndex = 8;
+            // 
+            // pnPassword
+            // 
+            pnPassword.Controls.Add(txtPassword);
+            pnPassword.Controls.Add(btnHidePassword);
+            pnPassword.FillColor = Color.White;
+            pnPassword.FillColor2 = Color.White;
+            pnPassword.FillDisableColor = Color.White;
+            pnPassword.Font = new Font("Microsoft Sans Serif", 12F);
+            pnPassword.Location = new Point(126, 225);
+            pnPassword.Margin = new Padding(4, 5, 4, 5);
+            pnPassword.MinimumSize = new Size(1, 1);
+            pnPassword.Name = "pnPassword";
+            pnPassword.Padding = new Padding(2, 2, 5, 2);
+            pnPassword.Radius = 10;
+            pnPassword.RectColor = Color.FromArgb(250, 82, 82);
+            pnPassword.Size = new Size(240, 35);
+            pnPassword.TabIndex = 12;
+            pnPassword.Text = null;
+            pnPassword.TextAlignment = ContentAlignment.MiddleCenter;
+            // 
+            // txtPassword
+            // 
+            txtPassword.Dock = DockStyle.Fill;
+            txtPassword.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            txtPassword.Location = new Point(2, 2);
+            txtPassword.Margin = new Padding(4, 5, 4, 5);
+            txtPassword.MinimumSize = new Size(1, 16);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Padding = new Padding(15, 5, 5, 5);
+            txtPassword.PasswordChar = '*';
+            txtPassword.Radius = 10;
+            txtPassword.RectColor = Color.Transparent;
+            txtPassword.ScrollBarColor = Color.FromArgb(250, 82, 82);
+            txtPassword.ScrollBarStyleInherited = false;
+            txtPassword.ShowText = false;
+            txtPassword.Size = new Size(213, 31);
+            txtPassword.TabIndex = 6;
+            txtPassword.TextAlignment = ContentAlignment.MiddleLeft;
+            txtPassword.Watermark = "";
+            // 
+            // btnHidePassword
+            // 
+            btnHidePassword.BackgroundImageLayout = ImageLayout.Zoom;
+            btnHidePassword.Dock = DockStyle.Right;
+            btnHidePassword.Font = new Font("Microsoft Sans Serif", 12F);
+            btnHidePassword.Location = new Point(215, 2);
+            btnHidePassword.Name = "btnHidePassword";
+            btnHidePassword.Size = new Size(20, 31);
+            btnHidePassword.TabIndex = 11;
+            btnHidePassword.TabStop = false;
+            btnHidePassword.Text = null;
+            btnHidePassword.Click += btnHidePassword_Click;
             // 
             // uiLabel2
             // 
@@ -93,10 +150,10 @@
             chkRemember.CheckBoxColor = Color.FromArgb(250, 82, 82);
             chkRemember.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             chkRemember.ForeColor = Color.FromArgb(48, 48, 48);
-            chkRemember.Location = new Point(126, 271);
+            chkRemember.Location = new Point(126, 267);
             chkRemember.MinimumSize = new Size(1, 1);
             chkRemember.Name = "chkRemember";
-            chkRemember.Size = new Size(240, 29);
+            chkRemember.Size = new Size(181, 29);
             chkRemember.TabIndex = 9;
             chkRemember.Text = "Nhớ tôi";
             // 
@@ -164,25 +221,6 @@
             txtUsername.TabIndex = 4;
             txtUsername.TextAlignment = ContentAlignment.MiddleLeft;
             txtUsername.Watermark = "";
-            // 
-            // txtPassword
-            // 
-            txtPassword.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            txtPassword.Location = new Point(126, 225);
-            txtPassword.Margin = new Padding(4, 5, 4, 5);
-            txtPassword.MinimumSize = new Size(1, 16);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Padding = new Padding(15, 5, 5, 5);
-            txtPassword.PasswordChar = '*';
-            txtPassword.Radius = 10;
-            txtPassword.RectColor = Color.FromArgb(250, 82, 82);
-            txtPassword.ScrollBarColor = Color.FromArgb(250, 82, 82);
-            txtPassword.ScrollBarStyleInherited = false;
-            txtPassword.ShowText = false;
-            txtPassword.Size = new Size(240, 35);
-            txtPassword.TabIndex = 6;
-            txtPassword.TextAlignment = ContentAlignment.MiddleLeft;
-            txtPassword.Watermark = "";
             // 
             // panel2
             // 
@@ -260,6 +298,8 @@
             Load += frm_Login_Load;
             pnMain.ResumeLayout(false);
             pnLogin.ResumeLayout(false);
+            pnPassword.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)btnHidePassword).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnHideForm).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseForm).EndInit();
@@ -283,5 +323,7 @@
         private Sunny.UI.UICheckBox chkRemember;
         private Sunny.UI.UIButton btnLogin;
         private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UIImageButton btnHidePassword;
+        private Sunny.UI.UIPanel pnPassword;
     }
 }

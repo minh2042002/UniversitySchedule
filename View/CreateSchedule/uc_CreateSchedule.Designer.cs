@@ -1,6 +1,6 @@
 ﻿namespace UniversitySchedule.View.CreateSchedule
 {
-    partial class uc_CreateSchedule_Action
+    partial class uc_CreateSchedule
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             pnBackground = new Panel();
-            pnMain = new Panel();
             uiGroupBox1 = new Sunny.UI.UIGroupBox();
             panel2 = new Panel();
             panel7 = new Panel();
@@ -48,60 +46,27 @@
             room = new DataGridViewTextBoxColumn();
             instructor = new DataGridViewTextBoxColumn();
             max_student = new DataGridViewTextBoxColumn();
-            cmsSchedule = new ContextMenuStrip(components);
-            setActive = new ToolStripMenuItem();
             panel3 = new Panel();
-            cmbSchedule = new Sunny.UI.UIComboBox();
-            btnLoad = new Sunny.UI.UIButton();
-            btnReload = new Sunny.UI.UISymbolButton();
             btnExportExcel = new Sunny.UI.UIButton();
             btnCreateSchedule = new Sunny.UI.UIButton();
             btnSave = new Sunny.UI.UIButton();
-            pnButton = new Panel();
-            pnHeaderButton = new Panel();
-            pnBackButtonManageSchedule = new Panel();
-            btnManageSchedule = new Button();
-            pnManageSchedule = new Panel();
-            panel4 = new Panel();
-            pnBackButtonSchedule = new Panel();
-            btnSchedule = new Button();
-            pnSchedule = new Panel();
-            pnBottomButton = new Panel();
-            btnLogout = new Sunny.UI.UIButton();
             pnBackground.SuspendLayout();
-            pnMain.SuspendLayout();
             uiGroupBox1.SuspendLayout();
             panel2.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSchedule).BeginInit();
-            cmsSchedule.SuspendLayout();
             panel3.SuspendLayout();
-            pnButton.SuspendLayout();
-            pnHeaderButton.SuspendLayout();
-            pnBackButtonManageSchedule.SuspendLayout();
-            pnBackButtonSchedule.SuspendLayout();
-            pnBottomButton.SuspendLayout();
             SuspendLayout();
             // 
             // pnBackground
             // 
-            pnBackground.Controls.Add(pnMain);
-            pnBackground.Controls.Add(pnButton);
+            pnBackground.Controls.Add(uiGroupBox1);
             pnBackground.Dock = DockStyle.Fill;
             pnBackground.Location = new Point(0, 0);
             pnBackground.Name = "pnBackground";
-            pnBackground.Size = new Size(1364, 591);
+            pnBackground.Padding = new Padding(5);
+            pnBackground.Size = new Size(1079, 591);
             pnBackground.TabIndex = 3;
-            // 
-            // pnMain
-            // 
-            pnMain.Controls.Add(uiGroupBox1);
-            pnMain.Dock = DockStyle.Fill;
-            pnMain.Location = new Point(285, 0);
-            pnMain.Name = "pnMain";
-            pnMain.Padding = new Padding(5);
-            pnMain.Size = new Size(1079, 591);
-            pnMain.TabIndex = 2;
             // 
             // uiGroupBox1
             // 
@@ -171,11 +136,10 @@
             dgvSchedule.ColumnHeadersHeight = 40;
             dgvSchedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvSchedule.Columns.AddRange(new DataGridViewColumn[] { stt, department, course, day, meeting_time, room, instructor, max_student });
-            dgvSchedule.ContextMenuStrip = cmsSchedule;
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = Color.White;
             dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle8.ForeColor = Color.FromArgb(48, 48, 48);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(250, 82, 82);
             dataGridViewCellStyle8.Padding = new Padding(2, 10, 2, 10);
             dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
@@ -290,27 +254,10 @@
             max_student.ReadOnly = true;
             max_student.Width = 200;
             // 
-            // cmsSchedule
-            // 
-            cmsSchedule.Items.AddRange(new ToolStripItem[] { setActive });
-            cmsSchedule.Name = "cmsCalendar";
-            cmsSchedule.Size = new Size(257, 26);
-            // 
-            // setActive
-            // 
-            setActive.Image = Properties.Resources.schedule_24_red;
-            setActive.Name = "setActive";
-            setActive.Size = new Size(256, 22);
-            setActive.Text = "Lưu làm thời khóa biểu chính thức";
-            setActive.Click += setActive_Click;
-            // 
             // panel3
             // 
             panel3.AutoScroll = true;
             panel3.AutoScrollMinSize = new Size(1065, 68);
-            panel3.Controls.Add(cmbSchedule);
-            panel3.Controls.Add(btnLoad);
-            panel3.Controls.Add(btnReload);
             panel3.Controls.Add(btnExportExcel);
             panel3.Controls.Add(btnCreateSchedule);
             panel3.Controls.Add(btnSave);
@@ -319,83 +266,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(1065, 77);
             panel3.TabIndex = 4;
-            // 
-            // cmbSchedule
-            // 
-            cmbSchedule.DataSource = null;
-            cmbSchedule.FillColor = Color.White;
-            cmbSchedule.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cmbSchedule.ItemHoverColor = Color.FromArgb(250, 82, 82);
-            cmbSchedule.ItemRectColor = Color.FromArgb(250, 82, 82);
-            cmbSchedule.ItemSelectBackColor = Color.White;
-            cmbSchedule.ItemSelectForeColor = Color.Black;
-            cmbSchedule.Location = new Point(54, 22);
-            cmbSchedule.Margin = new Padding(4, 5, 4, 5);
-            cmbSchedule.MinimumSize = new Size(63, 0);
-            cmbSchedule.Name = "cmbSchedule";
-            cmbSchedule.Padding = new Padding(0, 0, 30, 2);
-            cmbSchedule.Radius = 10;
-            cmbSchedule.RectColor = Color.FromArgb(250, 82, 82);
-            cmbSchedule.Size = new Size(220, 33);
-            cmbSchedule.SymbolSize = 24;
-            cmbSchedule.TabIndex = 326;
-            cmbSchedule.TextAlignment = ContentAlignment.MiddleLeft;
-            cmbSchedule.Watermark = "";
-            // 
-            // btnLoad
-            // 
-            btnLoad.FillColor = Color.FromArgb(250, 82, 82);
-            btnLoad.FillColor2 = Color.FromArgb(250, 82, 82);
-            btnLoad.FillDisableColor = Color.White;
-            btnLoad.FillHoverColor = Color.White;
-            btnLoad.FillPressColor = Color.White;
-            btnLoad.FillSelectedColor = Color.White;
-            btnLoad.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLoad.ForeHoverColor = Color.Black;
-            btnLoad.ForePressColor = Color.Black;
-            btnLoad.ForeSelectedColor = Color.Black;
-            btnLoad.Location = new Point(291, 22);
-            btnLoad.MinimumSize = new Size(1, 1);
-            btnLoad.Name = "btnLoad";
-            btnLoad.Radius = 10;
-            btnLoad.RectColor = Color.FromArgb(250, 82, 82);
-            btnLoad.RectDisableColor = Color.FromArgb(250, 82, 82);
-            btnLoad.RectHoverColor = Color.FromArgb(250, 82, 82);
-            btnLoad.RectPressColor = Color.FromArgb(250, 82, 82);
-            btnLoad.RectSelectedColor = Color.FromArgb(250, 82, 82);
-            btnLoad.Size = new Size(92, 33);
-            btnLoad.TabIndex = 325;
-            btnLoad.Text = "LOAD";
-            btnLoad.TipsFont = new Font("Microsoft Sans Serif", 9F);
-            btnLoad.Click += btnLoad_Click;
-            // 
-            // btnReload
-            // 
-            btnReload.Cursor = Cursors.Hand;
-            btnReload.FillColor = Color.White;
-            btnReload.FillColor2 = Color.White;
-            btnReload.FillHoverColor = Color.White;
-            btnReload.FillPressColor = Color.White;
-            btnReload.FillSelectedColor = Color.White;
-            btnReload.Font = new Font("Microsoft YaHei", 12F);
-            btnReload.ForeDisableColor = Color.White;
-            btnReload.Image = Properties.Resources.refresh_24_red;
-            btnReload.IsCircle = true;
-            btnReload.Location = new Point(5, 18);
-            btnReload.Margin = new Padding(2);
-            btnReload.MinimumSize = new Size(1, 1);
-            btnReload.Name = "btnReload";
-            btnReload.RectColor = Color.White;
-            btnReload.RectHoverColor = Color.White;
-            btnReload.RectPressColor = Color.White;
-            btnReload.RectSelectedColor = Color.White;
-            btnReload.Size = new Size(40, 40);
-            btnReload.Style = Sunny.UI.UIStyle.Custom;
-            btnReload.StyleCustomMode = true;
-            btnReload.TabIndex = 324;
-            btnReload.TipsColor = Color.FromArgb(0, 104, 196);
-            btnReload.TipsFont = new Font("Microsoft Sans Serif", 9F);
-            btnReload.Click += btnReload_Click;
             // 
             // btnExportExcel
             // 
@@ -482,197 +352,32 @@
             btnSave.TipsFont = new Font("Microsoft Sans Serif", 9F);
             btnSave.Click += btnSave_Click;
             // 
-            // pnButton
+            // uc_CreateSchedule
             // 
-            pnButton.Controls.Add(pnHeaderButton);
-            pnButton.Controls.Add(pnBottomButton);
-            pnButton.Dock = DockStyle.Left;
-            pnButton.Location = new Point(0, 0);
-            pnButton.MaximumSize = new Size(285, 591);
-            pnButton.Name = "pnButton";
-            pnButton.Size = new Size(285, 591);
-            pnButton.TabIndex = 0;
-            // 
-            // pnHeaderButton
-            // 
-            pnHeaderButton.Controls.Add(pnBackButtonManageSchedule);
-            pnHeaderButton.Controls.Add(panel4);
-            pnHeaderButton.Controls.Add(pnBackButtonSchedule);
-            pnHeaderButton.Dock = DockStyle.Fill;
-            pnHeaderButton.Location = new Point(0, 0);
-            pnHeaderButton.Name = "pnHeaderButton";
-            pnHeaderButton.Padding = new Padding(0, 10, 0, 0);
-            pnHeaderButton.Size = new Size(285, 488);
-            pnHeaderButton.TabIndex = 1;
-            // 
-            // pnBackButtonManageSchedule
-            // 
-            pnBackButtonManageSchedule.Controls.Add(btnManageSchedule);
-            pnBackButtonManageSchedule.Controls.Add(pnManageSchedule);
-            pnBackButtonManageSchedule.Dock = DockStyle.Top;
-            pnBackButtonManageSchedule.Location = new Point(0, 65);
-            pnBackButtonManageSchedule.Name = "pnBackButtonManageSchedule";
-            pnBackButtonManageSchedule.Size = new Size(285, 40);
-            pnBackButtonManageSchedule.TabIndex = 168;
-            // 
-            // btnManageSchedule
-            // 
-            btnManageSchedule.Cursor = Cursors.Hand;
-            btnManageSchedule.Dock = DockStyle.Fill;
-            btnManageSchedule.FlatAppearance.BorderSize = 0;
-            btnManageSchedule.FlatStyle = FlatStyle.Flat;
-            btnManageSchedule.Font = new Font("Segoe UI", 12F);
-            btnManageSchedule.ForeColor = Color.FromArgb(28, 28, 28);
-            btnManageSchedule.ImageAlign = ContentAlignment.MiddleLeft;
-            btnManageSchedule.ImeMode = ImeMode.NoControl;
-            btnManageSchedule.Location = new Point(12, 0);
-            btnManageSchedule.Name = "btnManageSchedule";
-            btnManageSchedule.Padding = new Padding(20, 0, 0, 0);
-            btnManageSchedule.Size = new Size(273, 40);
-            btnManageSchedule.TabIndex = 162;
-            btnManageSchedule.Text = "    Xem danh sách thời khóa biểu";
-            btnManageSchedule.TextAlign = ContentAlignment.MiddleLeft;
-            btnManageSchedule.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnManageSchedule.UseVisualStyleBackColor = true;
-            btnManageSchedule.Click += btnManageSchedule_Click;
-            // 
-            // pnManageSchedule
-            // 
-            pnManageSchedule.Dock = DockStyle.Left;
-            pnManageSchedule.Location = new Point(0, 0);
-            pnManageSchedule.Name = "pnManageSchedule";
-            pnManageSchedule.Size = new Size(12, 40);
-            pnManageSchedule.TabIndex = 160;
-            // 
-            // panel4
-            // 
-            panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 50);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(285, 15);
-            panel4.TabIndex = 167;
-            // 
-            // pnBackButtonSchedule
-            // 
-            pnBackButtonSchedule.Controls.Add(btnSchedule);
-            pnBackButtonSchedule.Controls.Add(pnSchedule);
-            pnBackButtonSchedule.Dock = DockStyle.Top;
-            pnBackButtonSchedule.Location = new Point(0, 10);
-            pnBackButtonSchedule.Name = "pnBackButtonSchedule";
-            pnBackButtonSchedule.Size = new Size(285, 40);
-            pnBackButtonSchedule.TabIndex = 164;
-            // 
-            // btnSchedule
-            // 
-            btnSchedule.Cursor = Cursors.Hand;
-            btnSchedule.Dock = DockStyle.Fill;
-            btnSchedule.FlatAppearance.BorderSize = 0;
-            btnSchedule.FlatStyle = FlatStyle.Flat;
-            btnSchedule.Font = new Font("Segoe UI", 12F);
-            btnSchedule.ForeColor = Color.FromArgb(28, 28, 28);
-            btnSchedule.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSchedule.ImeMode = ImeMode.NoControl;
-            btnSchedule.Location = new Point(12, 0);
-            btnSchedule.Name = "btnSchedule";
-            btnSchedule.Padding = new Padding(20, 0, 0, 0);
-            btnSchedule.Size = new Size(273, 40);
-            btnSchedule.TabIndex = 162;
-            btnSchedule.Text = "    Tạo Thời Khóa Biểu";
-            btnSchedule.TextAlign = ContentAlignment.MiddleLeft;
-            btnSchedule.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnSchedule.UseVisualStyleBackColor = true;
-            btnSchedule.Click += btnSchedule_Click;
-            // 
-            // pnSchedule
-            // 
-            pnSchedule.Dock = DockStyle.Left;
-            pnSchedule.Location = new Point(0, 0);
-            pnSchedule.Name = "pnSchedule";
-            pnSchedule.Size = new Size(12, 40);
-            pnSchedule.TabIndex = 160;
-            // 
-            // pnBottomButton
-            // 
-            pnBottomButton.Controls.Add(btnLogout);
-            pnBottomButton.Dock = DockStyle.Bottom;
-            pnBottomButton.Location = new Point(0, 488);
-            pnBottomButton.Name = "pnBottomButton";
-            pnBottomButton.Size = new Size(285, 103);
-            pnBottomButton.TabIndex = 1;
-            // 
-            // btnLogout
-            // 
-            btnLogout.FillColor = Color.FromArgb(250, 82, 82);
-            btnLogout.FillColor2 = Color.FromArgb(250, 82, 82);
-            btnLogout.FillDisableColor = Color.White;
-            btnLogout.FillHoverColor = Color.White;
-            btnLogout.FillPressColor = Color.White;
-            btnLogout.FillSelectedColor = Color.White;
-            btnLogout.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLogout.ForeDisableColor = Color.DarkGray;
-            btnLogout.ForeHoverColor = Color.Black;
-            btnLogout.ForePressColor = Color.Black;
-            btnLogout.ForeSelectedColor = Color.Black;
-            btnLogout.Location = new Point(85, 57);
-            btnLogout.MinimumSize = new Size(1, 1);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Radius = 10;
-            btnLogout.RectColor = Color.FromArgb(250, 82, 82);
-            btnLogout.RectDisableColor = Color.FromArgb(250, 82, 82);
-            btnLogout.RectHoverColor = Color.FromArgb(250, 82, 82);
-            btnLogout.RectPressColor = Color.FromArgb(250, 82, 82);
-            btnLogout.RectSelectedColor = Color.FromArgb(250, 82, 82);
-            btnLogout.Size = new Size(106, 33);
-            btnLogout.TabIndex = 322;
-            btnLogout.Text = "Đăng xuất";
-            btnLogout.TipsFont = new Font("Microsoft Sans Serif", 9F);
-            btnLogout.Click += btnLogout_Click;
-            // 
-            // uc_CreateSchedule_Action
-            // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
-            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(pnBackground);
-            Name = "uc_CreateSchedule_Action";
-            Size = new Size(1364, 591);
-            Load += uc_CreateSchedule_Action_Load;
+            ForeColor = Color.Transparent;
+            Name = "uc_CreateSchedule";
+            Size = new Size(1079, 591);
+            Load += uc_CreateSchedule_Load;
             pnBackground.ResumeLayout(false);
-            pnMain.ResumeLayout(false);
             uiGroupBox1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvSchedule).EndInit();
-            cmsSchedule.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            pnButton.ResumeLayout(false);
-            pnHeaderButton.ResumeLayout(false);
-            pnBackButtonManageSchedule.ResumeLayout(false);
-            pnBackButtonSchedule.ResumeLayout(false);
-            pnBottomButton.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
+
         private Panel pnBackground;
-        private Panel pnMain;
         private Sunny.UI.UIGroupBox uiGroupBox1;
         private Panel panel2;
         private Panel panel7;
         private DataGridView dgvSchedule;
-        private ContextMenuStrip cmsSchedule;
-        private ToolStripMenuItem setActive;
-        private Panel panel3;
-        private Sunny.UI.UIButton btnSave;
-        private Panel pnButton;
-        private Panel pnHeaderButton;
-        private Panel pnBackButtonSchedule;
-        private Button btnSchedule;
-        private Panel pnSchedule;
-        private Panel pnBottomButton;
-        private Sunny.UI.UIButton btnCreateSchedule;
-        private Panel panel4;
-        private Sunny.UI.UIButton btnExportExcel;
         private DataGridViewTextBoxColumn stt;
         private DataGridViewTextBoxColumn department;
         private DataGridViewTextBoxColumn course;
@@ -681,12 +386,9 @@
         private DataGridViewTextBoxColumn room;
         private DataGridViewTextBoxColumn instructor;
         private DataGridViewTextBoxColumn max_student;
-        private Sunny.UI.UIButton btnLogout;
-        private Sunny.UI.UIComboBox cmbSchedule;
-        private Sunny.UI.UIButton btnLoad;
-        private Sunny.UI.UISymbolButton btnReload;
-        private Panel pnBackButtonManageSchedule;
-        private Button btnManageSchedule;
-        private Panel pnManageSchedule;
+        private Panel panel3;
+        private Sunny.UI.UIButton btnExportExcel;
+        private Sunny.UI.UIButton btnCreateSchedule;
+        private Sunny.UI.UIButton btnSave;
     }
 }

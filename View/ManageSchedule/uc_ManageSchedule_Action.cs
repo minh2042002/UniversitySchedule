@@ -12,6 +12,7 @@ using UniversitySchedule.Controllers;
 using UniversitySchedule.Dto;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
+using UniversitySchedule.View.ManageAccount;
 
 namespace UniversitySchedule.View.ManageSchedule
 {
@@ -30,18 +31,28 @@ namespace UniversitySchedule.View.ManageSchedule
         {
             try
             {
-
-                HighlightButtonClicked("schedule");
-                LoadScheduleFromDatabase();
-                if (Role.Instructor == UserLogin.Role)
+                if (UserLogin.User.Role == Role.Admin)
                 {
-                    showAllCalendar.Visible = true;
-                    showTeach.Visible = true;
+                    btnAccountInformation.Enabled = false;
+                    btnAccountInformation.Visible = false;
                 }
                 else
                 {
+                    btnAccountInformation.Enabled = true;
+                    btnAccountInformation.Visible = true;
+                }
+
+                HighlightButtonClicked("schedule");
+                LoadScheduleFromDatabase();
+                if (UserLogin.User.Role == Role.Admin)
+                {
                     showAllCalendar.Visible = false;
                     showTeach.Visible = false;
+                }
+                else
+                {
+                    showAllCalendar.Visible = true;
+                    showTeach.Visible = true;
                 }
             }
             catch (Exception ex)
@@ -182,13 +193,44 @@ namespace UniversitySchedule.View.ManageSchedule
                 {
                     dgvSchedule.Rows.Clear();
                     currentSchedule.Classes
-                                   .Where(c => c.Instructor.UserId == UserLogin.UserId)
+                                   .Where(c => c.Instructor.UserId == UserLogin.User.Id)
                                    .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
                                    .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
                                    .ThenBy(x => x.MeetingTime.EndTime)      // Sắp xếp theo thời gian kết thúc
                                    .ToList()
                                    .ForEach(FillToDgvSchedule);
                 }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void btnAccountInformation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frm_UserInformation frm_UserInformation = new frm_UserInformation(UserLogin.User);
+                frm_UserInformation.ShowDialog();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UserLogin.User = null;
+                Thread thread = new Thread(new ThreadStart(() =>
+                {
+                    try
+                    {
+                        frm_Login frm_Login = new frm_Login(isLogout: true);
+                        frm_Login.ShowDialog();
+                    }
+                    catch (Exception ex) { Log4Net.LogException(ex, ""); }
+                }));
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+                Application.Exit();
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }

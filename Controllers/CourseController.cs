@@ -74,6 +74,7 @@ namespace UniversitySchedule.Controllers
                 {
                     courses = dbContext.Courses
                                        .Include(c => c.Department)
+                                       .Include(c => c.Instructors)
                                        .Where(c => c.DepartmentId == department.Id)
                                        .AsNoTracking()
                                        .ToList();

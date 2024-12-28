@@ -10,7 +10,7 @@ using UniversitySchedule.Models;
 namespace UniversitySchedule.Migrations
 {
     [DbContext(typeof(UniversityScheduleContext))]
-    [Migration("20241221153647_InitCreate")]
+    [Migration("20241228165032_InitCreate")]
     partial class InitCreate
     {
         /// <inheritdoc />
@@ -669,6 +669,11 @@ namespace UniversitySchedule.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER")
                         .HasColumnName("active");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("name");
 
                     b.HasKey("Id");
 

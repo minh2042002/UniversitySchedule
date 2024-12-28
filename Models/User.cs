@@ -22,4 +22,5 @@ public enum Role
 {
     Admin = 0,
     Instructor = 1,
+    Head = 2,
 }

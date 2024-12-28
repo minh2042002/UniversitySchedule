@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using UniversitySchedule.Controllers;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
+using UniversitySchedule.View.ManageAccount;
 
 namespace UniversitySchedule.View.ManageDepartment
 {
@@ -18,11 +19,52 @@ namespace UniversitySchedule.View.ManageDepartment
         public uc_ManageDepartment_Action()
         {
             InitializeComponent();
+            LoadFeatureButtonByRole();
         }
 
         private Button currentButton;
         private uc_ManageCourse uc_ManageCourse;
         private uc_ManageInstructor uc_ManageInstructor;
+
+        private void LoadFeatureButtonByRole()
+        {
+            try
+            {
+                if (UserLogin.User.Role == Role.Admin)
+                {
+                    pnBackButtonAddDepartment.Visible = true;
+                    pnBottomAddDepartment.Visible = true;
+
+                    pnBackButtonAddCourse.Visible = true;
+                    pnBottomAddCourse.Visible = true;
+
+                    pnBackButtonManageCourse.Visible = true;
+                    pnBottomManageCourse.Visible = true;
+
+                    pnBackButtonManageInstructor.Visible = true;
+
+                    pnBackButtonAddRoom.Visible = true;
+                    pnBottomAddRoom.Visible = true;
+                }
+                else if (UserLogin.User.Role == Role.Head)
+                {
+                    pnBackButtonAddDepartment.Visible = false;
+                    pnBottomAddDepartment.Visible = false;
+
+                    pnBackButtonAddCourse.Visible = true;
+                    pnBottomAddCourse.Visible = true;
+
+                    pnBackButtonManageCourse.Visible = true;
+                    pnBottomManageCourse.Visible = true;
+
+                    pnBackButtonManageInstructor.Visible = true;
+
+                    pnBackButtonAddRoom.Visible = false;
+                    pnBottomAddRoom.Visible = false;
+                }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
 
         private void FillUserControlToPanel(string userControl)
         {
@@ -157,9 +199,23 @@ namespace UniversitySchedule.View.ManageDepartment
 
         private void uc_ManageDepartment_Action_Load(object sender, EventArgs e)
         {
-            InitIconButton();
-            HighlightButtonClicked("manage_instructor");
-            FillUserControlToPanel("manage_instructor");
+            try
+            {
+                if (UserLogin.User.Role == Role.Admin)
+                {
+                    btnAccountInformation.Enabled = false;
+                    btnAccountInformation.Visible = false;
+                }
+                else
+                {
+                    btnAccountInformation.Enabled = true;
+                    btnAccountInformation.Visible = true;
+                }
+                InitIconButton();
+                HighlightButtonClicked("manage_instructor");
+                FillUserControlToPanel("manage_instructor");
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
 
         private void btnAddDepartment_Click(object sender, EventArgs e)
@@ -206,6 +262,37 @@ namespace UniversitySchedule.View.ManageDepartment
         {
             HighlightButtonClicked("manage_instructor");
             FillUserControlToPanel("manage_instructor");
+        }
+
+        private void btnAccountInformation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frm_UserInformation frm_UserInformation = new frm_UserInformation(UserLogin.User);
+                frm_UserInformation.ShowDialog();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UserLogin.User = null;
+                Thread thread = new Thread(new ThreadStart(() =>
+                {
+                    try
+                    {
+                        frm_Login frm_Login = new frm_Login(isLogout: true);
+                        frm_Login.ShowDialog();
+                    }
+                    catch (Exception ex) { Log4Net.LogException(ex, ""); }
+                }));
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+                Application.Exit();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
     }
 }

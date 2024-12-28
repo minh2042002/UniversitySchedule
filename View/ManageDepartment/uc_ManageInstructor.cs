@@ -51,8 +51,12 @@ namespace UniversitySchedule.View.ManageDepartment
                 row.Cells.Add(cell5);
 
                 DataGridViewTextBoxCell cell6 = new DataGridViewTextBoxCell();
-                cell6.Value = instructor.Department.Name;
+                cell6.Value = instructor.User.Role == Role.Head ? "Trưởng bộ môn" : instructor.User.Role == Role.Instructor ? "Giảng viên" : "";
                 row.Cells.Add(cell6);
+
+                DataGridViewTextBoxCell cell7 = new DataGridViewTextBoxCell();
+                cell7.Value = instructor.Department.Name;
+                row.Cells.Add(cell7);
 
                 row.Tag = instructor;
 
@@ -68,15 +72,24 @@ namespace UniversitySchedule.View.ManageDepartment
         {
             try
             {
-                List<Department> departments = DepartmentController.Instance().GetAllDepartment()?.ToList() ?? new List<Department>();
-                if (departments.Count() > 0)
+                if (UserLogin.User.Role == Role.Admin)
                 {
-                    cmbDepartment.Items.Clear();
-                    cmbDepartment.Items.Add("Tất cả");
-                    foreach (Department department in departments)
+                    List<Department> departments = DepartmentController.Instance().GetAllDepartment()?.ToList() ?? new List<Department>();
+                    if (departments.Count() > 0)
                     {
-                        cmbDepartment.Items.Add(department.Name);
+                        cmbDepartment.Items.Clear();
+                        cmbDepartment.Items.Add("Tất cả");
+                        foreach (Department department in departments)
+                        {
+                            cmbDepartment.Items.Add(department.Name);
+                        }
                     }
+                }
+                else if (UserLogin.User.Role == Role.Head)
+                {
+                    Department department = DepartmentController.Instance().GetDepartmentByName(UserLogin.User.Instructor.Department.Name);
+                    cmbDepartment.Items.Clear();
+                    cmbDepartment.Items.Add(department.Name);
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
@@ -120,7 +133,27 @@ namespace UniversitySchedule.View.ManageDepartment
 
         private void uc_ManageInstructor_Load(object sender, EventArgs e)
         {
-            LoadDepartmentFromDatabase();
+            try
+            {
+                if (UserLogin.User.Role == Role.Admin)
+                {
+                    moveDepartment.Enabled = true;
+                    moveDepartment.Visible = true;
+
+                    setHead.Enabled = true;
+                    setHead.Visible = true;
+                }
+                else
+                {
+                    moveDepartment.Enabled = false;
+                    moveDepartment.Visible = false;
+
+                    setHead.Enabled = false;
+                    setHead.Visible = false;
+                }
+                LoadDepartmentFromDatabase();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
 
         private void moveDepartment_Click(object sender, EventArgs e)
@@ -142,6 +175,30 @@ namespace UniversitySchedule.View.ManageDepartment
                 currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
                 frm_ChooseCourse frm_ChooseCourse = new frm_ChooseCourse();
                 frm_ChooseCourse.ShowDialog();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void setHead_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
+                int updateResult = UserController.Instance().SetHeadForInstructor(currentInstructor);
+                if (updateResult == 0)
+                {
+                    MessageBox.Show("Không tồn tại giảng viên này!", "Thông Báo");
+                }
+                else if (updateResult == -1)
+                {
+                    MessageBox.Show("Đã xảy ra lỗi vui lòng thử lại!", "Thông Báo");
+                }
+                else if (updateResult == 1)
+                {
+                    MessageBox.Show("Đặt làm trưởng bộ môn thành công.", "Thông báo");
+                }
+
+                LoadInstructorByDepartmentSelected();
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }

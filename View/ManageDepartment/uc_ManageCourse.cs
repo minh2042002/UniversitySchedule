@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using UniversitySchedule.Controllers;
+﻿using UniversitySchedule.Controllers;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
 
@@ -70,15 +61,24 @@ namespace UniversitySchedule.View.ManageDepartment
         {
             try
             {
-                List<Department> departments = DepartmentController.Instance().GetAllDepartment()?.ToList() ?? new List<Department>();
-                if (departments.Count() > 0)
+                if (UserLogin.User.Role == Role.Admin)
                 {
-                    cmbDepartment.Items.Clear();
-                    cmbDepartment.Items.Add("Tất cả");
-                    foreach (Department department in departments)
+                    List<Department> departments = DepartmentController.Instance().GetAllDepartment()?.ToList() ?? new List<Department>();
+                    if (departments.Count() > 0)
                     {
-                        cmbDepartment.Items.Add(department.Name);
+                        cmbDepartment.Items.Clear();
+                        cmbDepartment.Items.Add("Tất cả");
+                        foreach (Department department in departments)
+                        {
+                            cmbDepartment.Items.Add(department.Name);
+                        }
                     }
+                }
+                else if (UserLogin.User.Role == Role.Head)
+                {
+                    Department department = DepartmentController.Instance().GetDepartmentByName(UserLogin.User.Instructor.Department.Name);
+                    cmbDepartment.Items.Clear();
+                    cmbDepartment.Items.Add(department.Name);
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }

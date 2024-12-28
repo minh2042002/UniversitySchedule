@@ -177,6 +177,7 @@ public partial class UniversityScheduleContext : DbContext
             entity.ToTable("Schedule");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Name).HasColumnName("name");
             entity.Property(e => e.IsActive).HasColumnName("active");
         });
 

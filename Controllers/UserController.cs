@@ -64,6 +64,8 @@ namespace UniversitySchedule.Controllers
                     // Tìm người dùng theo tên đăng nhập
                     var user = dbContext.Users
                                         .Include(u => u.Information)
+                                        .Include(u => u.Instructor)
+                                        .ThenInclude(i => i.Department)
                                         .FirstOrDefault(u => u.Username == username);
 
                     // Kiểm tra nếu người dùng tồn tại
@@ -89,24 +91,6 @@ namespace UniversitySchedule.Controllers
             }
         }
 
-
-        public bool IsExists(string username)
-        {
-            try
-            {
-                using (var dbContext = new UniversityScheduleContext())
-                {
-                    return dbContext.Users.Any(u => u.Username == username);
-                }
-            }
-            catch (Exception ex)
-            {
-                Log4Net.LogException(ex, "");
-                return true;
-
-            }
-        }
-
         public (int, string) InsertUserWithInformation(User user)
         {
             try
@@ -125,7 +109,7 @@ namespace UniversitySchedule.Controllers
                         {
                             return (0, "Số điện thoại đã tồn tại!\nVui lòng thử lại với số điện thoại khác.");
                         }
-                        
+
                         if (dbContext.Informations.Any(i => i.Email == user.Information.Email))
                         {
                             return (0, "Email đã tồn tại!\nVui lòng thử lại với email khác");
@@ -156,6 +140,59 @@ namespace UniversitySchedule.Controllers
                 return (-1, "Đã xảy ra lỗi vui lòng thử lại!");
             }
         }
+
+        public int SetHeadForInstructor(Instructor instructor)
+        {
+            try
+            {
+                using (var dbContext = new UniversityScheduleContext())
+                using (var transaction = dbContext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var newHeadInstructor = dbContext.Instructors
+                                                         .Include(i => i.User)
+                                                         .FirstOrDefault(i => i.Id == instructor.Id);
+
+                        if (newHeadInstructor == null || newHeadInstructor.User == null)
+                        {
+                            return 0;
+                        }
+
+                        var department = dbContext.Departments
+                                                  .Include(d => d.Instructors)
+                                                  .ThenInclude(i => i.User)
+                                                  .FirstOrDefault(d => d.Id == newHeadInstructor.DepartmentId);
+
+                        var currentHead = department.Instructors
+                                                    .FirstOrDefault(i => i.User.Role == Role.Head);
+
+                        if (currentHead != null && currentHead.Id != newHeadInstructor.Id)
+                        {
+                            currentHead.User.Role = Role.Instructor;
+                        }
+
+                        newHeadInstructor.User.Role = Role.Head;
+
+                        dbContext.SaveChanges();
+                        transaction.Commit();
+                        return 1;
+                    }
+                    catch (Exception ex)
+                    {
+                        Log4Net.LogException(ex, "Lỗi trong SetHeadForInstructor");
+                        transaction.Rollback();
+                        return -1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log4Net.LogException(ex, "Lỗi ngoài giao dịch trong SetHeadForInstructor");
+                return -1;
+            }
+        }
+
 
         public int DeleteUser(User user)
         {

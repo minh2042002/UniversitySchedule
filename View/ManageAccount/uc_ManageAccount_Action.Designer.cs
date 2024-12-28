@@ -61,7 +61,6 @@
             pnAddInstructor = new Panel();
             pnBottomButton = new Panel();
             btnLogout = new Sunny.UI.UIButton();
-            btnAccountInformation = new Button();
             pnMain.SuspendLayout();
             uiGroupBox1.SuspendLayout();
             panel2.SuspendLayout();
@@ -444,7 +443,6 @@
             // pnBottomButton
             // 
             pnBottomButton.Controls.Add(btnLogout);
-            pnBottomButton.Controls.Add(btnAccountInformation);
             pnBottomButton.Dock = DockStyle.Bottom;
             pnBottomButton.Location = new Point(0, 488);
             pnBottomButton.Name = "pnBottomButton";
@@ -477,26 +475,7 @@
             btnLogout.TabIndex = 324;
             btnLogout.Text = "Đăng xuất";
             btnLogout.TipsFont = new Font("Microsoft Sans Serif", 9F);
-            // 
-            // btnAccountInformation
-            // 
-            btnAccountInformation.BackgroundImageLayout = ImageLayout.None;
-            btnAccountInformation.Cursor = Cursors.Hand;
-            btnAccountInformation.FlatAppearance.BorderSize = 0;
-            btnAccountInformation.FlatStyle = FlatStyle.Flat;
-            btnAccountInformation.Font = new Font("Segoe UI", 9F);
-            btnAccountInformation.ForeColor = Color.FromArgb(28, 28, 28);
-            btnAccountInformation.Image = Properties.Resources.settings_16;
-            btnAccountInformation.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAccountInformation.ImeMode = ImeMode.NoControl;
-            btnAccountInformation.Location = new Point(59, 16);
-            btnAccountInformation.Name = "btnAccountInformation";
-            btnAccountInformation.Size = new Size(166, 24);
-            btnAccountInformation.TabIndex = 323;
-            btnAccountInformation.Text = "   Thông tin tài khoản";
-            btnAccountInformation.TextAlign = ContentAlignment.MiddleLeft;
-            btnAccountInformation.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAccountInformation.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // uc_ManageAccount_Action
             // 
@@ -551,6 +530,5 @@
         private Sunny.UI.UISymbolButton btnSearch;
         private Sunny.UI.UIButton btnLoad;
         private Sunny.UI.UIButton btnLogout;
-        private Button btnAccountInformation;
     }
 }

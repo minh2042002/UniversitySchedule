@@ -193,6 +193,26 @@ namespace UniversitySchedule.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eye_hide_24_red {
+            get {
+                object obj = ResourceManager.GetObject("eye-hide-24-red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye_show_24_red {
+            get {
+                object obj = ResourceManager.GetObject("eye-show-24-red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hide_form_50 {
             get {
                 object obj = ResourceManager.GetObject("hide-form-50", resourceCulture);
@@ -206,6 +226,26 @@ namespace UniversitySchedule.Properties {
         internal static System.Drawing.Bitmap hust_background {
             get {
                 object obj = ResourceManager.GetObject("hust-background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap leader_24_black {
+            get {
+                object obj = ResourceManager.GetObject("leader-24-black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap leader_24_red {
+            get {
+                object obj = ResourceManager.GetObject("leader-24-red", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
