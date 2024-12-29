@@ -52,6 +52,8 @@
             showAllCalendar = new ToolStripMenuItem();
             showTeach = new ToolStripMenuItem();
             pnButton = new Panel();
+            cmsAccount = new ContextMenuStrip(components);
+            manageCourse = new ToolStripMenuItem();
             pnHeaderButton = new Panel();
             pnBackButtonSchedule = new Panel();
             btnSchedule = new Button();
@@ -66,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvSchedule).BeginInit();
             cmsCalendar.SuspendLayout();
             pnButton.SuspendLayout();
+            cmsAccount.SuspendLayout();
             pnHeaderButton.SuspendLayout();
             pnBackButtonSchedule.SuspendLayout();
             pnBottomButton.SuspendLayout();
@@ -299,6 +302,7 @@
             // 
             // pnButton
             // 
+            pnButton.ContextMenuStrip = cmsAccount;
             pnButton.Controls.Add(pnHeaderButton);
             pnButton.Controls.Add(pnBottomButton);
             pnButton.Dock = DockStyle.Left;
@@ -307,6 +311,20 @@
             pnButton.Name = "pnButton";
             pnButton.Size = new Size(285, 591);
             pnButton.TabIndex = 0;
+            // 
+            // cmsAccount
+            // 
+            cmsAccount.Items.AddRange(new ToolStripItem[] { manageCourse });
+            cmsAccount.Name = "cmsAccount";
+            cmsAccount.Size = new Size(213, 48);
+            // 
+            // manageCourse
+            // 
+            manageCourse.Image = Properties.Resources.note_24_red;
+            manageCourse.Name = "manageCourse";
+            manageCourse.Size = new Size(212, 22);
+            manageCourse.Text = "Danh sách môn giảng dạy";
+            manageCourse.Click += manageCourse_Click;
             // 
             // pnHeaderButton
             // 
@@ -432,6 +450,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvSchedule).EndInit();
             cmsCalendar.ResumeLayout(false);
             pnButton.ResumeLayout(false);
+            cmsAccount.ResumeLayout(false);
             pnHeaderButton.ResumeLayout(false);
             pnBackButtonSchedule.ResumeLayout(false);
             pnBottomButton.ResumeLayout(false);
@@ -465,5 +484,7 @@
         private ToolStripMenuItem refreshToolStripMenuItem;
         private Sunny.UI.UIButton btnLogout;
         private Button btnAccountInformation;
+        private ContextMenuStrip cmsAccount;
+        private ToolStripMenuItem manageCourse;
     }
 }

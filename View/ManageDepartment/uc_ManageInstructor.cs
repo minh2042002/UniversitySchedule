@@ -22,8 +22,6 @@ namespace UniversitySchedule.View.ManageDepartment
             InitializeComponent();
         }
 
-        public static Instructor currentInstructor;
-
         private void FillToDgvInstructor(Instructor instructor)
         {
             try
@@ -160,8 +158,8 @@ namespace UniversitySchedule.View.ManageDepartment
         {
             try
             {
-                currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
-                frm_MoveDepartment frm_MoveDepartment = new frm_MoveDepartment();
+                Instructor currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
+                frm_MoveDepartment frm_MoveDepartment = new frm_MoveDepartment(currentInstructor);
                 frm_MoveDepartment.ShowDialog();
                 LoadInstructorByDepartmentSelected();
             }
@@ -172,8 +170,8 @@ namespace UniversitySchedule.View.ManageDepartment
         {
             try
             {
-                currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
-                frm_ChooseCourse frm_ChooseCourse = new frm_ChooseCourse();
+                Instructor currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
+                frm_ChooseCourse frm_ChooseCourse = new frm_ChooseCourse(currentInstructor);
                 frm_ChooseCourse.ShowDialog();
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
@@ -183,7 +181,7 @@ namespace UniversitySchedule.View.ManageDepartment
         {
             try
             {
-                currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
+                Instructor currentInstructor = dgvInstructor.CurrentRow.Tag as Instructor;
                 int updateResult = UserController.Instance().SetHeadForInstructor(currentInstructor);
                 if (updateResult == 0)
                 {

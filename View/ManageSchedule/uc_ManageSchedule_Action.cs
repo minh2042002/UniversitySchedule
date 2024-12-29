@@ -1,18 +1,10 @@
 ﻿using Sunny.UI;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using UniversitySchedule.Controllers;
-using UniversitySchedule.Dto;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
 using UniversitySchedule.View.ManageAccount;
+using UniversitySchedule.View.ManageDepartment;
 
 namespace UniversitySchedule.View.ManageSchedule
 {
@@ -48,11 +40,13 @@ namespace UniversitySchedule.View.ManageSchedule
                 {
                     showAllCalendar.Visible = false;
                     showTeach.Visible = false;
+                    manageCourse.Visible = false;
                 }
                 else
                 {
                     showAllCalendar.Visible = true;
                     showTeach.Visible = true;
+                    manageCourse.Visible = true;
                 }
             }
             catch (Exception ex)
@@ -234,6 +228,17 @@ namespace UniversitySchedule.View.ManageSchedule
                 thread.SetApartmentState(ApartmentState.STA);
                 thread.Start();
                 Application.Exit();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void manageCourse_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Instructor currentInstructor = UserLogin.User.Instructor;
+                frm_ChooseCourse frm_ChooseCourse = new frm_ChooseCourse(currentInstructor);
+                frm_ChooseCourse.ShowDialog();
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }

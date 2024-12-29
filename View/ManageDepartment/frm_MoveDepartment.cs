@@ -10,18 +10,18 @@ using System.Windows.Forms;
 using UniversitySchedule.Controllers;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
-using static UniversitySchedule.View.ManageDepartment.uc_ManageInstructor;
 namespace UniversitySchedule.View.ManageDepartment
 {
     public partial class frm_MoveDepartment : Form
     {
-        public frm_MoveDepartment()
+        public frm_MoveDepartment(Instructor instructor)
         {
+            currentInstructor = instructor;
             InitializeComponent();
         }
 
         private List<Department> departments;
-
+        private Instructor currentInstructor;
         private void LoadDepartmentFromDatabase()
         {
             try

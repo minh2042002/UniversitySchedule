@@ -10,16 +10,18 @@ using System.Windows.Forms;
 using UniversitySchedule.Controllers;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
-using static UniversitySchedule.View.ManageDepartment.uc_ManageInstructor;
 
 namespace UniversitySchedule.View.ManageDepartment
 {
     public partial class frm_ChooseCourse : Form
     {
-        public frm_ChooseCourse()
+        public frm_ChooseCourse(Instructor instructor)
         {
+            currentInstructor = instructor;
             InitializeComponent();
         }
+
+        private Instructor currentInstructor;
 
         private void FillToDgvCourse(Course course)
         {
