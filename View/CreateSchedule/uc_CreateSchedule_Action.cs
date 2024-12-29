@@ -14,6 +14,7 @@ using UniversitySchedule.Dto;
 using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
 using UniversitySchedule.View.ManageAccount;
+using UniversitySchedule.View.ManageDepartment;
 
 namespace UniversitySchedule.View.CreateSchedule
 {
@@ -24,102 +25,47 @@ namespace UniversitySchedule.View.CreateSchedule
             InitializeComponent();
         }
 
-        private ScheduleDto ScheduleDto;
-        private Schedule currentSchedule;
-        private List<Schedule> schedules;
+        private uc_CreateSchedule uc_CreateSchedule;
+        private uc_ManageSchedule uc_ManageSchedule;
 
-        private void FillToDgvSchedule(ClassDto classdto)
+        private void FillUserControlToPanel(string userControl)
         {
             try
             {
-                DataGridViewRow row = new DataGridViewRow();
-
-                DataGridViewTextBoxCell cell1 = new DataGridViewTextBoxCell();
-                cell1.Value = (dgvSchedule.Rows.Count + 1).ToString();
-                row.Cells.Add(cell1);
-
-                DataGridViewTextBoxCell cell2 = new DataGridViewTextBoxCell();
-                cell2.Value = classdto.Department.Name;
-                row.Cells.Add(cell2);
-
-                DataGridViewTextBoxCell cell3 = new DataGridViewTextBoxCell();
-                cell3.Value = $"{classdto.Course.Name} ({classdto.Course.Credit})";
-                row.Cells.Add(cell3);
-
-                DataGridViewTextBoxCell cell4 = new DataGridViewTextBoxCell();
-                cell4.Value = (int)classdto.MeetingTime.Day + 1;
-                row.Cells.Add(cell4);
-
-                DataGridViewTextBoxCell cell5 = new DataGridViewTextBoxCell();
-                cell5.Value = classdto.MeetingTime.ToString();
-                row.Cells.Add(cell5);
-
-                DataGridViewTextBoxCell cell6 = new DataGridViewTextBoxCell();
-                cell6.Value = classdto.Room.ToString();
-                row.Cells.Add(cell6);
-
-                DataGridViewTextBoxCell cell7 = new DataGridViewTextBoxCell();
-                cell7.Value = classdto.Instructor.Name;
-                row.Cells.Add(cell7);
-
-                DataGridViewTextBoxCell cell8 = new DataGridViewTextBoxCell();
-                cell8.Value = classdto.Course.MaxStudent;
-                row.Cells.Add(cell8);
-
-                row.Tag = classdto;
-
-                Invoke(new MethodInvoker(delegate ()
+                this.pnMain.Controls.Clear();
+                switch (userControl)
                 {
-                    dgvSchedule.Rows.Add(row);
-                }));
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
-        }
-
-        private void FillToDgvSchedule(Class classDetail)
-        {
-            try
-            {
-                DataGridViewRow row = new DataGridViewRow();
-
-                DataGridViewTextBoxCell cell1 = new DataGridViewTextBoxCell();
-                cell1.Value = (dgvSchedule.Rows.Count + 1).ToString();
-                row.Cells.Add(cell1);
-
-                DataGridViewTextBoxCell cell2 = new DataGridViewTextBoxCell();
-                cell2.Value = classDetail.Department.Name;
-                row.Cells.Add(cell2);
-
-                DataGridViewTextBoxCell cell3 = new DataGridViewTextBoxCell();
-                cell3.Value = $"{classDetail.Course.Name} ({classDetail.Course.Credit})";
-                row.Cells.Add(cell3);
-
-                DataGridViewTextBoxCell cell4 = new DataGridViewTextBoxCell();
-                cell4.Value = (int)classDetail.MeetingTime.Day + 1;
-                row.Cells.Add(cell4);
-
-                DataGridViewTextBoxCell cell5 = new DataGridViewTextBoxCell();
-                cell5.Value = classDetail.MeetingTime.ToString();
-                row.Cells.Add(cell5);
-
-                DataGridViewTextBoxCell cell6 = new DataGridViewTextBoxCell();
-                cell6.Value = classDetail.Room.ToString();
-                row.Cells.Add(cell6);
-
-                DataGridViewTextBoxCell cell7 = new DataGridViewTextBoxCell();
-                cell7.Value = classDetail.Instructor.User.Information.Name;
-                row.Cells.Add(cell7);
-
-                DataGridViewTextBoxCell cell8 = new DataGridViewTextBoxCell();
-                cell8.Value = classDetail.Course.MaxStudent;
-                row.Cells.Add(cell8);
-
-                row.Tag = classDetail;
-
-                Invoke(new MethodInvoker(delegate ()
-                {
-                    dgvSchedule.Rows.Add(row);
-                }));
+                    case "schedule":
+                        if (this.uc_CreateSchedule == null)
+                        {
+                            this.uc_CreateSchedule = new uc_CreateSchedule();
+                            this.pnMain.Controls.Add(uc_CreateSchedule);
+                            this.uc_CreateSchedule.Dock = DockStyle.Fill;
+                            this.uc_CreateSchedule.Location = new Point(0, 0);
+                            this.uc_CreateSchedule.Size = new Size(pnMain.Width, pnMain.Height);
+                            this.uc_CreateSchedule.TabIndex = 0;
+                        }
+                        else
+                        {
+                            this.pnMain.Controls.Add(uc_CreateSchedule);
+                        }
+                        break;
+                    case "manage_schedule":
+                        if (this.uc_ManageSchedule == null)
+                        {
+                            this.uc_ManageSchedule = new uc_ManageSchedule();
+                            this.pnMain.Controls.Add(uc_ManageSchedule);
+                            this.uc_ManageSchedule.Dock = DockStyle.Fill;
+                            this.uc_ManageSchedule.Location = new Point(0, 0);
+                            this.uc_ManageSchedule.Size = new Size(pnMain.Width, pnMain.Height);
+                            this.uc_ManageSchedule.TabIndex = 0;
+                        }
+                        else
+                        {
+                            this.pnMain.Controls.Add(uc_ManageSchedule);
+                        }
+                        break;
+                }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
@@ -174,88 +120,7 @@ namespace UniversitySchedule.View.CreateSchedule
             try
             {
                 HighlightButtonClicked("schedule");
-                btnSave.Enabled = false;
-                btnExportExcel.Enabled = false;
-                dgvSchedule.Columns["meeting_time"].DefaultCellStyle.Format = "HH:mm";
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
-        }
-
-        private async void btnCreateSchedule_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                dgvSchedule.Rows.Clear();
-                btnCreateSchedule.Enabled = false;
-                await Task.Run(() =>
-                {
-                    ScheduleDto = Driver.CreateSchedule();
-                });
-                btnCreateSchedule.Enabled = true;
-
-                if (ScheduleDto.Classes.Count > 0)
-                {
-                    btnSave.Enabled = true;
-                    btnExportExcel.Enabled = true;
-                    ScheduleDto.Classes
-                                    .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
-                                    .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
-                                    .ThenBy(x => x.MeetingTime.EndTime)      // Sắp xếp theo thời gian kết thúc
-                                    .ToList()
-                                    .ForEach(FillToDgvSchedule);
-                }
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                bool addResult = ScheduleController.Instance().InsertSchedule(ScheduleDto, true);
-                if (addResult)
-                {
-                    MessageBox.Show("Lưu thời khóa biểu thành công.");
-                }
-                else
-                {
-                    MessageBox.Show("Đã xảy ra lỗi vui lòng thử lại!");
-                }
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
-        }
-
-        private void btnExportExcel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ScheduleDto != null && ScheduleDto.Classes.Count > 0)
-                {
-                    List<ClassDto> classes = ScheduleDto.Classes
-                                                        .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
-                                                        .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
-                                                        .ThenBy(x => x.MeetingTime.EndTime).ToList();
-                    Excel.ExportCoursesToExcelWithDialog(classes);
-                }
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
-        }
-
-        private void setActive_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                frm_Schedule frm_Schedule = new frm_Schedule();
-                frm_Schedule.ShowDialog();
-
-                dgvSchedule.Rows.Clear();
-                Schedule currentSchedule = ScheduleController.Instance().GetScheduleActiveDetail();
-                currentSchedule.Classes
-                                .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
-                                .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
-                                .ThenBy(x => x.MeetingTime.EndTime)      // Sắp xếp theo thời gian kết thúc
-                                .ToList()
-                                .ForEach(FillToDgvSchedule);
+                FillUserControlToPanel("schedule");
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
@@ -281,61 +146,16 @@ namespace UniversitySchedule.View.CreateSchedule
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
 
-        private void LoadScheduleListFromDatabase()
-        {
-            try
-            {
-                schedules = ScheduleController.Instance().GetAllSchedule();
-                currentSchedule.Classes
-                                .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
-                                .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
-                                .ThenBy(x => x.MeetingTime.EndTime)      // Sắp xếp theo thời gian kết thúc
-                                .ToList()
-                                .ForEach(FillToDgvSchedule);
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
-        }
-
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnLoad_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSchedule_Click(object sender, EventArgs e)
         {
-            try
-            {
-                HighlightButtonClicked("schedule");
-                btnReload.Visible = false;
-                cmbSchedule.Visible = false;
-                btnLoad.Visible = false;
-
-                btnCreateSchedule.Visible = true;
-                btnSave.Visible = true;
-                btnExportExcel.Visible = true;
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+            HighlightButtonClicked("schedule");
+            FillUserControlToPanel("schedule");
         }
 
         private void btnManageSchedule_Click(object sender, EventArgs e)
         {
-            try
-            {
-                HighlightButtonClicked("manage_schedule");
-                btnReload.Visible = true;
-                cmbSchedule.Visible = true;
-                btnLoad.Visible = true;
-
-                btnCreateSchedule.Visible = false;
-                btnSave.Visible = false;
-                btnExportExcel.Visible = false;
-            }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+            HighlightButtonClicked("manage_schedule");
+            FillUserControlToPanel("manage_schedule");
         }
     }
 }

@@ -32,6 +32,19 @@ namespace UniversitySchedule.View.CreateSchedule
                 }
 
                 Name = txtNameSchedule.Text;
+                this.Close();
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
+        }
+
+        private void frm_Schedule_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                if (txtNameSchedule.Text.IsNullOrEmpty())
+                {
+                    Name = string.Empty;
+                }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }

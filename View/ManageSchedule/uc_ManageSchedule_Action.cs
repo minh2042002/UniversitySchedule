@@ -23,7 +23,7 @@ namespace UniversitySchedule.View.ManageSchedule
             InitializeComponent();
         }
 
-        private Schedule currentSchedule;
+        private Schedule? currentSchedule = null;
         private Button currentButton;
         private List<Class> classes = new List<Class>();
 
@@ -114,12 +114,15 @@ namespace UniversitySchedule.View.ManageSchedule
             try
             {
                 currentSchedule = ScheduleController.Instance().GetScheduleActiveDetail();
-                currentSchedule.Classes
-                                .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
-                                .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
-                                .ThenBy(x => x.MeetingTime.EndTime)      // Sắp xếp theo thời gian kết thúc
-                                .ToList()
-                                .ForEach(FillToDgvSchedule);
+                if (currentSchedule != null)
+                {
+                    currentSchedule.Classes
+                                    .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
+                                    .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
+                                    .ThenBy(x => x.MeetingTime.EndTime)      // Sắp xếp theo thời gian kết thúc
+                                    .ToList()
+                                    .ForEach(FillToDgvSchedule);
+                }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }

@@ -22,7 +22,6 @@ namespace UniversitySchedule.View.ManageDepartment
             LoadFeatureButtonByRole();
         }
 
-        private Button currentButton;
         private uc_ManageCourse uc_ManageCourse;
         private uc_ManageInstructor uc_ManageInstructor;
 

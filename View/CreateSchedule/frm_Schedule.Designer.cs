@@ -75,14 +75,14 @@
             label2.TabIndex = 326;
             label2.Text = "Tên thời khóa biểu";
             // 
-            // txtNameCourse
+            // txtNameSchedule
             // 
             txtNameSchedule.ButtonSymbolOffset = new Point(0, 0);
             txtNameSchedule.Font = new Font("Segoe UI", 9.75F);
             txtNameSchedule.Location = new Point(176, 18);
             txtNameSchedule.Margin = new Padding(3, 4, 3, 4);
             txtNameSchedule.MinimumSize = new Size(1, 13);
-            txtNameSchedule.Name = "txtNameCourse";
+            txtNameSchedule.Name = "txtNameSchedule";
             txtNameSchedule.Padding = new Padding(10, 0, 0, 0);
             txtNameSchedule.Radius = 10;
             txtNameSchedule.RectColor = Color.FromArgb(250, 82, 82);
@@ -109,6 +109,8 @@
             ForeColor = Color.Transparent;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frm_Schedule";
+            StartPosition = FormStartPosition.CenterScreen;
+            FormClosing += frm_Schedule_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

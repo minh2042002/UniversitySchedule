@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunny.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 using UniversitySchedule.Algorithm;
 using UniversitySchedule.Controllers;
 using UniversitySchedule.Dto;
+using UniversitySchedule.Models;
 using UniversitySchedule.Utils;
 
 namespace UniversitySchedule.View.CreateSchedule
@@ -111,25 +113,44 @@ namespace UniversitySchedule.View.CreateSchedule
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (ScheduleDto != null && ScheduleDto.Classes.Count > 0)
+                {
+                    frm_Schedule frm_Schedule = new frm_Schedule();
+                    frm_Schedule.ShowDialog();
+                    string name = frm_Schedule.Name;
+                    if (name.IsNullOrEmpty()) return;
 
+                    int addResult = ScheduleController.Instance().InsertSchedule(ScheduleDto, name);
+                    if (addResult == 0)
+                    {
+                        MessageBox.Show("Đã tồn tại thời khóa biểu này!", "Thông Báo");
+                    }
+                    else if (addResult == -1)
+                    {
+                        MessageBox.Show("Đã xảy ra lỗi vui lòng thử lại!", "Thông Báo");
+                    }
+                    else if (addResult == 1)
+                    {
+                        MessageBox.Show("Thêm thời khóa biểu thành công.", "Thông báo");
+                    }
+                }
+            }
+            catch (Exception ex) { Log4Net.LogException(ex, ""); }
         }
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
             try
             {
-                frm_Schedule frm_Schedule = new frm_Schedule();
-                frm_Schedule.ShowDialog();
-                string name = frm_Schedule.Name;
-
-                bool addResult = ScheduleController.Instance().InsertSchedule(ScheduleDto, true);
-                if (addResult)
+                if (ScheduleDto != null && ScheduleDto.Classes.Count > 0)
                 {
-                    MessageBox.Show("Lưu thời khóa biểu thành công.");
-                }
-                else
-                {
-                    MessageBox.Show("Đã xảy ra lỗi vui lòng thử lại!");
+                    List<ClassDto> classes = ScheduleDto.Classes
+                                                        .OrderBy(x => x.MeetingTime.Day)   // Sắp xếp theo DayOfWeek
+                                                        .ThenBy(x => x.MeetingTime.StartTime)    // Sắp xếp theo thời gian bắt đầu
+                                                        .ThenBy(x => x.MeetingTime.EndTime).ToList();
+                    Excel.ExportCoursesToExcelWithDialog(classes);
                 }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }

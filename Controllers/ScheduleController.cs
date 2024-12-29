@@ -33,7 +33,20 @@ namespace UniversitySchedule.Controllers
             {
                 using (var dbContext = new UniversityScheduleContext())
                 {
-                    List<Schedule> dbSchedules = dbContext.Schedules.AsNoTracking().ToList();
+                    List<Schedule> dbSchedules = dbContext.Schedules
+                                                          .Include(s => s.Classes)
+                                                            .ThenInclude(c => c.Course)
+                                                          .Include(s => s.Classes)
+                                                            .ThenInclude(c => c.Instructor)
+                                                            .ThenInclude(i => i.User)
+                                                            .ThenInclude(u => u.Information)
+                                                          .Include(s => s.Classes)
+                                                            .ThenInclude(c => c.Room)
+                                                          .Include(s => s.Classes)
+                                                            .ThenInclude(c => c.MeetingTime)
+                                                          .Include(s => s.Classes)
+                                                            .ThenInclude(c => c.Department)
+                                                          .AsNoTracking().ToList();
                     if (dbSchedules.Count > 0)
                     {
                         dbSchedules.ForEach(s =>
@@ -90,7 +103,7 @@ namespace UniversitySchedule.Controllers
             return schedule;
         }
 
-        public bool InsertSchedule(ScheduleDto scheduleDto, bool isActive)
+        public int SetActive(Schedule schedule)
         {
             try
             {
@@ -99,20 +112,57 @@ namespace UniversitySchedule.Controllers
                 {
                     try
                     {
-                        if (isActive)
+                        var updateSchedule = dbContext.Schedules.FirstOrDefault(s => s.Id == schedule.Id);
+                        if (updateSchedule == null)
                         {
-                            if (dbContext.Schedules.Any(s => s.IsActive))
-                            {
-                                dbContext.Schedules.RemoveRange(dbContext.Schedules.Where(s => s.IsActive));
-                            }
+                            return 0;
+                        }
+
+                        dbContext.Schedules.ToList().ForEach(s => s.IsActive = false);
+
+                        updateSchedule.IsActive = true;
+
+                        dbContext.SaveChanges();
+                        transaction.Commit();
+
+                        return 1;
+                    }
+                    catch (Exception ex)
+                    {
+                        Log4Net.LogException(ex, "");
+                        transaction.Rollback();
+                        return -1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log4Net.LogException(ex, "");
+                return -1;
+            }
+        }
+
+        public int InsertSchedule(ScheduleDto schedule, string name)
+        {
+            try
+            {
+                using (var dbContext = new UniversityScheduleContext())
+                using (var transaction = dbContext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        if (dbContext.Schedules.Any(s => s.Name == name))
+                        {
+                            return 0;
                         }
 
                         Schedule newSchedule = new Schedule();
-                        newSchedule.IsActive = isActive;
+                        newSchedule.Name = name;
+                        newSchedule.IsActive = false;
                         dbContext.Schedules.Add(newSchedule);
                         dbContext.SaveChanges();
 
-                        foreach (ClassDto classDto in scheduleDto.Classes)
+                        foreach (ClassDto classDto in schedule.Classes)
                         {
                             Class newClass = new Class();
                             newClass.CourseId = classDto.Course.Id;
@@ -126,21 +176,21 @@ namespace UniversitySchedule.Controllers
 
                         dbContext.SaveChanges();
                         transaction.Commit();
-                        return true;
+                        return 1;
                     }
                     catch (Exception ex)
                     {
                         Log4Net.LogException(ex, "");
-
                         transaction.Rollback();
+                        return -1;
                     }
                 }
             }
             catch (Exception ex)
             {
                 Log4Net.LogException(ex, "");
+                return -1;
             }
-            return false;
         }
 
         public bool DeleteSchedule(Schedule schedule)
