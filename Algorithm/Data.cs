@@ -36,10 +36,18 @@ namespace UniversitySchedule.Algorithm
                 Courses = CourseController.Instance().GetAllCourseForAlgorithm();
                 Departments = DepartmentController.Instance().GetAllDepartmentForAlgorithm();
 
-                Departments.ForEach(d => d.Courses.ForEach(c => NumberClass += c.NumberClass));
+                if (Rooms.Count > 0 && MeetingTimes.Count > 0 && Instructors.Count > 0 && Courses.Count > 0 && Departments.Count > 0)
+                {
+                    Departments.ForEach(d => d.Courses.ForEach(c => NumberClass += c.NumberClass));
+                    return this;
+                }
+                else return null;
             }
-            catch (Exception ex) { Log4Net.LogException(ex, ""); }
-            return this;
+            catch (Exception ex)
+            {
+                Log4Net.LogException(ex, "");
+                return null;
+            }
         }
     }
 }

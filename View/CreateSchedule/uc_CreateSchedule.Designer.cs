@@ -148,7 +148,6 @@
             dgvSchedule.Dock = DockStyle.Fill;
             dgvSchedule.ImeMode = ImeMode.NoControl;
             dgvSchedule.Location = new Point(5, 5);
-            dgvSchedule.MultiSelect = false;
             dgvSchedule.Name = "dgvSchedule";
             dgvSchedule.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;

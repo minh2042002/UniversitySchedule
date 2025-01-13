@@ -96,7 +96,7 @@ namespace UniversitySchedule.View.CreateSchedule
                 });
                 btnCreateSchedule.Enabled = true;
 
-                if (ScheduleDto.Classes.Count > 0)
+                if ( ScheduleDto != null && ScheduleDto.Classes.Count > 0)
                 {
                     btnSave.Enabled = true;
                     btnExportExcel.Enabled = true;

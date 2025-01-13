@@ -17,6 +17,11 @@ namespace UniversitySchedule.Algorithm
             try
             {
                 Data data = new Data();
+                if (data == null)
+                {
+                    MessageBox.Show("Bộ dữ liệu chưa đầy đủ, yêu cầu bổ sung dữ liệu!");
+                }
+
                 GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(data);
                 Population population = new Population(GeneticAlgorithm.POPULATION_SIZE, data).SortByFitness();
                 int numberGenerations = 1;
@@ -27,6 +32,11 @@ namespace UniversitySchedule.Algorithm
                 }
 
                 schedule = population.Schedules.First();
+                if (schedule.Fitness != 1)
+                {
+                    MessageBox.Show("Tạo thời khóa biểu thất bại! Hãy kiểm tra lại bộ dữ liệu!");
+                    return null;
+                }
             }
             catch (Exception ex) { Log4Net.LogException(ex, ""); }
             return schedule;

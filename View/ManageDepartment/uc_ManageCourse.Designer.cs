@@ -50,8 +50,6 @@
             editCourse = new ToolStripMenuItem();
             deleteCourse = new ToolStripMenuItem();
             panel3 = new Panel();
-            txtFindByName = new Sunny.UI.UITextBox();
-            btnSearch = new Sunny.UI.UISymbolButton();
             btnLoad = new Sunny.UI.UIButton();
             pnCombobox = new Sunny.UI.UIPanel();
             cmbDepartment = new PresentationControls.CheckBoxComboBox();
@@ -262,8 +260,6 @@
             // 
             panel3.AutoScroll = true;
             panel3.AutoScrollMinSize = new Size(1065, 68);
-            panel3.Controls.Add(txtFindByName);
-            panel3.Controls.Add(btnSearch);
             panel3.Controls.Add(btnLoad);
             panel3.Controls.Add(pnCombobox);
             panel3.Controls.Add(btnReload);
@@ -272,63 +268,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(1065, 68);
             panel3.TabIndex = 4;
-            // 
-            // txtFindByName
-            // 
-            txtFindByName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtFindByName.ButtonFillColor = Color.FromArgb(0, 104, 196);
-            txtFindByName.ButtonFillHoverColor = Color.FromArgb(0, 104, 196);
-            txtFindByName.ButtonFillPressColor = Color.FromArgb(0, 104, 196);
-            txtFindByName.ButtonRectColor = Color.FromArgb(0, 104, 196);
-            txtFindByName.ButtonRectHoverColor = Color.FromArgb(0, 104, 196);
-            txtFindByName.ButtonRectPressColor = Color.FromArgb(0, 104, 196);
-            txtFindByName.ButtonStyleInherited = false;
-            txtFindByName.ButtonSymbolOffset = new Point(0, 0);
-            txtFindByName.Font = new Font("Segoe UI", 9.75F);
-            txtFindByName.Location = new Point(724, 17);
-            txtFindByName.Margin = new Padding(3, 4, 3, 4);
-            txtFindByName.MinimumSize = new Size(1, 13);
-            txtFindByName.Name = "txtFindByName";
-            txtFindByName.Padding = new Padding(8);
-            txtFindByName.Radius = 10;
-            txtFindByName.RectColor = SystemColors.ControlDark;
-            txtFindByName.ScrollBarColor = Color.Gray;
-            txtFindByName.ScrollBarStyleInherited = false;
-            txtFindByName.ShowText = false;
-            txtFindByName.Size = new Size(245, 33);
-            txtFindByName.Style = Sunny.UI.UIStyle.Custom;
-            txtFindByName.StyleCustomMode = true;
-            txtFindByName.TabIndex = 278;
-            txtFindByName.TextAlignment = ContentAlignment.MiddleLeft;
-            txtFindByName.Watermark = "Nhập tên môn học ...";
-            // 
-            // btnSearch
-            // 
-            btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSearch.Cursor = Cursors.Hand;
-            btnSearch.FillColor = Color.White;
-            btnSearch.FillColor2 = Color.White;
-            btnSearch.FillHoverColor = Color.White;
-            btnSearch.FillPressColor = Color.White;
-            btnSearch.FillSelectedColor = Color.White;
-            btnSearch.Font = new Font("Microsoft YaHei", 12F);
-            btnSearch.ForeDisableColor = Color.White;
-            btnSearch.Image = Properties.Resources.search_24_red;
-            btnSearch.IsCircle = true;
-            btnSearch.Location = new Point(976, 13);
-            btnSearch.Margin = new Padding(2);
-            btnSearch.MinimumSize = new Size(1, 1);
-            btnSearch.Name = "btnSearch";
-            btnSearch.RectColor = Color.White;
-            btnSearch.RectHoverColor = Color.White;
-            btnSearch.RectPressColor = Color.White;
-            btnSearch.RectSelectedColor = Color.White;
-            btnSearch.Size = new Size(40, 40);
-            btnSearch.Style = Sunny.UI.UIStyle.Custom;
-            btnSearch.StyleCustomMode = true;
-            btnSearch.TabIndex = 277;
-            btnSearch.TipsColor = Color.FromArgb(0, 104, 196);
-            btnSearch.TipsFont = new Font("Microsoft Sans Serif", 9F);
             // 
             // btnLoad
             // 
@@ -460,8 +399,6 @@
         private DataGridViewTextBoxColumn number_class;
         private DataGridViewTextBoxColumn department;
         private Panel panel3;
-        private Sunny.UI.UITextBox txtFindByName;
-        private Sunny.UI.UISymbolButton btnSearch;
         private Sunny.UI.UIButton btnLoad;
         private Sunny.UI.UIPanel pnCombobox;
         private PresentationControls.CheckBoxComboBox cmbDepartment;

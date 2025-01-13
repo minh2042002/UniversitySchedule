@@ -73,9 +73,9 @@
             lbUpdateTime.ImeMode = ImeMode.NoControl;
             lbUpdateTime.Location = new Point(194, 89);
             lbUpdateTime.Name = "lbUpdateTime";
-            lbUpdateTime.Size = new Size(65, 20);
+            lbUpdateTime.Size = new Size(63, 20);
             lbUpdateTime.TabIndex = 18;
-            lbUpdateTime.Text = "7.6.2023";
+            lbUpdateTime.Text = "6.1.2025";
             // 
             // label4
             // 
@@ -117,9 +117,9 @@
             lbVersion.ImeMode = ImeMode.NoControl;
             lbVersion.Location = new Point(76, 90);
             lbVersion.Name = "lbVersion";
-            lbVersion.Size = new Size(29, 20);
+            lbVersion.Size = new Size(27, 20);
             lbVersion.TabIndex = 17;
-            lbVersion.Text = "6.0";
+            lbVersion.Text = "1.0";
             // 
             // panel3
             // 
